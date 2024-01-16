@@ -1,0 +1,180 @@
+fileFormatVersion: 2
+guid: 83bffd53d219219419db1f1432a1e759
+timeCreated: 1470664536
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Classic_1_Body
+    100004: Classic_1_Door_LB
+    100006: Classic_1_Door_LF
+    100008: Classic_1_Door_RB
+    100010: Classic_1_Door_RF
+    100012: Classic_1_Glass_B
+    100014: Classic_1_Glass_F
+    100016: Classic_1_Glass_LB
+    100018: Classic_1_Glass_LC
+    100020: Classic_1_Glass_LF
+    100022: Classic_1_Glass_RB
+    100024: Classic_1_Glass_RC
+    100026: Classic_1_Glass_RF
+    100028: Classic_1_Hood
+    100030: Classic_1_Roof
+    100032: Classic_1_Trunk
+    100034: Oldie_Dashboard
+    100036: Oldie_Dashboard_Indicator
+    100038: Oldie_Dashboard_Lights
+    100040: Oldie_Dashboard_SteeringWheel
+    100042: Oldie_Dashboard_Wiper
+    400000: //RootNode
+    400002: Classic_1_Body
+    400004: Classic_1_Door_LB
+    400006: Classic_1_Door_LF
+    400008: Classic_1_Door_RB
+    400010: Classic_1_Door_RF
+    400012: Classic_1_Glass_B
+    400014: Classic_1_Glass_F
+    400016: Classic_1_Glass_LB
+    400018: Classic_1_Glass_LC
+    400020: Classic_1_Glass_LF
+    400022: Classic_1_Glass_RB
+    400024: Classic_1_Glass_RC
+    400026: Classic_1_Glass_RF
+    400028: Classic_1_Hood
+    400030: Classic_1_Roof
+    400032: Classic_1_Trunk
+    400034: Oldie_Dashboard
+    400036: Oldie_Dashboard_Indicator
+    400038: Oldie_Dashboard_Lights
+    400040: Oldie_Dashboard_SteeringWheel
+    400042: Oldie_Dashboard_Wiper
+    2300000: Classic_1_Body
+    2300002: Classic_1_Door_LB
+    2300004: Classic_1_Door_LF
+    2300006: Classic_1_Door_RB
+    2300008: Classic_1_Door_RF
+    2300010: Classic_1_Glass_B
+    2300012: Classic_1_Glass_F
+    2300014: Classic_1_Glass_LB
+    2300016: Classic_1_Glass_LC
+    2300018: Classic_1_Glass_LF
+    2300020: Classic_1_Glass_RB
+    2300022: Classic_1_Glass_RC
+    2300024: Classic_1_Glass_RF
+    2300026: Classic_1_Hood
+    2300028: Classic_1_Roof
+    2300030: Classic_1_Trunk
+    2300032: Oldie_Dashboard
+    2300034: Oldie_Dashboard_Indicator
+    2300036: Oldie_Dashboard_Lights
+    2300038: Oldie_Dashboard_SteeringWheel
+    2300040: Oldie_Dashboard_Wiper
+    3300000: Classic_1_Body
+    3300002: Classic_1_Door_LB
+    3300004: Classic_1_Door_LF
+    3300006: Classic_1_Door_RB
+    3300008: Classic_1_Door_RF
+    3300010: Classic_1_Glass_B
+    3300012: Classic_1_Glass_F
+    3300014: Classic_1_Glass_LB
+    3300016: Classic_1_Glass_LC
+    3300018: Classic_1_Glass_LF
+    3300020: Classic_1_Glass_RB
+    3300022: Classic_1_Glass_RC
+    3300024: Classic_1_Glass_RF
+    3300026: Classic_1_Hood
+    3300028: Classic_1_Roof
+    3300030: Classic_1_Trunk
+    3300032: Oldie_Dashboard
+    3300034: Oldie_Dashboard_Indicator
+    3300036: Oldie_Dashboard_Lights
+    3300038: Oldie_Dashboard_SteeringWheel
+    3300040: Oldie_Dashboard_Wiper
+    4300000: Oldie_Dashboard
+    4300002: Classic_1_Body
+    4300004: Classic_1_Door_RF
+    4300006: Classic_1_Door_RB
+    4300008: Classic_1_Door_LF
+    4300010: Classic_1_Door_LB
+    4300012: Classic_1_Roof
+    4300014: Classic_1_Hood
+    4300016: Classic_1_Trunk
+    4300018: Classic_1_Glass_RF
+    4300020: Classic_1_Glass_RC
+    4300022: Classic_1_Glass_RB
+    4300024: Classic_1_Glass_F
+    4300026: Classic_1_Glass_B
+    4300028: Classic_1_Glass_LF
+    4300030: Classic_1_Glass_LC
+    4300032: Classic_1_Glass_LB
+    4300034: Oldie_Dashboard_SteeringWheel
+    4300036: Oldie_Dashboard_Wiper
+    4300038: Oldie_Dashboard_Indicator
+    4300040: Oldie_Dashboard_Lights
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
