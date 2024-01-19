@@ -7,7 +7,8 @@ public class CameraFollow : Singleton<CameraFollow>
     public Transform Target; // The car's transform
     public float SmoothSpeed = 5.0f; // Smoothing factor for camera movement
     private Vector3 offset = new Vector3(0, 2.8f, -5.8f); // Camera offset relative to the car
-    public Vector3 TargetPosition = new Vector3(0, 6.5f, -10f);
+    public Vector3 TargetPosition = new Vector3(0, 2.8f, -5.8f); //(0, 6.5f, -10f)
+    [SerializeField] private GameObject FireWorkParticle;
 
     private void LoadTarget()
     {
@@ -66,5 +67,13 @@ public class CameraFollow : Singleton<CameraFollow>
     public void OnNitro()
     {
 
+    }
+    public void ActiveFireWorkParticle()
+    {
+        FireWorkParticle.SetActive(true);
+    }
+    public void InActiveFireWorkParticle()
+    {
+        FireWorkParticle.SetActive(false);
     }
 }

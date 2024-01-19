@@ -23,6 +23,11 @@ public class FirstTimePlayGame : MonoBehaviour
                 string objectKey = priceBTN.name;
                 PlayerPrefs.SetInt(objectKey, 1);
             }
+            foreach (Button lockBTN in ToggleGroup.Ins.LockButtonList)
+            {
+                string objectKey = lockBTN.name;
+                PlayerPrefs.SetInt(objectKey, 1);
+            }
             UIManager.Ins.LoadAndSetActiveObjects();
             Daily.Ins.ResetDailyReward();
             hasActivated = true;
@@ -35,5 +40,6 @@ public class FirstTimePlayGame : MonoBehaviour
             hasActivated = true;
             Destroy(gameObject);
         }
+        PlayerPrefs.SetInt("BoughtOffer", 0);
     }
 }

@@ -106,6 +106,8 @@ public class Daily : Singleton<Daily>
             tmp++;
             PlayerPrefs.SetInt("SoNgayChoi", tmp);
             PlayerPrefs.SetString("LastClaimDate", DateTime.Now.ToString());
+            UIManager.Ins.PriceBTNList[9].gameObject.SetActive(false);
+            UIManager.Ins.SaveObjectStates();
             GameController.Ins.Save();
         }
         else
@@ -157,6 +159,8 @@ public class Daily : Singleton<Daily>
             Claim2xBTN.interactable = false;
             ClaimBTN.interactable = false;
             tmp++;
+            UIManager.Ins.PriceBTNList[9].gameObject.SetActive(false);
+            UIManager.Ins.SaveObjectStates();
             PlayerPrefs.SetInt("SoNgayChoi", tmp);
             PlayerPrefs.SetString("LastClaimDate", DateTime.Now.ToString());
             GameController.Ins.Save();

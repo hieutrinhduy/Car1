@@ -54,6 +54,7 @@ public class CarController : MonoBehaviour
     public float NitroLast = 10f;
     public float NitroTimer = 0f;
     public bool isNitroActive = false;
+    [SerializeField] private GameObject NitroParticle;
 
     //Center of mass
     public GameObject CenterOfMass;
@@ -236,13 +237,14 @@ public class CarController : MonoBehaviour
         if (NitroTimer > 0 && isNitroActive)
         {
             NitroTimer -= Time.deltaTime;
-            carRB.AddForce(Vector3.forward * 15, ForceMode.Impulse);
+            carRB.AddForce(transform.forward * 30, ForceMode.Impulse);
             _accelerationMultiplier = 10f;
-
+            NitroParticle.SetActive(true);
         }
         else
         {
             isNitroActive = false;
+            NitroParticle.SetActive(false);
             _accelerationMultiplier = 1f;
         }
     }
@@ -282,7 +284,8 @@ public class CarController : MonoBehaviour
         {
             Debug.Log("Stage Finish");
             UIManager.Ins.Finish();
-            GameController.Ins.FinishMap();
+            CameraFollow.Ins.ActiveFireWorkParticle();
+            //GameController.Ins.FinishMap();
             RandomReward.Ins.SetArrowXPosition(-280f);
             RandomReward.Ins.ActiveClaimBTN();
             GameController.Ins.TotalGold += 1000;

@@ -37,14 +37,14 @@ public class RewardManager : Singleton<RewardManager>
     public void RewardPileOfCoinWhenBuy(RectTransform SpawnPoint, int No_coin)
     {
         Vector3 position = SpawnPoint.position;
-        position.y +=300; 
+        position.y +=200; 
         PileOfCpoinParent.position = position;
 
         var delay = 0f;
         PileOfCpoinParent.gameObject.SetActive(true);
         for (int i = 0; i < PileOfCpoinParent.childCount; i++)
         {
-            PileOfCpoinParent.GetChild(i).DOScale(1.5f, 0.3f).SetDelay(delay).SetEase(Ease.OutBack);
+            PileOfCpoinParent.GetChild(i).DOScale(2f, 0.3f).SetDelay(delay).SetEase(Ease.OutBack);
             PileOfCpoinParent.GetChild(i).GetComponent<RectTransform>().DOMove(target.position, 1f).SetDelay(delay+0.2f).SetEase(Ease.OutBack);
             PileOfCpoinParent.GetChild(i).DOScale(0f, 0.3f).SetDelay(delay+1f).SetEase(Ease.OutBack);
             PileOfCpoinParent.GetChild(i).GetComponent<RectTransform>().DOAnchorPos(Vector3.zero, 0f).SetDelay(0f).SetEase(Ease.OutBack);

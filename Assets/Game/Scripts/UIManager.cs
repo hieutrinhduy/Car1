@@ -74,6 +74,8 @@ public class UIManager : Singleton<UIManager>
     [Header("AddGoldButton")]
     public List<Button> AddGoldButtonWhenBuy;
     public List<Button> GoldSpamFromMiddle;
+    [Header("OfferPanel")]
+    [SerializeField] private Button BuyOfferButton;
     void Start()
     {
         StartCoroutine(LoadScene());
@@ -83,6 +85,7 @@ public class UIManager : Singleton<UIManager>
         GameController.Ins.Save();
         LoadCurrentCar();
         LoadAndSetActiveObjects();
+        BuyOfferButton.interactable = PlayerPrefs.GetInt("BoughtOffer") == 0;
         for (int i = 0; i < AddGoldButtonWhenBuy.Count; i++)
         {
             int buttonIndex = i; // Capture the current index in a local variable for the lambda expression
@@ -148,6 +151,7 @@ public class UIManager : Singleton<UIManager>
     }
     public void Finish()
     {
+        CameraFollow.Ins.ActiveFireWorkParticle();
         FinishLevelUI.SetActive(true);
         GameplayUI.SetActive(false);
     }
@@ -192,6 +196,10 @@ public class UIManager : Singleton<UIManager>
         CameraFollow.Ins.ResetCamAng();
         CarController.Ins.ResetItemCount();
         UpdateGoldText();
+        CameraFollow.Ins.InActiveFireWorkParticle();
+        SpawnLevel.Ins.SpawnPlayer();
+        SpawnLevel.Ins.SpawnLevelMap();
+        CarController.Ins.ResetItemCount();
         FinishLevelUI.SetActive(false);
         GameplayUI.SetActive(true);
     }
@@ -423,7 +431,7 @@ public class UIManager : Singleton<UIManager>
         remainingTime = TimeRemaining;
     }
     //Lưu nút giá đã bị tắt hay chưa
-    void SaveObjectStates()
+    public void SaveObjectStates()
     {
         foreach (Button btn in PriceBTNList)
         {
@@ -482,7 +490,17 @@ public class UIManager : Singleton<UIManager>
     {
         Debug.Log(ToggleGroup.Ins.GetActiveToggle());
         GameController.Ins.level = ToggleGroup.Ins.GetActiveToggle();
+        ToggleGroup.Ins.SetBorder();
         GameController.Ins.Save();
         OnLevelChange?.Invoke(this, EventArgs.Empty);
+    }
+    public void BuyOffer()
+    {
+        StartCoroutine(SaveGold());
+        PriceBTNList[10].gameObject.SetActive(false);
+        SaveObjectStates();
+        BuyOfferButton.interactable = false;
+        PlayerPrefs.SetInt("BoughtOffer", 1);
+        GameController.Ins.Save();
     }
 }
