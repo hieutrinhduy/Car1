@@ -85,7 +85,13 @@ public class UIManager : Singleton<UIManager>
         GameController.Ins.Save();
         LoadCurrentCar();
         LoadAndSetActiveObjects();
-        BuyOfferButton.interactable = PlayerPrefs.GetInt("BoughtOffer") == 0;
+        if (PlayerPrefs.GetInt("BoughtOffer") == 0){
+            BuyOfferButton.interactable = true;
+        }
+        else
+        {
+            BuyOfferButton.interactable = false;
+        }
         for (int i = 0; i < AddGoldButtonWhenBuy.Count; i++)
         {
             int buttonIndex = i; // Capture the current index in a local variable for the lambda expression
@@ -113,8 +119,8 @@ public class UIManager : Singleton<UIManager>
     {
         UpdateTimeRemainingForOnlineGift();
         CheckStreeingWheelisOn();
-        NitroImg.fillAmount = CarController.Ins.NitroTimer / CarController.Ins.NitroLast;
         LoadSceneLast += Time.deltaTime;
+        NitroImg.fillAmount = CarController.Ins.NitroTimer / CarController.Ins.NitroLast;
         LoadSceneFillAmount.fillAmount = LoadSceneLast / LoadSceneTimer;
     }
 
@@ -151,7 +157,8 @@ public class UIManager : Singleton<UIManager>
     }
     public void Finish()
     {
-        CameraFollow.Ins.ActiveFireWorkParticle();
+        //CameraFollow.Ins.ActiveFireWorkParticle();
+        TestCamera.Ins.ActiveFireWorkParticle();
         FinishLevelUI.SetActive(true);
         GameplayUI.SetActive(false);
     }
@@ -169,7 +176,7 @@ public class UIManager : Singleton<UIManager>
     public void ReplayStage()
     {
         StartCoroutine(LoadScene());
-        CameraFollow.Ins.ResetCamAng();
+        //CameraFollow.Ins.ResetCamAng();
         LosePanelUI.SetActive(false);
         GameplayUI.SetActive(true);
         SpawnLevel.Ins.SpawnPlayer();
@@ -193,10 +200,11 @@ public class UIManager : Singleton<UIManager>
     public void NextStage()
     {
         StartCoroutine(LoadScene());
-        CameraFollow.Ins.ResetCamAng();
+        //CameraFollow.Ins.ResetCamAng();
         CarController.Ins.ResetItemCount();
         UpdateGoldText();
-        CameraFollow.Ins.InActiveFireWorkParticle();
+        //CameraFollow.Ins.InActiveFireWorkParticle();
+        TestCamera.Ins.InActiveFireWorkParticle();
         SpawnLevel.Ins.SpawnPlayer();
         SpawnLevel.Ins.SpawnLevelMap();
         CarController.Ins.ResetItemCount();

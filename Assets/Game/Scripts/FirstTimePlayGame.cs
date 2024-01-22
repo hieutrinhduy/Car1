@@ -33,6 +33,7 @@ public class FirstTimePlayGame : MonoBehaviour
             hasActivated = true;
             Destroy(gameObject);
             PlayerPrefs.SetInt("hasActivated", 1);
+            PlayerPrefs.SetInt("BoughtOffer", 0);
             PlayerPrefs.Save();
         }
         else
@@ -40,6 +41,5 @@ public class FirstTimePlayGame : MonoBehaviour
             hasActivated = true;
             Destroy(gameObject);
         }
-        PlayerPrefs.SetInt("BoughtOffer", 0);
     }
 }

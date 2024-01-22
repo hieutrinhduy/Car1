@@ -284,7 +284,8 @@ public class CarController : MonoBehaviour
         {
             Debug.Log("Stage Finish");
             UIManager.Ins.Finish();
-            CameraFollow.Ins.ActiveFireWorkParticle();
+            //CameraFollow.Ins.ActiveFireWorkParticle();
+            TestCamera.Ins.ActiveFireWorkParticle();
             //GameController.Ins.FinishMap();
             RandomReward.Ins.SetArrowXPosition(-280f);
             RandomReward.Ins.ActiveClaimBTN();
@@ -301,8 +302,8 @@ public class CarController : MonoBehaviour
         }
         else if (other.CompareTag("escalator"))
         {
-            CameraFollow.Ins.ChangeAspect();
-            Destroy(other.gameObject);
+            //CameraFollow.Ins.ChangeAspect();
+            //Destroy(other.gameObject);
             this.OnBrake();
         }
         else if (other.CompareTag("ResetBrake"))
