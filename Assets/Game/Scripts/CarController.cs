@@ -170,6 +170,8 @@ public class CarController : MonoBehaviour
     {
         _colliderBL.motorTorque = (_force * _accelerationMultiplier *4) *SimpleInput.GetAxis("Vertical");
         _colliderBR.motorTorque = (_force * _accelerationMultiplier *4) *SimpleInput.GetAxis("Vertical");
+        _colliderFL.motorTorque = (_force * _accelerationMultiplier * 4) * SimpleInput.GetAxis("Vertical");
+        _colliderFR.motorTorque = (_force * _accelerationMultiplier * 4) * SimpleInput.GetAxis("Vertical");
         _colliderBL.motorTorque = Mathf.Clamp(_colliderBL.motorTorque, -1800f, 1800f);
         _colliderBR.motorTorque = Mathf.Clamp(_colliderBR.motorTorque, -1800f, 1800f);
         RotateWheel(_colliderBL, _transformBL);
@@ -239,6 +241,7 @@ public class CarController : MonoBehaviour
             NitroTimer -= Time.deltaTime;
             carRB.AddForce(transform.forward * 30, ForceMode.Impulse);
             _accelerationMultiplier = 10f;
+            //TestCamera.Ins.Shake();
             NitroParticle.SetActive(true);
         }
         else
@@ -289,7 +292,7 @@ public class CarController : MonoBehaviour
             //GameController.Ins.FinishMap();
             RandomReward.Ins.SetArrowXPosition(-280f);
             RandomReward.Ins.ActiveClaimBTN();
-            GameController.Ins.TotalGold += 1000;
+            UIManager.Ins.PurchaseGold1000();
             RewardManager.Ins.RewardPileOfCoin(null,6);
             GameController.Ins.Save();
         }

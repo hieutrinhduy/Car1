@@ -13,6 +13,9 @@ public class ToggleGroup : Singleton<ToggleGroup>
     [SerializeField] private GameObject WatchVideoToUnLockMapPanel;
     private int countToUnlockMap = 0;
     [SerializeField] private TextMeshProUGUI CountToUnlockMapTXT;
+
+    [SerializeField] private List<Sprite> ImageList;
+    [SerializeField] private Image Image_Map_In_WatchToUnlockMapPanel;
     private void Start()
     {
         countToUnlockMap = 0;
@@ -61,6 +64,8 @@ public class ToggleGroup : Singleton<ToggleGroup>
     public void ActiveWatchVideoToUnLockMapPanel()
     {
         LockButtonIndex = LockButtonList.IndexOf(EventSystem.current.currentSelectedGameObject.GetComponent<Button>());
+        Debug.Log(LockButtonIndex+7);
+        Image_Map_In_WatchToUnlockMapPanel.sprite = ImageList[LockButtonIndex+7];
         WatchVideoToUnLockMapPanel.SetActive(true);
     }
     public void DeActiveWatchVideoToUnLockMapPanel()

@@ -75,7 +75,7 @@ public class Daily : Singleton<Daily>
         if (tmp == 0)
         {
             checkMarkList[tmp].SetActive(true);
-            GameController.Ins.TotalGold += 1000;
+            UIManager.Ins.PurchaseGold1000();
             PlayerPrefs.SetInt("Gold", GameController.Ins.TotalGold);
             tmp++;
             PlayerPrefs.SetInt("SoNgayChoi", tmp);
@@ -101,7 +101,7 @@ public class Daily : Singleton<Daily>
         else if(tmp == 4)
         {
             checkMarkList[tmp].SetActive(true);
-            GameController.Ins.TotalGold += 10000;
+            UIManager.Ins.PurchaseGold10000();
             PlayerPrefs.SetInt("Gold", GameController.Ins.TotalGold);
             tmp++;
             PlayerPrefs.SetInt("SoNgayChoi", tmp);
@@ -113,7 +113,7 @@ public class Daily : Singleton<Daily>
         else
         {
             checkMarkList[tmp].SetActive(true);
-            GameController.Ins.TotalGold += 5000;
+            UIManager.Ins.PurchaseGold5000();
             PlayerPrefs.SetInt("Gold", GameController.Ins.TotalGold);
             tmp++;
             PlayerPrefs.SetInt("SoNgayChoi", tmp);
@@ -142,7 +142,7 @@ public class Daily : Singleton<Daily>
                 }
             }
             checkMarkList[tmp].SetActive(true);
-            GameController.Ins.TotalGold += 1000*2;
+            UIManager.Ins.PurchaseGold2000();
             PlayerPrefs.SetInt("Gold", GameController.Ins.TotalGold);
             Claim2xBTN.interactable = false;
             ClaimBTN.interactable = false;
@@ -154,7 +154,7 @@ public class Daily : Singleton<Daily>
         else if (tmp == 4)
         {
             checkMarkList[tmp].SetActive(true);
-            GameController.Ins.TotalGold += 10000*2;
+            UIManager.Ins.PurchaseGold20000();
             PlayerPrefs.SetInt("Gold", GameController.Ins.TotalGold);
             Claim2xBTN.interactable = false;
             ClaimBTN.interactable = false;
@@ -168,7 +168,7 @@ public class Daily : Singleton<Daily>
         else
         {
             checkMarkList[tmp].SetActive(true);
-            GameController.Ins.TotalGold += 5000*2;
+            UIManager.Ins.PurchaseGold10000();
             PlayerPrefs.SetInt("Gold", GameController.Ins.TotalGold);
             Claim2xBTN.interactable = false;
             ClaimBTN.interactable = false;

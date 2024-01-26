@@ -321,6 +321,14 @@ public class UIManager : Singleton<UIManager>
         PausePanel.gameObject.SetActive(false);
         Time.timeScale = 1;
     }
+    public void Pause()
+    {
+        Time.timeScale = 0;
+    }
+    public void NonPause()
+    {
+        Time.timeScale = 1;
+    }
     public void ClosePausePanelButStillPause()
     {
         PausePanel.gameObject.SetActive(false);
@@ -435,7 +443,6 @@ public class UIManager : Singleton<UIManager>
         ClaimBTN.interactable = false;
         ClaimX2BTN.interactable = false;
         GameController.Ins.Save();
-        TimeRemaining *= 2;
         remainingTime = TimeRemaining;
     }
     //Lưu nút giá đã bị tắt hay chưa
@@ -470,14 +477,16 @@ public class UIManager : Singleton<UIManager>
             btn.gameObject.SetActive(isActiveValue == 1);
         }
     }
-    public void PurchaseGold()
-    {
-            StartCoroutine(SaveGold());
-    }
+
+
+
+
+
+    //AddGold
     IEnumerator SaveGold()
     {
         yield return new WaitForSecondsRealtime(1f);
-        for(int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++)
         {
             GameController.Ins.TotalGold += 1000;
             GameController.Ins.Save();
@@ -485,6 +494,147 @@ public class UIManager : Singleton<UIManager>
             yield return new WaitForSecondsRealtime(0.1f);
         }
     }
+    public void PurchaseGold1000()
+    {
+        StartCoroutine(SaveGold1000());
+    }
+    IEnumerator SaveGold1000()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        for (int i = 0; i < 10; i++)
+        {
+            GameController.Ins.TotalGold += 100;
+            GameController.Ins.Save();
+            GameController.Ins.Load();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+    }
+    public void PurchaseGold3000()
+    {
+        StartCoroutine(SaveGold3000());
+    }
+    IEnumerator SaveGold3000()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        for(int i = 0; i < 10; i++)
+        {
+            GameController.Ins.TotalGold += 300;
+            GameController.Ins.Save();
+            GameController.Ins.Load();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+    }
+
+    public void PurchaseGold5000()
+    {
+        StartCoroutine(SaveGold5000());
+    }
+    IEnumerator SaveGold5000()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        for (int i = 0; i <10; i++)
+        {
+            GameController.Ins.TotalGold += 500;
+            GameController.Ins.Save();
+            GameController.Ins.Load();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+    }
+
+    public void PurchaseGold10000()
+    {
+        StartCoroutine(SaveGold10000());
+    }
+    IEnumerator SaveGold10000()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        for (int i = 0; i < 10; i++)
+        {
+            GameController.Ins.TotalGold += 1000;
+            GameController.Ins.Save();
+            GameController.Ins.Load();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+    }
+    public void PurchaseGold15000()
+    {
+        StartCoroutine(SaveGold15000());
+    }
+    IEnumerator SaveGold15000()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        for (int i = 0; i < 10; i++)
+        {
+            GameController.Ins.TotalGold += 1500;
+            GameController.Ins.Save();
+            GameController.Ins.Load();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+    }
+    public void PurchaseGold20000()
+    {
+        StartCoroutine(SaveGold20000());
+    }
+    IEnumerator SaveGold20000()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        for (int i = 0; i < 10; i++)
+        {
+            GameController.Ins.TotalGold += 2000;
+            GameController.Ins.Save();
+            GameController.Ins.Load();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+    }
+    public void PurchaseGold2000()
+    {
+        StartCoroutine(SaveGold2000());
+    }
+    IEnumerator SaveGold2000()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        for (int i = 0; i < 10; i++)
+        {
+            GameController.Ins.TotalGold += 200;
+            GameController.Ins.Save();
+            GameController.Ins.Load();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+    }
+    public void PurchaseGold4000()
+    {
+        StartCoroutine(SaveGold4000());
+    }
+    IEnumerator SaveGold4000()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        for (int i = 0; i < 10; i++)
+        {
+            GameController.Ins.TotalGold += 400;
+            GameController.Ins.Save();
+            GameController.Ins.Load();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+    }
+    //AddGold
+    ////AddGoldByAmount
+    //public void AddGold(int goldAmout)
+    //{
+
+    //}
+    //IEnumerator AddGold()
+    //{
+    //    yield return new WaitForSecondsRealtime(1f);
+    //    for (int i = 0; i < 10; i++)
+    //    {
+    //        GameController.Ins.TotalGold += 1000;
+    //        GameController.Ins.Save();
+    //        GameController.Ins.Load();
+    //        yield return new WaitForSecondsRealtime(0.1f);
+    //    }
+    //}
+
+
 
     public void OpenSelectMapPanel()
     {

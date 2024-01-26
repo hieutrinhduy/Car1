@@ -50,8 +50,7 @@ public class RandomReward : Singleton<RandomReward>
         if ((-280 <= arrow.anchoredPosition.x && arrow.anchoredPosition.x <= -235) || (230 < arrow.anchoredPosition.x && arrow.anchoredPosition.x <= 280f))
         {
             multiple = 2;
-            CarController.Ins.GoldInGame = 1000*2;
-            GameController.Ins.TotalGold += CarController.Ins.GoldInGame;
+            UIManager.Ins.PurchaseGold2000();
             Debug.Log(GameController.Ins.TotalGold);
             goldEarned.text = "You got " + 1000*2 + "$";
             GameController.Ins.Save();
@@ -59,8 +58,7 @@ public class RandomReward : Singleton<RandomReward>
         else if ((-235 < arrow.anchoredPosition.x && arrow.anchoredPosition.x <= -140f) || (140 < arrow.anchoredPosition.x && arrow.anchoredPosition.x <= 230f))
         {
             multiple = 3;
-            CarController.Ins.GoldInGame = 1000 * 3;
-            GameController.Ins.TotalGold += CarController.Ins.GoldInGame;
+            UIManager.Ins.PurchaseGold3000();
             Debug.Log(GameController.Ins.TotalGold);
             goldEarned.text = "You got " + 1000 * 3 + "$";
             GameController.Ins.Save();
@@ -68,8 +66,7 @@ public class RandomReward : Singleton<RandomReward>
         else if ((-140 < arrow.anchoredPosition.x && arrow.anchoredPosition.x <= -46) || (46 < arrow.anchoredPosition.x && arrow.anchoredPosition.x <= 140))
         {
             multiple = 4;
-            CarController.Ins.GoldInGame = 1000 * 4;
-            GameController.Ins.TotalGold += CarController.Ins.GoldInGame;
+            UIManager.Ins.PurchaseGold4000();
             Debug.Log(GameController.Ins.TotalGold);
             goldEarned.text = "You got " + 1000 * 4 + "$";
             GameController.Ins.Save();
@@ -77,8 +74,7 @@ public class RandomReward : Singleton<RandomReward>
         else if (-46 < arrow.anchoredPosition.x && arrow.anchoredPosition.x <= 46)
         {
             multiple = 5;
-            CarController.Ins.GoldInGame = 1000 * 5;
-            GameController.Ins.TotalGold += CarController.Ins.GoldInGame;
+            UIManager.Ins.PurchaseGold5000();
             Debug.Log(GameController.Ins.TotalGold);
             goldEarned.text = "You got " + 1000 * 5 + "$";
             GameController.Ins.Save();
@@ -91,7 +87,6 @@ public class RandomReward : Singleton<RandomReward>
     public void ClaimX2()
     {
         Randomnize();
-        GameController.Ins.TotalGold += CarController.Ins.GoldInGame -1000;
         ClaimX2BTN.interactable = false;
         StartCoroutine(ClaimX2AndGoldAnimated());
         GameController.Ins.Save();

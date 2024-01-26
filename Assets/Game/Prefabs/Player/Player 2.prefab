@@ -24862,7 +24862,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &6757503268992479448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24895,8 +24895,8 @@ MonoBehaviour:
   WallLayer:
     serializedVersion: 2
     m_Bits: 0
-  _force: 500
-  _maxAngle: 30
+  _force: 800
+  _maxAngle: 45
   _accelerationMultiplier: 1
   _maxBackSpeed: 200
   _brake: 20000
