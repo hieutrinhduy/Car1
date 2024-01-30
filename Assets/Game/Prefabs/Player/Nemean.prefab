@@ -9869,7 +9869,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 1.2
   m_Enabled: 1
 --- !u!1 &3633497874835274673
 GameObject:
@@ -15146,7 +15146,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 1.2
   m_Enabled: 1
 --- !u!1 &6757503268753951318
 GameObject:
@@ -25051,7 +25051,7 @@ MonoBehaviour:
   WallLayer:
     serializedVersion: 2
     m_Bits: 0
-  _force: 800
+  _force: 500
   _maxAngle: 45
   _accelerationMultiplier: 1
   _maxBackSpeed: 200

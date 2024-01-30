@@ -12,6 +12,7 @@ public class CarController : MonoBehaviour
     public static CarController Ins { get; private set; }
     public int GoldInGame = 0;
 
+
     [SerializeField] private Transform raycastPoint;
     //Wheel
     [SerializeField] private Transform _transformFL;
@@ -22,6 +23,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private WheelCollider _colliderFR;
     [SerializeField] private WheelCollider _colliderBL;
     [SerializeField] private WheelCollider _colliderBR;
+    public bool IsMoving;
 
     private bool isBreak;
     private Rigidbody carRB;
@@ -55,6 +57,12 @@ public class CarController : MonoBehaviour
     public float NitroTimer = 0f;
     public bool isNitroActive = false;
     [SerializeField] private GameObject NitroParticle;
+
+
+    //AudioLast
+    public float CarAudioLast = 1f;
+    public float CarAudioTimer = 0f;
+    public bool isCarAudioOn = false;
 
     //Center of mass
     public GameObject CenterOfMass;
@@ -145,7 +153,6 @@ public class CarController : MonoBehaviour
     {
         if (!isGround)
         {
-           
                 dir = new Vector3(horizontal, 0, 0);
                 dir.Normalize();
                 Quaternion dirTarget = Quaternion.LookRotation(dir);
@@ -168,6 +175,14 @@ public class CarController : MonoBehaviour
     //WheelMoving
     private void WheelMove()
     {
+        if (SimpleInput.GetAxis("Vertical") != 0)
+        {
+            IsMoving = true;
+        }
+        else
+        {
+            IsMoving = false;
+        }
         _colliderBL.motorTorque = (_force * _accelerationMultiplier *4) *SimpleInput.GetAxis("Vertical");
         _colliderBR.motorTorque = (_force * _accelerationMultiplier *4) *SimpleInput.GetAxis("Vertical");
         _colliderFL.motorTorque = (_force * _accelerationMultiplier * 4) * SimpleInput.GetAxis("Vertical");

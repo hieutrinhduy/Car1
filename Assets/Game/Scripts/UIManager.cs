@@ -25,7 +25,7 @@ public class UIManager : Singleton<UIManager>
 
     public event EventHandler OnLevelChange;
     [Header("Nitro")]
-    [SerializeField] private Button NitroBtn;
+    public Button NitroBtn;
     [SerializeField] private Image NitroImg;
 
     [Header("Gold Text")]
@@ -183,6 +183,7 @@ public class UIManager : Singleton<UIManager>
         SpawnLevel.Ins.SpawnLevelMap();
         CarController.Ins.ResetItemCount();
         UpdateGoldText();
+        AudioManager.Ins.SetPlayingMusic();
     }
 
     public void OnNitro()
@@ -210,6 +211,7 @@ public class UIManager : Singleton<UIManager>
         CarController.Ins.ResetItemCount();
         FinishLevelUI.SetActive(false);
         GameplayUI.SetActive(true);
+        AudioManager.Ins.PlayMainMenuBGM();
     }
     //InGameUI
 
@@ -227,6 +229,7 @@ public class UIManager : Singleton<UIManager>
     {
         Menu.SetActive(true);
         Game.SetActive(false);
+        AudioManager.Ins.PlayMainMenuBGM();
     }
     public void PlayGame()
     {
@@ -240,6 +243,7 @@ public class UIManager : Singleton<UIManager>
         StartCoroutine(LoadScene());
         SelectMapPanel.gameObject.SetActive(false);
         GameplayUI.gameObject.SetActive(true);
+        AudioManager.Ins.SetPlayingMusic();
     }
 
     public void EquipCar()
@@ -660,5 +664,11 @@ public class UIManager : Singleton<UIManager>
         BuyOfferButton.interactable = false;
         PlayerPrefs.SetInt("BoughtOffer", 1);
         GameController.Ins.Save();
+    }
+
+    //SoundEffect
+    public void PlayClickSoundEffect()
+    {
+        AudioManager.Ins.PlayClickSoundEffect();
     }
 }
