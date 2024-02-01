@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using DG.Tweening;
 using System;
+using UnityEngine.UI;
 
 public class AudioManager : Singleton<AudioManager>
 {
@@ -42,10 +43,8 @@ public class AudioManager : Singleton<AudioManager>
     public AudioClip[] ChangeCarAudio;
     public AudioClip EngineStartUpAudio;
 
-    public AudioSource CarAcceleration;
     public AudioSource music;
     public AudioSource sound;
-    public AudioSource CarEngine;
 
     private Coroutine demo;
     public AudioClip[] boostAudio;
@@ -55,6 +54,8 @@ public class AudioManager : Singleton<AudioManager>
     Action<object> _playDetachSound;
     Action<object> _fadeStopSound;
 
+    public Slider MusicSlider;
+    public Slider SoundSlider;
     //public bool isVbration;
 
     void Start()
@@ -98,6 +99,21 @@ public class AudioManager : Singleton<AudioManager>
         //{
         //    sound.mute = true;
         //}
+        if(PlayerPrefs.GetInt("Sound")==1){
+            SoundSlider.value = 0f;
+            TurnOnSound();
+        }else{
+            SoundSlider.value = 1f;
+            TurnOffSound();
+        }
+        if(PlayerPrefs.GetInt("Music")==1){
+            MusicSlider.value = 0f;
+            TurnOnMusic();
+        }else{
+            MusicSlider.value = 1f;
+            TurnOffMusic();
+        }
+
     }
     public void PlayMainMenuBGM()
     {
@@ -529,10 +545,8 @@ public class AudioManager : Singleton<AudioManager>
     {
             if (CarController.Ins.IsMoving == true)
             {
-                CarEngine.Play();
                 yield return new WaitForSeconds(2f);
             }
-
     }
 
     //Change car sound
@@ -541,9 +555,8 @@ public class AudioManager : Singleton<AudioManager>
         int index = UnityEngine.Random.Range(0, ChangeCarAudio.Length);
         sound.loop = false;
         sound.clip = ChangeCarAudio[index];
-        sound.volume = 0.5f;
         sound.Play();
-        sound.DOFade(1f, 0.5f);
+        sound.DOFade(0.7f, 0.3f);
         sound.volume = 1f;
     }
     public void PlayNitroSound()
@@ -559,7 +572,6 @@ public class AudioManager : Singleton<AudioManager>
         }
         else
         {
-            CarAcceleration.Play();
             UIManager.Ins.NitroBtn.interactable = false;
             for (int i = 0; i < 3; i++)
             {
@@ -583,5 +595,26 @@ public class AudioManager : Singleton<AudioManager>
     {
         sound.clip = EngineStartUpAudio;
         sound.Play();
+    }
+    
+    //SoundSetting
+    public void TurnOffSound(){
+        CarController.Ins.Mute();
+        sound.mute = true;
+        PlayerPrefs.SetInt("Sound",0);
+    }
+    public void TurnOnSound(){
+        CarController.Ins.UnMute();
+        sound.mute = false;
+        PlayerPrefs.SetInt("Sound",1);
+    }
+
+    public void TurnOffMusic(){
+        music.mute = true;
+        PlayerPrefs.SetInt("Music",0);
+    }
+    public void TurnOnMusic(){
+        music.mute = false;
+        PlayerPrefs.SetInt("Music",1);
     }
 }

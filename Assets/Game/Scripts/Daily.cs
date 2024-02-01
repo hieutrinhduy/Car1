@@ -47,6 +47,7 @@ public class Daily : Singleton<Daily>
             ClaimBTN.interactable = false;
             Claim2xBTN.interactable = false;
             tmp = PlayerPrefs.GetInt("SoNgayChoi");
+            Debug.Log(tmp);
             for (int i = 0; i < tmp; i++)
             {
                 nonActiveList[i].SetActive(false);
@@ -56,6 +57,7 @@ public class Daily : Singleton<Daily>
         else if(CurrentDate > LastClaimDate)
         {
             tmp = PlayerPrefs.GetInt("SoNgayChoi");
+            Debug.Log(tmp);
             nonActiveList[tmp].SetActive(false);
             for (int i = 0; i < tmp; i++)
             {

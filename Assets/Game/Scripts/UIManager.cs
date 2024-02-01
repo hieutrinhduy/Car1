@@ -319,11 +319,15 @@ public class UIManager : Singleton<UIManager>
     {
         PausePanel.gameObject.SetActive(true);
         Time.timeScale = 0;
+        CarController.Ins.Mute();
     }
     public void ClosePausePanel()
     {
         PausePanel.gameObject.SetActive(false);
         Time.timeScale = 1;
+        if(PlayerPrefs.GetInt("Sound") == 1 ){
+            CarController.Ins.UnMute();
+        }
     }
     public void Pause()
     {

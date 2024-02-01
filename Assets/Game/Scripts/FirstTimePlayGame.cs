@@ -32,10 +32,13 @@ public class FirstTimePlayGame : MonoBehaviour
             Daily.Ins.ResetDailyReward();
             hasActivated = true;
             Destroy(gameObject);
+            PlayerPrefs.SetInt("Sound",1);
+            PlayerPrefs.SetInt("Music",1);
             PlayerPrefs.SetInt("hasActivated", 1);
             PlayerPrefs.SetInt("BoughtOffer", 0);
             PlayerPrefs.Save();
         }
+
         else
         {
             hasActivated = true;

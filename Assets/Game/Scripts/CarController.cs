@@ -12,7 +12,7 @@ public class CarController : MonoBehaviour
     public static CarController Ins { get; private set; }
     public int GoldInGame = 0;
 
-
+    public AudioSource carAudio;
     [SerializeField] private Transform raycastPoint;
     //Wheel
     [SerializeField] private Transform _transformFL;
@@ -82,6 +82,13 @@ public class CarController : MonoBehaviour
         Nitro();
         CarBoostSpeed();
         IsSpeedUpGround = CheckIncreaseSpeedPlatform();
+
+        if(PlayerPrefs.GetInt("Sound") == 1 ){
+            UnMute();
+        }
+        else{
+            Mute();
+        }
     }
 
     private void CarBoostSpeed()
@@ -334,5 +341,10 @@ public class CarController : MonoBehaviour
         this.NitroTimer = 0;
         this.GoldInGame = 0;
     }
-
+    public void Mute(){
+        carAudio.mute= true; 
+    }
+    public void UnMute(){
+        carAudio.mute= false; 
+    }
 }
