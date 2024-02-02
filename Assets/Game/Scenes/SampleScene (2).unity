@@ -214,7 +214,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -226,7 +226,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -413,7 +413,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f39b580c4ea89584b939ff39757460bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c5a9345b7c6a5e048b646cbc8d78d859, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -522,7 +522,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -534,7 +534,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -977,7 +977,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -989,7 +989,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2626,6 +2626,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1202919360}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: PlayClickSoundEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &124163070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3049,6 +3061,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1553825198}
         m_TargetAssemblyTypeName: ToggleGroup, Assembly-CSharp
         m_MethodName: ActiveWatchVideoToUnLockMapPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1202919360}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5107,7 +5131,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5119,7 +5143,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6376,7 +6400,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6388,7 +6412,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7996,7 +8020,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 560e932982f6aa14f9b6e462ebc3e545, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f39b580c4ea89584b939ff39757460bc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8105,7 +8129,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8117,7 +8141,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14314,7 +14338,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14326,7 +14350,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15058,6 +15082,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1553825198}
         m_TargetAssemblyTypeName: ToggleGroup, Assembly-CSharp
         m_MethodName: ActiveWatchVideoToUnLockMapPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1202919360}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16189,7 +16225,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 39624f8518dc1414e925e8688862cfd1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dfcbb37a54d8c01439e6100e3d9c67c9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17326,7 +17362,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17338,7 +17374,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18316,7 +18352,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a532c13d2cffccc41bd94667e89b049f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7fcb4bf01763e974ca2ea350e15eb367, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18849,6 +18885,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1202919360}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: PlayClickSoundEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &731103404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18978,7 +19026,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18990,7 +19038,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21506,7 +21554,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21518,7 +21566,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22770,7 +22818,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22782,7 +22830,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22918,6 +22966,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1553825198}
         m_TargetAssemblyTypeName: ToggleGroup, Assembly-CSharp
         m_MethodName: ActiveWatchVideoToUnLockMapPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1202919360}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23564,7 +23624,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a9856ddb8176ee540af2e04077d916a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b979eaca90754a429ed2fb633e108af, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23808,7 +23868,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23820,7 +23880,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24115,7 +24175,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24127,7 +24187,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24969,6 +25029,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1553825198}
         m_TargetAssemblyTypeName: ToggleGroup, Assembly-CSharp
         m_MethodName: ActiveWatchVideoToUnLockMapPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1202919360}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26774,7 +26846,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 667088b2a5f3e964a91292564334d56f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 04e08647e1db0064d8318a62f690c537, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -27536,6 +27608,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1553825198}
         m_TargetAssemblyTypeName: ToggleGroup, Assembly-CSharp
         m_MethodName: ActiveWatchVideoToUnLockMapPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1202919360}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33283,7 +33367,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 273ffaf8b41245d4cb2ce25a635793ed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9190bfa7f46d91240b60928c630809cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -33439,7 +33523,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: abc727928faed6647a72747f4e251976, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4b2981238f2c7546945fda38fc973c6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -34192,7 +34276,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dfcbb37a54d8c01439e6100e3d9c67c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 39624f8518dc1414e925e8688862cfd1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -34847,7 +34931,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9190bfa7f46d91240b60928c630809cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 273ffaf8b41245d4cb2ce25a635793ed, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -36830,7 +36914,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36842,7 +36926,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -38273,7 +38357,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -38285,7 +38369,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -40664,7 +40748,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c5a9345b7c6a5e048b646cbc8d78d859, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e8dda819c6527db4fa10b5dc36d476e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -41134,7 +41218,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a4b2981238f2c7546945fda38fc973c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: abc727928faed6647a72747f4e251976, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -43373,7 +43457,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -43385,7 +43469,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -43754,6 +43838,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1553825198}
         m_TargetAssemblyTypeName: ToggleGroup, Assembly-CSharp
         m_MethodName: ActiveWatchVideoToUnLockMapPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1202919360}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -44325,25 +44421,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   needDontDestroy: 0
   Levels:
-  - {fileID: 6080681970191202009, guid: ee4706a76ad240a46bb905193981267d, type: 3}
-  - {fileID: 4166297608886272721, guid: 07d8f8e381da8844ebf2181a54aa07c3, type: 3}
-  - {fileID: 4166297608886272721, guid: 4f8dbc2f4da92a54b87aa199f3c3f6ee, type: 3}
-  - {fileID: 4166297608886272721, guid: 6be935d19932d7246bc26c168228e295, type: 3}
-  - {fileID: 4166297608886272721, guid: 44e334d744b028b48bb57f51d61c8705, type: 3}
-  - {fileID: 4166297608886272721, guid: 9f70b346548af494694a7bd11616362e, type: 3}
-  - {fileID: 4166297608886272721, guid: 1cd9eab9ddd3c254c832f990460a6684, type: 3}
-  - {fileID: 6080681970191202009, guid: d12029f7c1923f94f901ce67d3ad8178, type: 3}
-  - {fileID: 6080681970191202009, guid: dccffaeeaf9f7264b841e1d3121e660a, type: 3}
-  - {fileID: 6080681970191202009, guid: 3db9eaa5e5f41c240a00c7cdc58d581a, type: 3}
-  - {fileID: 6080681970191202009, guid: 93bb7f335a81fbd41975108590a09eef, type: 3}
-  - {fileID: 6080681970191202009, guid: 43d14b8d552cc6548b651082525b5a7a, type: 3}
-  - {fileID: 6080681970191202009, guid: d85cca9ab0d04a34d88ada7886105a21, type: 3}
-  - {fileID: 4166297608886272721, guid: 089e3870bea955d4980b531fef712c4b, type: 3}
-  - {fileID: 4166297608886272721, guid: f91b22df5774d074a82c3812ef122ce6, type: 3}
-  - {fileID: 4166297608886272721, guid: 687d22d80404d944aa83ca40525b074c, type: 3}
   - {fileID: 4166297608886272721, guid: 1bd9f46c04cc9ae4cbf3f3fcfccca47f, type: 3}
+  - {fileID: 6080681970191202009, guid: d12029f7c1923f94f901ce67d3ad8178, type: 3}
+  - {fileID: 4166297608886272721, guid: 4f8dbc2f4da92a54b87aa199f3c3f6ee, type: 3}
   - {fileID: 4166297608886272721, guid: 4235c160eac440347a6d562bcaddc750, type: 3}
+  - {fileID: 6080681970191202009, guid: 3db9eaa5e5f41c240a00c7cdc58d581a, type: 3}
+  - {fileID: 4166297608886272721, guid: 1cd9eab9ddd3c254c832f990460a6684, type: 3}
+  - {fileID: 4166297608886272721, guid: 9f70b346548af494694a7bd11616362e, type: 3}
+  - {fileID: 4166297608886272721, guid: 6be935d19932d7246bc26c168228e295, type: 3}
+  - {fileID: 4166297608886272721, guid: 07d8f8e381da8844ebf2181a54aa07c3, type: 3}
+  - {fileID: 6080681970191202009, guid: ee4706a76ad240a46bb905193981267d, type: 3}
+  - {fileID: 4166297608886272721, guid: f91b22df5774d074a82c3812ef122ce6, type: 3}
+  - {fileID: 6080681970191202009, guid: 43d14b8d552cc6548b651082525b5a7a, type: 3}
+  - {fileID: 4166297608886272721, guid: 44e334d744b028b48bb57f51d61c8705, type: 3}
+  - {fileID: 6080681970191202009, guid: dccffaeeaf9f7264b841e1d3121e660a, type: 3}
+  - {fileID: 6080681970191202009, guid: 93bb7f335a81fbd41975108590a09eef, type: 3}
+  - {fileID: 4166297608886272721, guid: 089e3870bea955d4980b531fef712c4b, type: 3}
   - {fileID: 4166297608886272721, guid: d5a0189fc77059347995ecb0739e3be8, type: 3}
+  - {fileID: 4166297608886272721, guid: 687d22d80404d944aa83ca40525b074c, type: 3}
+  - {fileID: 6080681970191202009, guid: d85cca9ab0d04a34d88ada7886105a21, type: 3}
   players:
   - {fileID: 8084908980393651097, guid: e72ce1e45bec8844da6ae57cbb985072, type: 3}
   - {fileID: 8084908980393651097, guid: 1cdac565bc31be24b9b68ff16f71ffd0, type: 3}
@@ -44687,9 +44783,9 @@ RectTransform:
   m_Father: {fileID: 111908075}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3554.8953, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 4428.715, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1553825195
@@ -47246,7 +47342,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -47258,7 +47354,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -47365,7 +47461,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4b979eaca90754a429ed2fb633e108af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a9856ddb8176ee540af2e04077d916a5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -50197,7 +50293,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -50209,7 +50305,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -50544,7 +50640,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31e1d7c0485ec8c4bbacdfccd7203485, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 580265cbc1b317d47a3531d8443410b2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -50788,7 +50884,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SelectToggle
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -50800,7 +50896,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1202919360}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayClickSoundEffect
+        m_MethodName: SelectToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -51273,7 +51369,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 04e08647e1db0064d8318a62f690c537, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 667088b2a5f3e964a91292564334d56f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -51760,6 +51856,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1553825198}
         m_TargetAssemblyTypeName: ToggleGroup, Assembly-CSharp
         m_MethodName: ActiveWatchVideoToUnLockMapPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1202919360}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -52625,6 +52733,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1202919360}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: PlayClickSoundEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1903853024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53360,7 +53480,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1dada6996d557c14abfb9229ce8b638e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 31e1d7c0485ec8c4bbacdfccd7203485, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -53600,6 +53720,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1553825198}
         m_TargetAssemblyTypeName: ToggleGroup, Assembly-CSharp
         m_MethodName: ActiveWatchVideoToUnLockMapPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1202919360}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -54526,7 +54658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7fcb4bf01763e974ca2ea350e15eb367, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a532c13d2cffccc41bd94667e89b049f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -54737,7 +54869,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e8dda819c6527db4fa10b5dc36d476e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 560e932982f6aa14f9b6e462ebc3e545, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -55922,6 +56054,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1553825198}
         m_TargetAssemblyTypeName: ToggleGroup, Assembly-CSharp
         m_MethodName: ActiveWatchVideoToUnLockMapPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1202919360}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: PlayClickSoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -24,6 +24,7 @@ public class Daily : Singleton<Daily>
     {
         //Lay Ngay choi hien tai
         CurrentDate = DateTime.Now;
+        Debug.Log(CurrentDate);
         //Lay Ngay claim dau tien
         if (DateTime.TryParse(PlayerPrefs.GetString("FirstClaimDate"), out DateTime FirstClaimDate))
         {
@@ -33,6 +34,7 @@ public class Daily : Singleton<Daily>
         {
             Debug.LogWarning("Failed to parse the stored date string.");
         }
+        Debug.Log(FirstClaimDate);
         //Lay ngay claim cuoi cung
         if (DateTime.TryParse(PlayerPrefs.GetString("LastClaimDate"), out DateTime LastClaimDate))
         {
@@ -42,7 +44,7 @@ public class Daily : Singleton<Daily>
         {
             Debug.LogWarning("Failed to parse the stored date string.");
         }
-        if (CurrentDate.Day == LastClaimDate.Day)
+        if (CurrentDate.Date == LastClaimDate.Date)
         {
             ClaimBTN.interactable = false;
             Claim2xBTN.interactable = false;
@@ -76,13 +78,6 @@ public class Daily : Singleton<Daily>
     {
         if (tmp == 0)
         {
-            checkMarkList[tmp].SetActive(true);
-            UIManager.Ins.PurchaseGold1000();
-            PlayerPrefs.SetInt("Gold", GameController.Ins.TotalGold);
-            tmp++;
-            PlayerPrefs.SetInt("SoNgayChoi", tmp);
-            PlayerPrefs.SetString("LastClaimDate", DateTime.Now.ToString());
-            
             if (string.IsNullOrEmpty(PlayerPrefs.GetString("FirstClaimDate")))
             {
                 PlayerPrefs.SetString("FirstClaimDate", DateTime.Now.ToString());
@@ -98,6 +93,14 @@ public class Daily : Singleton<Daily>
                     Debug.LogWarning("Failed to parse the stored date string.");
                 }
             }
+            checkMarkList[tmp].SetActive(true);
+            UIManager.Ins.PurchaseGold1000();
+            PlayerPrefs.SetInt("Gold", GameController.Ins.TotalGold);
+            Claim2xBTN.interactable = false;
+            ClaimBTN.interactable = false;
+            tmp++;
+            PlayerPrefs.SetInt("SoNgayChoi", tmp);
+            PlayerPrefs.SetString("LastClaimDate", DateTime.Now.ToString());
             GameController.Ins.Save();
         }
         else if(tmp == 4)

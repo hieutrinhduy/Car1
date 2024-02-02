@@ -25157,8 +25157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 0.3
   maxSpeed: 40
-  minPitch: 0.2
-  maxPitch: 1
+  minPitch: 0
+  maxPitch: 0.7
 --- !u!82 &2742831759257637838
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25174,7 +25174,7 @@ AudioSource:
   m_Volume: 0.734
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

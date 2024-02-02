@@ -579,7 +579,7 @@ public class AudioManager : Singleton<AudioManager>
                 sound.Play();
                 if (i == 1)
                 {
-                    while(CarController.Ins.NitroTimer > 0)
+                    while(CarController.Ins.NitroTimer > 0.5f)
                     {
                         sound.clip = boostAudio[i];
                         sound.Play();
