@@ -113,7 +113,6 @@ public class AudioManager : Singleton<AudioManager>
             MusicSlider.value = 1f;
             TurnOffMusic();
         }
-
     }
     public void PlayMainMenuBGM()
     {

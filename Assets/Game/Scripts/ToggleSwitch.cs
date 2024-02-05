@@ -43,7 +43,6 @@ namespace Christina.UI
         {
             if (_slider != null)
                 return;
-
             SetupSliderComponent();
         }
 
@@ -56,7 +55,15 @@ namespace Christina.UI
                 Debug.Log("No slider found!", this);
                 return;
             }
-
+            if (_slider.value  == 0)
+            {
+                CurrentValue = false;
+            }
+            else
+            {
+                CurrentValue = true;
+            }
+            SetStateAndStartAnimation(!CurrentValue);
             _slider.interactable = false;
             var sliderColors = _slider.colors;
             sliderColors.disabledColor = Color.white;
