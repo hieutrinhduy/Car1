@@ -182,20 +182,25 @@ public class CarController : MonoBehaviour
     //WheelMoving
     private void WheelMove()
     {
-        if (SimpleInput.GetAxis("Vertical") != 0)
+        if (SimpleInput.GetAxis("Vertical") >= 0)
         {
+            _maxAngle = 45;
             IsMoving = true;
+            _colliderBL.motorTorque = (_force * _accelerationMultiplier * 2) * SimpleInput.GetAxis("Vertical");
+            _colliderBR.motorTorque = (_force * _accelerationMultiplier * 2) * SimpleInput.GetAxis("Vertical");
+            _colliderFL.motorTorque = (_force * _accelerationMultiplier * 4) * SimpleInput.GetAxis("Vertical");
+            _colliderFR.motorTorque = (_force * _accelerationMultiplier * 4) * SimpleInput.GetAxis("Vertical");
+            _colliderBL.motorTorque = Mathf.Clamp(_colliderBL.motorTorque, -1800f, 1800f);
+            _colliderBR.motorTorque = Mathf.Clamp(_colliderBR.motorTorque, -1800f, 1800f);
         }
         else
         {
             IsMoving = false;
+            _colliderFL.motorTorque = (_force * _accelerationMultiplier * 1F) * SimpleInput.GetAxis("Vertical");
+            _colliderFR.motorTorque = (_force * _accelerationMultiplier * 1F) * SimpleInput.GetAxis("Vertical");
+            _colliderBL.motorTorque = (_force * _accelerationMultiplier * 1F) * SimpleInput.GetAxis("Vertical");
+            _colliderBR.motorTorque = (_force * _accelerationMultiplier * 1F) * SimpleInput.GetAxis("Vertical");
         }
-        _colliderBL.motorTorque = (_force * _accelerationMultiplier *4) *SimpleInput.GetAxis("Vertical");
-        _colliderBR.motorTorque = (_force * _accelerationMultiplier *4) *SimpleInput.GetAxis("Vertical");
-        _colliderFL.motorTorque = (_force * _accelerationMultiplier * 4) * SimpleInput.GetAxis("Vertical");
-        _colliderFR.motorTorque = (_force * _accelerationMultiplier * 4) * SimpleInput.GetAxis("Vertical");
-        _colliderBL.motorTorque = Mathf.Clamp(_colliderBL.motorTorque, -1800f, 1800f);
-        _colliderBR.motorTorque = Mathf.Clamp(_colliderBR.motorTorque, -1800f, 1800f);
         RotateWheel(_colliderBL, _transformBL);
         RotateWheel(_colliderBR, _transformBR);
     }
