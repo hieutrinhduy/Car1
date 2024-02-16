@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 7638720623505729087}
   - component: {fileID: 8241534744136929066}
   - component: {fileID: 6292760236386305875}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: ResetBrakeCheck
   m_TagString: ResetBrake
   m_Icon: {fileID: 0}
@@ -701,7 +701,7 @@ GameObject:
   - component: {fileID: 1501817565777047494}
   - component: {fileID: 1823595409804560687}
   - component: {fileID: 3398126084541608087}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: ViewCheck
   m_TagString: escalator
   m_Icon: {fileID: 0}
@@ -17770,7 +17770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 682773310008667306, guid: d19f80f57d754d14ba0f55dc6f2881ce, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 682773310008667306, guid: d19f80f57d754d14ba0f55dc6f2881ce, type: 3}
       propertyPath: m_TagString
@@ -17782,7 +17782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d19f80f57d754d14ba0f55dc6f2881ce, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d19f80f57d754d14ba0f55dc6f2881ce, type: 3}
       propertyPath: m_TagString

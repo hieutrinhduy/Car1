@@ -56,6 +56,8 @@ public class AudioManager : Singleton<AudioManager>
 
     public Slider MusicSlider;
     public Slider SoundSlider;
+    public Slider MusicSliderinPause;
+    public Slider SoundSliderinPause;
     //public bool isVbration;
 
     void Start()
@@ -99,21 +101,29 @@ public class AudioManager : Singleton<AudioManager>
         //{
         //    sound.mute = true;
         //}
-        if(PlayerPrefs.GetInt("Sound")==1){
+        if (PlayerPrefs.GetInt("Music") == 1)
+        {
+            music.mute = false;
+            MusicSlider.value = 0f;
+            MusicSliderinPause.value = 0f;
+        }
+        else
+        {
+            music.mute = true;
+            MusicSlider.value = 1f;
+            MusicSliderinPause.value = 1f;
+        }
+        if (PlayerPrefs.GetInt("Sound")==1){
             SoundSlider.value = 0f;
-            TurnOnSound();
+            SoundSliderinPause.value = 0f;
+            sound.mute = false;
         }else{
             SoundSlider.value = 1f;
-            TurnOffSound();
-        }
-        if(PlayerPrefs.GetInt("Music")==1){
-            MusicSlider.value = 0f;
-            TurnOnMusic();
-        }else{
-            MusicSlider.value = 1f;
-            TurnOffMusic();
+            SoundSliderinPause.value = 1f;
+            sound.mute = true;
         }
     }
+
     public void PlayMainMenuBGM()
     {
         music.clip = MainMenuBGM;
@@ -610,10 +620,10 @@ public class AudioManager : Singleton<AudioManager>
 
     public void TurnOffMusic(){
         music.mute = true;
-        PlayerPrefs.SetInt("Music",0);
+        PlayerPrefs.SetInt("Music", 0);
     }
     public void TurnOnMusic(){
         music.mute = false;
-        PlayerPrefs.SetInt("Music",1);
+        PlayerPrefs.SetInt("Music", 1);
     }
 }

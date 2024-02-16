@@ -32,6 +32,7 @@ public class FirstTimePlayGame : MonoBehaviour
             Daily.Ins.ResetDailyReward();
             hasActivated = true;
             Destroy(gameObject);
+            PlayerPrefs.SetInt("SpecialDrive",0);
             PlayerPrefs.SetInt("Sound",1);
             PlayerPrefs.SetInt("Music",1);
             PlayerPrefs.SetInt("hasActivated", 1);

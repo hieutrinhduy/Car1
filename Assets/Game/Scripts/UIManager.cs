@@ -76,6 +76,10 @@ public class UIManager : Singleton<UIManager>
     public List<Button> GoldSpamFromMiddle;
     [Header("OfferPanel")]
     [SerializeField] private Button BuyOfferButton;
+
+
+    [Header("PlayerPrefs")]
+    public Slider SpecialDrive;
     void Start()
     {
         StartCoroutine(LoadScene());
@@ -102,6 +106,7 @@ public class UIManager : Singleton<UIManager>
             int buttonIndex = i; // Capture the current index in a local variable for the lambda expression
             GoldSpamFromMiddle[i].onClick.AddListener(() => OnButtonClick2(buttonIndex));
         }
+        SetUpSteeringWheel();
     }
     //Catch RectTransform of button
     void OnButtonClick1(int buttonIndex)
@@ -117,6 +122,7 @@ public class UIManager : Singleton<UIManager>
     // Update is called once per frame
     void Update()
     {
+        SetupSteeringWheelCheck();
         UpdateTimeRemainingForOnlineGift();
         CheckStreeingWheelisOn();
         LoadSceneLast += Time.deltaTime;
@@ -320,6 +326,7 @@ public class UIManager : Singleton<UIManager>
         PausePanel.gameObject.SetActive(true);
         Time.timeScale = 0;
         CarController.Ins.Mute();
+        CarController.Ins.CarAudioPause();
     }
     public void ClosePausePanel()
     {
@@ -327,6 +334,7 @@ public class UIManager : Singleton<UIManager>
         Time.timeScale = 1;
         if(PlayerPrefs.GetInt("Sound") == 1 ){
             CarController.Ins.UnMute();
+            CarController.Ins.CarAudioUnPause();
         }
     }
     public void Pause()
@@ -675,4 +683,36 @@ public class UIManager : Singleton<UIManager>
     {
         AudioManager.Ins.PlayClickSoundEffect();
     }
+    public void SetUpSteeringWheel()
+    {
+        if (PlayerPrefs.GetInt("SpecialDrive") == 0)
+        {
+            SteeringWheel.gameObject.SetActive(false);
+            SpecialDrive.value = 0;
+        }
+        else
+        {
+            SteeringWheel.gameObject.SetActive(true);
+            SpecialDrive.value = 1;
+        }
+    }
+    public void SetupSteeringWheelCheck()
+    {
+        if(SpecialDrive.value == 1){
+            SteeringWheel.gameObject.SetActive(true);
+        }
+        else
+        {
+            SteeringWheel.gameObject.SetActive(false);
+        }
+    }
+    public void TurnOnSteeringWheel()
+    {
+        PlayerPrefs.SetInt("SpecialDrive", 0);
+    }
+    public void TurnOffSteeringWheel()
+    {
+        PlayerPrefs.SetInt("SpecialDrive", 1);
+    }
+    
 }

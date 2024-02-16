@@ -118,7 +118,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &3063291616138492787
+--- !u!1 &3502470396375247662
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7174066327481591162}
+  - component: {fileID: 3789953742380072994}
   m_Layer: 6
   m_Name: Target
   m_TagString: Target
@@ -134,20 +134,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7174066327481591162
+--- !u!4 &3789953742380072994
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3063291616138492787}
+  m_GameObject: {fileID: 3502470396375247662}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.22, z: -4.45}
+  m_LocalPosition: {x: 0, y: 3.22, z: -5.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8897016427115639075}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3899007343962466500
 GameObject:
@@ -5319,6 +5319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 225904690926168232}
   - component: {fileID: 5361383586052831580}
+  - component: {fileID: 2613987763499576921}
   m_Layer: 0
   m_Name: RearRightWheel
   m_TagString: Untagged
@@ -5371,6 +5372,23 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 2
   m_Enabled: 1
+--- !u!114 &2613987763499576921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5715730807279472289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83207acf3dcb1c4d80fc5bb5e3c49bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useWheelAntiStuck: 1
+  raysNumber: 36
+  raysMaxAngle: 180
+  wheelWidth: 0.25
+  wheelModel: {fileID: 475245912059185193}
 --- !u!1 &6051595432927513944
 GameObject:
   m_ObjectHideFlags: 0
@@ -5438,7 +5456,7 @@ Transform:
   - {fileID: 1530904904450590098}
   - {fileID: 6599538836442072}
   m_Father: {fileID: 8897016427115639075}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!198 &6521306882720178941
 ParticleSystem:
@@ -10229,6 +10247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4433073363929525243}
   - component: {fileID: 6841589991288649857}
+  - component: {fileID: 1661655067195981498}
   m_Layer: 0
   m_Name: FrontRightWheel
   m_TagString: Untagged
@@ -10281,6 +10300,23 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1.2
   m_Enabled: 1
+--- !u!114 &1661655067195981498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6424102557158472661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83207acf3dcb1c4d80fc5bb5e3c49bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useWheelAntiStuck: 1
+  raysNumber: 36
+  raysMaxAngle: 180
+  wheelWidth: 0.25
+  wheelModel: {fileID: 220076987002317124}
 --- !u!1 &6757503268753951318
 GameObject:
   m_ObjectHideFlags: 0
@@ -10322,6 +10358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4546025949761534288}
   - component: {fileID: 2119564057493774960}
+  - component: {fileID: 1154375088115972059}
   m_Layer: 0
   m_Name: RearLeftWheel
   m_TagString: Untagged
@@ -10374,6 +10411,23 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 2
   m_Enabled: 1
+--- !u!114 &1154375088115972059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6896736824405067175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83207acf3dcb1c4d80fc5bb5e3c49bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useWheelAntiStuck: 1
+  raysNumber: 36
+  raysMaxAngle: 180
+  wheelWidth: 0.25
+  wheelModel: {fileID: 4545006397632532183}
 --- !u!1 &7325326984765221602
 GameObject:
   m_ObjectHideFlags: 0
@@ -15307,8 +15361,8 @@ Transform:
   - {fileID: 2787775945770228460}
   - {fileID: 156295277538867853}
   - {fileID: 303606973329577763}
-  - {fileID: 7174066327481591162}
   - {fileID: 2449774505699970354}
+  - {fileID: 3789953742380072994}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15351,6 +15405,8 @@ MonoBehaviour:
   _colliderFR: {fileID: 6841589991288649857}
   _colliderBL: {fileID: 2119564057493774960}
   _colliderBR: {fileID: 5361383586052831580}
+  isMovingForward: 0
+  isMovingForwardCheck: 0
   IsMoving: 0
   IsGameOver: 0
   GroundLayer:
@@ -15362,6 +15418,9 @@ MonoBehaviour:
   WallLayer:
     serializedVersion: 2
     m_Bits: 0
+  Escalator:
+    serializedVersion: 2
+    m_Bits: 256
   _force: 800
   _maxAngle: 45
   _accelerationMultiplier: 1
@@ -15513,6 +15572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 69891412450302959}
   - component: {fileID: 7954325625034168096}
+  - component: {fileID: 51899060806515945}
   m_Layer: 0
   m_Name: FrontLeftWheel
   m_TagString: Untagged
@@ -15565,6 +15625,23 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1.2
   m_Enabled: 1
+--- !u!114 &51899060806515945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8647947972612018080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83207acf3dcb1c4d80fc5bb5e3c49bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useWheelAntiStuck: 1
+  raysNumber: 36
+  raysMaxAngle: 180
+  wheelWidth: 0.25
+  wheelModel: {fileID: 4152624484660694467}
 --- !u!1 &8952737028945587402
 GameObject:
   m_ObjectHideFlags: 0

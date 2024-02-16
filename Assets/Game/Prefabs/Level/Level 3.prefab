@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 3774246178511605034}
   - component: {fileID: 3036886866117690506}
   - component: {fileID: 1093139111654127336}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: ResetBrakeCheck
   m_TagString: ResetBrake
   m_Icon: {fileID: 0}
@@ -1214,7 +1214,7 @@ GameObject:
   - component: {fileID: 4543417316173150316}
   - component: {fileID: 2253785879551545913}
   - component: {fileID: 3026430670187237148}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: ViewCheck
   m_TagString: escalator
   m_Icon: {fileID: 0}
@@ -2971,7 +2971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1290721454858577015, guid: 9da118caf533c5944836182f037c7b01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.5
+      value: -21.9
       objectReference: {fileID: 0}
     - target: {fileID: 1290721454858577015, guid: 9da118caf533c5944836182f037c7b01, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4568,7 +4568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 682773310008667306, guid: d19f80f57d754d14ba0f55dc6f2881ce, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 682773310008667306, guid: d19f80f57d754d14ba0f55dc6f2881ce, type: 3}
       propertyPath: m_TagString
@@ -4580,7 +4580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d19f80f57d754d14ba0f55dc6f2881ce, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d19f80f57d754d14ba0f55dc6f2881ce, type: 3}
       propertyPath: m_TagString
@@ -5175,7 +5175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1290721454858577015, guid: 9da118caf533c5944836182f037c7b01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.5
+      value: -21.9
       objectReference: {fileID: 0}
     - target: {fileID: 1290721454858577015, guid: 9da118caf533c5944836182f037c7b01, type: 3}
       propertyPath: m_LocalPosition.z

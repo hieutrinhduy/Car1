@@ -23,6 +23,10 @@ public class CarController : MonoBehaviour
     [SerializeField] private WheelCollider _colliderFR;
     [SerializeField] private WheelCollider _colliderBL;
     [SerializeField] private WheelCollider _colliderBR;
+
+    [Header("Apply break")]
+    [SerializeField] private bool isMovingForward;
+    [SerializeField] private bool isMovingForwardCheck;
     public bool IsMoving;
 
     private bool isBreak;
@@ -37,6 +41,7 @@ public class CarController : MonoBehaviour
     public LayerMask GroundLayer;
     public LayerMask IncreaseSpeedPlatformLayer;
     public LayerMask WallLayer;
+    public LayerMask Escalator;
 
     //carForce
     public float _force;
@@ -45,7 +50,7 @@ public class CarController : MonoBehaviour
     public int _maxBackSpeed;
     public int _brake = 500000;
     public float forceForward;
-
+   
     //checkGround
     [SerializeField]
     private bool isGround;
@@ -73,6 +78,7 @@ public class CarController : MonoBehaviour
         carRB = GetComponent<Rigidbody>();
         carRB.centerOfMass = CenterOfMass.transform.localPosition;
         GameController.Ins.Load();
+        isMovingForwardCheck = isMovingForward;
     }
 
     private void Update()
@@ -89,8 +95,21 @@ public class CarController : MonoBehaviour
         else{
             Mute();
         }
-    }
 
+        if (isMovingForward != isMovingForwardCheck && isGround && !CheckEscaltor())
+        {
+            ApplyBreak();
+            isMovingForwardCheck = isMovingForward;
+        }
+    }
+    public void ApplyBreak()
+    {
+        _colliderBL.brakeTorque = _brake;
+        _colliderBR.brakeTorque = _brake;
+        _colliderFR.brakeTorque = _brake;
+        _colliderFR.brakeTorque = _brake;
+        carRB.velocity = Vector3.Lerp(carRB.velocity, Vector3.zero, 60f * Time.deltaTime);
+    }
     private void CarBoostSpeed()
     {
         if (isNitroActive)
@@ -184,26 +203,30 @@ public class CarController : MonoBehaviour
     {
         if (SimpleInput.GetAxis("Vertical") >= 0)
         {
+            isMovingForward = true;
             _maxAngle = 45;
             IsMoving = true;
             _colliderBL.motorTorque = (_force * _accelerationMultiplier * 2) * SimpleInput.GetAxis("Vertical");
             _colliderBR.motorTorque = (_force * _accelerationMultiplier * 2) * SimpleInput.GetAxis("Vertical");
             _colliderFL.motorTorque = (_force * _accelerationMultiplier * 4) * SimpleInput.GetAxis("Vertical");
             _colliderFR.motorTorque = (_force * _accelerationMultiplier * 4) * SimpleInput.GetAxis("Vertical");
+
             _colliderBL.motorTorque = Mathf.Clamp(_colliderBL.motorTorque, -1800f, 1800f);
             _colliderBR.motorTorque = Mathf.Clamp(_colliderBR.motorTorque, -1800f, 1800f);
         }
         else
         {
+            isMovingForward = false;
             IsMoving = false;
-            _colliderFL.motorTorque = (_force * _accelerationMultiplier * 1F) * SimpleInput.GetAxis("Vertical");
-            _colliderFR.motorTorque = (_force * _accelerationMultiplier * 1F) * SimpleInput.GetAxis("Vertical");
-            _colliderBL.motorTorque = (_force * _accelerationMultiplier * 1F) * SimpleInput.GetAxis("Vertical");
-            _colliderBR.motorTorque = (_force * _accelerationMultiplier * 1F) * SimpleInput.GetAxis("Vertical");
+            _colliderFL.motorTorque = (_force * _accelerationMultiplier * 4F) * SimpleInput.GetAxis("Vertical");
+            _colliderFR.motorTorque = (_force * _accelerationMultiplier * 4F) * SimpleInput.GetAxis("Vertical");
+            _colliderBL.motorTorque = (_force * _accelerationMultiplier * 2F) * SimpleInput.GetAxis("Vertical");
+            _colliderBR.motorTorque = (_force * _accelerationMultiplier * 2F) * SimpleInput.GetAxis("Vertical");
         }
         RotateWheel(_colliderBL, _transformBL);
         RotateWheel(_colliderBR, _transformBR);
     }
+    
     private void WheelSteering()
     {
         _colliderFL.steerAngle = _maxAngle * SimpleInput.GetAxis("Horizontal");
@@ -247,6 +270,16 @@ public class CarController : MonoBehaviour
         if (Physics.Raycast(raycastPoint.position, Vector3.down, DoDAI, IncreaseSpeedPlatformLayer))
         {
             carRB.AddForce(Vector3.forward * 2, ForceMode.Impulse);
+            return true;
+        }
+        return false;
+    }
+
+
+    private bool CheckEscaltor()
+    {
+        if (Physics.Raycast(raycastPoint.position, Vector3.down, DoDAI, Escalator))
+        {
             return true;
         }
         return false;
@@ -351,5 +384,13 @@ public class CarController : MonoBehaviour
     }
     public void UnMute(){
         carAudio.mute= false; 
+    }
+    public void CarAudioPause()
+    {
+        carAudio.Pause();
+    }
+    public void CarAudioUnPause()
+    {
+        carAudio.Play();
     }
 }

@@ -38,9 +38,9 @@ namespace Christina.UI
             SetupToggleComponents();
             _slider.value = sliderValue;
         }
-
         private void SetupToggleComponents()
         {
+
             if (_slider != null)
                 return;
             SetupSliderComponent();
@@ -55,15 +55,10 @@ namespace Christina.UI
                 Debug.Log("No slider found!", this);
                 return;
             }
-            if (_slider.value  == 0)
-            {
-                CurrentValue = false;
-            }
-            else
-            {
-                CurrentValue = true;
-            }
-            SetStateAndStartAnimation(!CurrentValue);
+
+            //CurrentValue = _slider.value > 0;
+
+            //SetStateAndStartAnimation(!CurrentValue);
             _slider.interactable = false;
             var sliderColors = _slider.colors;
             sliderColors.disabledColor = Color.white;
@@ -73,7 +68,13 @@ namespace Christina.UI
 
         protected virtual void Awake()
         {
+            //sliderValue = _slider.value;
+            //if(_slider.value == 1)
+            //{
+            //    Toggle();
+            //}
             SetupToggleComponents();
+            CurrentValue = _slider.value == 1;
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -89,16 +90,20 @@ namespace Christina.UI
 
         private void SetStateAndStartAnimation(bool state)
         {
-            _previousValue = CurrentValue;
+            //_previousValue = CurrentValue;
             CurrentValue = state;
 
-            if (_previousValue != CurrentValue)
-            {
-                if (CurrentValue)
-                    onToggleOn?.Invoke();
-                else
-                    onToggleOff?.Invoke();
-            }
+            //if (_previousValue != CurrentValue)
+            //{
+            //    if (CurrentValue)
+            //        onToggleOn?.Invoke();
+            //    else
+            //        onToggleOff?.Invoke();
+            //}
+            if (CurrentValue)
+                onToggleOn?.Invoke();
+            else
+                onToggleOff?.Invoke();
 
             if (_animateSliderCoroutine != null)
                 StopCoroutine(_animateSliderCoroutine);

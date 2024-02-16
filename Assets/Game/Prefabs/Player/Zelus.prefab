@@ -4963,7 +4963,7 @@ Transform:
   - {fileID: 4838980238766316138}
   - {fileID: 58139588520776119}
   m_Father: {fileID: 8897016427115639075}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!198 &879155015765629216
 ParticleSystem:
@@ -9837,6 +9837,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6238700020040722379}
   - component: {fileID: 6698051049701798905}
+  - component: {fileID: 5213632946299821972}
   m_Layer: 0
   m_Name: FrontRightWheel
   m_TagString: Untagged
@@ -9889,37 +9890,23 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1.2
   m_Enabled: 1
---- !u!1 &3756959999662182091
-GameObject:
+--- !u!114 &5213632946299821972
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6909285723476848450}
-  m_Layer: 6
-  m_Name: Target
-  m_TagString: Target
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6909285723476848450
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3756959999662182091}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.22, z: -4.45}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8897016427115639075}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 3605840553791332815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83207acf3dcb1c4d80fc5bb5e3c49bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useWheelAntiStuck: 1
+  raysNumber: 36
+  raysMaxAngle: 180
+  wheelWidth: 0.25
+  wheelModel: {fileID: 2259690768794523356}
 --- !u!1 &3809453397819458306
 GameObject:
   m_ObjectHideFlags: 0
@@ -14816,6 +14803,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &4879378381868465285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4394803458827910547}
+  m_Layer: 6
+  m_Name: Target
+  m_TagString: Target
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4394803458827910547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4879378381868465285}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.22, z: -5.04}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8897016427115639075}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5495215935182396995
 GameObject:
   m_ObjectHideFlags: 0
@@ -14826,6 +14844,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2871932526910193815}
   - component: {fileID: 2209192839589661310}
+  - component: {fileID: 6337170888711371617}
   m_Layer: 0
   m_Name: FrontLeftWheel
   m_TagString: Untagged
@@ -14878,6 +14897,23 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1.2
   m_Enabled: 1
+--- !u!114 &6337170888711371617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5495215935182396995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83207acf3dcb1c4d80fc5bb5e3c49bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useWheelAntiStuck: 1
+  raysNumber: 36
+  raysMaxAngle: 180
+  wheelWidth: 0.25
+  wheelModel: {fileID: 5638395142031902888}
 --- !u!1 &5838776781020262253
 GameObject:
   m_ObjectHideFlags: 0
@@ -14923,6 +14959,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8020289873545599630}
   - component: {fileID: 4474658365667992511}
+  - component: {fileID: 8031999529005831928}
   m_Layer: 0
   m_Name: RearLeftWheel
   m_TagString: Untagged
@@ -14975,6 +15012,23 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 2
   m_Enabled: 1
+--- !u!114 &8031999529005831928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056461619218152244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83207acf3dcb1c4d80fc5bb5e3c49bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useWheelAntiStuck: 1
+  raysNumber: 36
+  raysMaxAngle: 180
+  wheelWidth: 0.25
+  wheelModel: {fileID: 7040969182923578618}
 --- !u!1 &6431912674228951997
 GameObject:
   m_ObjectHideFlags: 0
@@ -15265,6 +15319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6493110644911438429}
   - component: {fileID: 8390605910578585892}
+  - component: {fileID: 3919696170624217665}
   m_Layer: 0
   m_Name: RearRightWheel
   m_TagString: Untagged
@@ -15317,6 +15372,23 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 2
   m_Enabled: 1
+--- !u!114 &3919696170624217665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7587185908844258223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83207acf3dcb1c4d80fc5bb5e3c49bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useWheelAntiStuck: 1
+  raysNumber: 36
+  raysMaxAngle: 180
+  wheelWidth: 0.25
+  wheelModel: {fileID: 7547641762488731782}
 --- !u!1 &7969408179577765950
 GameObject:
   m_ObjectHideFlags: 0
@@ -20237,8 +20309,8 @@ Transform:
   - {fileID: 4322996955034813862}
   - {fileID: 3384282578923061004}
   - {fileID: 2412083894866182541}
-  - {fileID: 6909285723476848450}
   - {fileID: 4636723371514254336}
+  - {fileID: 4394803458827910547}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20281,6 +20353,8 @@ MonoBehaviour:
   _colliderFR: {fileID: 6698051049701798905}
   _colliderBL: {fileID: 4474658365667992511}
   _colliderBR: {fileID: 8390605910578585892}
+  isMovingForward: 0
+  isMovingForwardCheck: 0
   IsMoving: 0
   IsGameOver: 0
   GroundLayer:
@@ -20292,6 +20366,9 @@ MonoBehaviour:
   WallLayer:
     serializedVersion: 2
     m_Bits: 0
+  Escalator:
+    serializedVersion: 2
+    m_Bits: 256
   _force: 800
   _maxAngle: 45
   _accelerationMultiplier: 1
