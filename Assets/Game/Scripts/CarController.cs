@@ -108,7 +108,7 @@ public class CarController : MonoBehaviour
         _colliderBR.brakeTorque = _brake;
         _colliderFR.brakeTorque = _brake;
         _colliderFR.brakeTorque = _brake;
-        carRB.velocity = Vector3.Lerp(carRB.velocity, Vector3.zero, 60f * Time.deltaTime);
+        carRB.velocity = Vector3.Lerp(carRB.velocity, Vector3.zero, 80f * Time.deltaTime);
     }
     private void CarBoostSpeed()
     {
@@ -201,7 +201,7 @@ public class CarController : MonoBehaviour
     //WheelMoving
     private void WheelMove()
     {
-        if (SimpleInput.GetAxis("Vertical") >= 0)
+        if (SimpleInput.GetAxis("Vertical") > 0)
         {
             isMovingForward = true;
             _maxAngle = 45;
@@ -214,7 +214,7 @@ public class CarController : MonoBehaviour
             _colliderBL.motorTorque = Mathf.Clamp(_colliderBL.motorTorque, -1800f, 1800f);
             _colliderBR.motorTorque = Mathf.Clamp(_colliderBR.motorTorque, -1800f, 1800f);
         }
-        else
+        else if(SimpleInput.GetAxis("Vertical") < 0)
         {
             isMovingForward = false;
             IsMoving = false;
@@ -280,6 +280,7 @@ public class CarController : MonoBehaviour
     {
         if (Physics.Raycast(raycastPoint.position, Vector3.down, DoDAI, Escalator))
         {
+
             return true;
         }
         return false;

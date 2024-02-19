@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using System;
 using UnityEngine.EventSystems;
 using TMPro;
+using DG.Tweening;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -76,7 +77,8 @@ public class UIManager : Singleton<UIManager>
     public List<Button> GoldSpamFromMiddle;
     [Header("OfferPanel")]
     [SerializeField] private Button BuyOfferButton;
-
+    [Header("GoldImage")]
+    public GameObject GoldImage;
 
     [Header("PlayerPrefs")]
     public Slider SpecialDrive;
@@ -107,6 +109,7 @@ public class UIManager : Singleton<UIManager>
             GoldSpamFromMiddle[i].onClick.AddListener(() => OnButtonClick2(buttonIndex));
         }
         SetUpSteeringWheel();
+        StartCoroutine(StartTweenOfferBtn());
     }
     //Catch RectTransform of button
     void OnButtonClick1(int buttonIndex)
@@ -165,6 +168,7 @@ public class UIManager : Singleton<UIManager>
     {
         //CameraFollow.Ins.ActiveFireWorkParticle();
         TestCamera.Ins.ActiveFireWorkParticle();
+        GoldImage.SetActive(true);
         FinishLevelUI.SetActive(true);
         GameplayUI.SetActive(false);
     }
@@ -235,6 +239,7 @@ public class UIManager : Singleton<UIManager>
     {
         Menu.SetActive(true);
         Game.SetActive(false);
+        GoldImage.SetActive(true);
         AudioManager.Ins.PlayMainMenuBGM();
     }
     public void PlayGame()
@@ -249,6 +254,7 @@ public class UIManager : Singleton<UIManager>
         StartCoroutine(LoadScene());
         SelectMapPanel.gameObject.SetActive(false);
         GameplayUI.gameObject.SetActive(true);
+        GoldImage.SetActive(false);
         AudioManager.Ins.SetPlayingMusic();
     }
 
@@ -446,7 +452,8 @@ public class UIManager : Singleton<UIManager>
     }
     public void ClaimOnlineGift()
     {
-        GameController.Ins.TotalGold += GoldEarnAmount;
+        PurchaseGold500();
+        //GameController.Ins.TotalGold += GoldEarnAmount;
         ClaimBTN.interactable = false;
         ClaimX2BTN.interactable = false;
         GameController.Ins.Save();
@@ -455,7 +462,7 @@ public class UIManager : Singleton<UIManager>
     }
     public void ClaimX2OnlineGift()
     {
-        GameController.Ins.TotalGold += GoldEarnAmount * 2;
+        PurchaseGold1000();
         ClaimBTN.interactable = false;
         ClaimX2BTN.interactable = false;
         GameController.Ins.Save();
@@ -632,6 +639,22 @@ public class UIManager : Singleton<UIManager>
             yield return new WaitForSecondsRealtime(0.1f);
         }
     }
+
+    public void PurchaseGold500()
+    {
+        StartCoroutine(SaveGold500());
+    }
+    IEnumerator SaveGold500()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        for (int i = 0; i < 10; i++)
+        {
+            GameController.Ins.TotalGold += 50;
+            GameController.Ins.Save();
+            GameController.Ins.Load();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+    }
     //AddGold
     ////AddGoldByAmount
     //public void AddGold(int goldAmout)
@@ -714,5 +737,29 @@ public class UIManager : Singleton<UIManager>
     {
         PlayerPrefs.SetInt("SpecialDrive", 1);
     }
-    
+
+
+
+    //UI Dotween 
+    public RectTransform OfferBtn;
+    public RectTransform GiftBtn;
+    public RectTransform GoldImageUI;
+    public RectTransform StartGameBtn;
+    public RectTransform DailyRewardBtn;
+    public RectTransform ShopBtn;
+    public RectTransform SettingBtn;
+    IEnumerator StartTweenOfferBtn()
+    {
+        yield return new WaitForSeconds(LoadSceneTimer);
+        OfferBtn.DOAnchorPosX(-119.6001f, 0.5f).SetEase(Ease.InOutCubic);
+        GiftBtn.DOAnchorPosX(-119.6001f, 0.5f).SetEase(Ease.InOutCubic);
+        GoldImageUI.DOAnchorPosY(-99f, 0.5f).SetEase(Ease.InOutCubic);
+        StartGameBtn.DOAnchorPosX(287.5f, 0.5f).SetEase(Ease.InOutCubic);
+        yield return new WaitForSeconds(0.2f);
+        DailyRewardBtn.DOAnchorPosX(275f, 0.5f).SetEase(Ease.InOutCubic);
+        yield return new WaitForSeconds(0.2f);
+        ShopBtn.DOAnchorPosX(275f, 0.5f).SetEase(Ease.InOutCubic);
+        yield return new WaitForSeconds(0.2f);
+        SettingBtn.DOAnchorPosX(275f, 0.5f).SetEase(Ease.InOutCubic);
+    }
 }
