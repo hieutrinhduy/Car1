@@ -84,15 +84,19 @@ public class RandomReward : Singleton<RandomReward>
     {
         ClaimX2BTN.interactable = true;
     }
+    float tmp;
     public void ClaimX2()
     {
+        UIManager.Ins.InactiveMoreGoldBtn();
         Randomnize();
         ClaimX2BTN.interactable = false;
         StartCoroutine(ClaimX2AndGoldAnimated());
+        UIManager.Ins.ActiveMoreGoldBtn(tmp);
         GameController.Ins.Save();
     }
     IEnumerator ClaimX2AndGoldAnimated(){
-        yield return new WaitForSeconds(randomTime+0.3f);
+        tmp = randomTime + 0.3f;
+        yield return new WaitForSeconds(tmp);
         RewardManager.Ins.RewardPileOfCoin(null,6);
     }
 }

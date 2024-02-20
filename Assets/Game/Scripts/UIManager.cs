@@ -109,7 +109,7 @@ public class UIManager : Singleton<UIManager>
             GoldSpamFromMiddle[i].onClick.AddListener(() => OnButtonClick2(buttonIndex));
         }
         SetUpSteeringWheel();
-        StartCoroutine(StartTweenOfferBtn());
+        StartCoroutine(StartMenu());
     }
     //Catch RectTransform of button
     void OnButtonClick1(int buttonIndex)
@@ -132,7 +132,6 @@ public class UIManager : Singleton<UIManager>
         NitroImg.fillAmount = CarController.Ins.NitroTimer / CarController.Ins.NitroLast;
         LoadSceneFillAmount.fillAmount = LoadSceneLast / LoadSceneTimer;
     }
-
     //LoadScene
     
     public void ActiveLoadScenePanel()
@@ -220,7 +219,7 @@ public class UIManager : Singleton<UIManager>
         SpawnLevel.Ins.SpawnLevelMap();
         CarController.Ins.ResetItemCount();
         FinishLevelUI.SetActive(false);
-        GameplayUI.SetActive(true);
+        //GameplayUI.SetActive(true);
         AudioManager.Ins.PlayMainMenuBGM();
     }
     //InGameUI
@@ -229,6 +228,7 @@ public class UIManager : Singleton<UIManager>
     public void Shop()
     {
         ShopPanelUI.SetActive(true);
+        ShopCarPanelAnimate.Ins.StartShopCarPanel();
     }
     public void ShopBackToMenu()
     {
@@ -240,6 +240,8 @@ public class UIManager : Singleton<UIManager>
         Menu.SetActive(true);
         Game.SetActive(false);
         GoldImage.SetActive(true);
+        GameplayUI.gameObject.SetActive(false);
+        StartCoroutine(StartMenu());
         AudioManager.Ins.PlayMainMenuBGM();
     }
     public void PlayGame()
@@ -358,6 +360,7 @@ public class UIManager : Singleton<UIManager>
     public void OpenSettingPanel()
     {
         SettingPanel.gameObject.SetActive(true);
+        //StartSettingPanel();
     }
     public void CloseSettingPanel()
     {
@@ -375,6 +378,7 @@ public class UIManager : Singleton<UIManager>
     public void OpenDailyRewardPanel()
     {
         DailyRewardPanel.gameObject.SetActive(true);
+        DailyRewardAnimate.Ins.StartDailyReward();
     }
     public void CloseDailyRewardPanel()
     {
@@ -392,26 +396,49 @@ public class UIManager : Singleton<UIManager>
     public void OpenOfferPanel()
     {
         OfferPanel.gameObject.SetActive(true);
+        StartOfferPanel();
     }
     public void CloseOfferPanel()
     {
         OfferPanel.gameObject.SetActive(false);
+
     }
     public void OpenOnlineGiftPanel()
     {
         OnlineGiftPanel.gameObject.SetActive(true);
+        OnlineGiftPanelAnimate.Ins.StartOnlineGift();
     }
     public void CloseOnlineGiftPanel()
     {
         OnlineGiftPanel.gameObject.SetActive(false);
     }
+    int tmp;
     public void OpenShopGoldPanel()
     {
         ShopGoldPanel.gameObject.SetActive(true);
+        StartShopGoldPanel();
+        if (Menu.activeSelf)
+        {
+            Menu.SetActive(false);
+            tmp = 0;
+        }
+        else if (Game.activeSelf)
+        {
+            Game.SetActive(false);
+            tmp = 1;
+        }
     }
     public void CloseShopGoldPanel()
     {
         ShopGoldPanel.gameObject.SetActive(false);
+        if(tmp == 0)
+        {
+            Menu.SetActive(true);
+        }
+        else
+        {
+            Game.SetActive(true);
+        }
     }
 
 
@@ -445,6 +472,7 @@ public class UIManager : Singleton<UIManager>
             int minute = Mathf.FloorToInt(remainingTime / 60);
             int seconds = Mathf.FloorToInt(remainingTime % 60);
             TimeCountDownText.text = string.Format("{0:00}:{1:00}", minute, seconds);
+            TimeCountDownText.text = "Claim";
             OpenOnlineGiftBTN.interactable = true;
             ClaimBTN.interactable = true;
             ClaimX2BTN.interactable = true;
@@ -741,6 +769,7 @@ public class UIManager : Singleton<UIManager>
 
 
     //UI Dotween 
+    [Header("Animate UI")]
     public RectTransform OfferBtn;
     public RectTransform GiftBtn;
     public RectTransform GoldImageUI;
@@ -748,18 +777,108 @@ public class UIManager : Singleton<UIManager>
     public RectTransform DailyRewardBtn;
     public RectTransform ShopBtn;
     public RectTransform SettingBtn;
-    IEnumerator StartTweenOfferBtn()
+
+
+    IEnumerator StartMenu()
     {
         yield return new WaitForSeconds(LoadSceneTimer);
+        DOTween.Kill(OfferBtn);
+        DOTween.Kill(GiftBtn);
+        OfferBtn.anchoredPosition = new Vector2(97f, OfferBtn.anchoredPosition.y);
         OfferBtn.DOAnchorPosX(-119.6001f, 0.5f).SetEase(Ease.InOutCubic);
+        OfferBtn.DOScale(1.1f,0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        GiftBtn.anchoredPosition = new Vector2(97f, GiftBtn.anchoredPosition.y);
         GiftBtn.DOAnchorPosX(-119.6001f, 0.5f).SetEase(Ease.InOutCubic);
+        GiftBtn.DOScale(1.1f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+
+        GoldImageUI.anchoredPosition = new Vector2(GoldImageUI.anchoredPosition.x, 46f);
         GoldImageUI.DOAnchorPosY(-99f, 0.5f).SetEase(Ease.InOutCubic);
-        StartGameBtn.DOAnchorPosX(287.5f, 0.5f).SetEase(Ease.InOutCubic);
+
+        StartGameBtn.anchoredPosition = new Vector2(-285f, StartGameBtn.anchoredPosition.y);
+        DailyRewardBtn.anchoredPosition = new Vector2(-297.4999f, DailyRewardBtn.anchoredPosition.y);
+        ShopBtn.anchoredPosition = new Vector2(-297.4999f, ShopBtn.anchoredPosition.y);
+        SettingBtn.anchoredPosition = new Vector2(-297.4999f, SettingBtn.anchoredPosition.y);
+
+        StartGameBtn.DOAnchorPosX(287.5f, 0.7f).SetEase(Ease.InOutCubic);
         yield return new WaitForSeconds(0.2f);
-        DailyRewardBtn.DOAnchorPosX(275f, 0.5f).SetEase(Ease.InOutCubic);
+
+        DailyRewardBtn.DOAnchorPosX(275f, 0.7f).SetEase(Ease.InOutCubic);
         yield return new WaitForSeconds(0.2f);
-        ShopBtn.DOAnchorPosX(275f, 0.5f).SetEase(Ease.InOutCubic);
+
+        ShopBtn.DOAnchorPosX(275f, 0.7f).SetEase(Ease.InOutCubic);
         yield return new WaitForSeconds(0.2f);
-        SettingBtn.DOAnchorPosX(275f, 0.5f).SetEase(Ease.InOutCubic);
+
+        SettingBtn.DOAnchorPosX(275f, 0.7f).SetEase(Ease.InOutCubic);
+    }
+
+    [Header("Animate UI for Shop Gold")]
+    public RectTransform SettingPanelRect;
+    public void StartSettingPanel()
+    {
+        SettingPanelRect.localScale = Vector3.zero;
+        SettingPanelRect.DOScale(Vector3.one, 0.4f).SetEase(Ease.InOutQuad);
+    }
+
+    public RectTransform ShopGoldRect;
+    public RectTransform BackFromShopGoldBtn;
+    public RectTransform ShopGoldHeader;
+    public List<RectTransform> Buttons;
+    public void StartShopGoldPanel()
+    {
+        foreach (RectTransform button in Buttons)
+        {
+            DOTween.Kill(button);
+            button.localScale = new Vector2(1f, 1f);
+        }
+        ShopGoldRect.localScale = Vector3.zero;
+        ShopGoldRect.DOScale(Vector3.one, 0.4f).SetEase(Ease.InOutQuad);
+        BackFromShopGoldBtn.anchoredPosition = new Vector2(-110f, BackFromShopGoldBtn.anchoredPosition.y);
+        ShopGoldHeader.anchoredPosition = new Vector2(-101f, ShopGoldHeader.anchoredPosition.y);
+        BackFromShopGoldBtn.DOAnchorPosX(142.5999f, 0.7f).SetEase(Ease.InOutCubic);
+        ShopGoldHeader.DOAnchorPosX(324f, 0.7f).SetEase(Ease.InOutCubic);
+            foreach (RectTransform button in Buttons)
+            {
+                button.DOScale(1.07f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+            }
+    }
+
+    [Header("Animate UI for Offer")]
+    public RectTransform BackFromOfferBtn;
+    public RectTransform SpecialOffer;
+    public RectTransform GoldTag;
+    public RectTransform CarTag;
+    public RectTransform OfferHeader;
+    public RectTransform OfferBuyBtn;
+    public void StartOfferPanel()
+    {
+        DOTween.Kill(OfferHeader);
+        DOTween.Kill(OfferBuyBtn);
+        OfferHeader.localScale = Vector2.one;
+        OfferBuyBtn.localScale = Vector2.one;
+        GoldTag.anchoredPosition = new Vector2(GoldTag.anchoredPosition.x, 837);
+        CarTag.anchoredPosition = new Vector2(CarTag.anchoredPosition.x, -768f);
+        SpecialOffer.localScale = Vector3.zero;
+        SpecialOffer.DOScale(Vector3.one, 0.4f).SetEase(Ease.InOutQuad);
+        BackFromOfferBtn.anchoredPosition = new Vector2(-108, BackFromOfferBtn.anchoredPosition.y);
+        BackFromOfferBtn.DOAnchorPosX(102f, 0.7f).SetEase(Ease.InOutCubic);
+        GoldTag.DOAnchorPosY(0, 0.7f).SetEase(Ease.InOutCubic);
+        CarTag.DOAnchorPosY(0, 0.7f).SetEase(Ease.InOutCubic);
+        OfferHeader.DOScale(1.09f, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        OfferBuyBtn.DOScale(1.05f, 0.3f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+    }
+    //More Gold Btn
+    [SerializeField] Button MoreGoldButton;
+    public void InactiveMoreGoldBtn()
+    {
+        MoreGoldButton.interactable = false;
+    }
+    public void ActiveMoreGoldBtn(float n)
+    {
+        StartCoroutine(ActiveMoreGold(n));
+    }
+    IEnumerator ActiveMoreGold(float n)
+    {
+        yield return new WaitForSeconds(n);
+        MoreGoldButton.interactable = true;
     }
 }
