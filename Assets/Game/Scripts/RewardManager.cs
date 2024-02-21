@@ -37,7 +37,7 @@ public class RewardManager : Singleton<RewardManager>
     public void RewardPileOfCoinWhenBuy(RectTransform SpawnPoint, int No_coin)
     {
         Vector3 position = SpawnPoint.position;
-        position.y +=200; 
+        position.y +=250; 
         PileOfCpoinParent.position = position;
 
         var delay = 0f;

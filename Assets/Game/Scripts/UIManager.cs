@@ -161,6 +161,7 @@ public class UIManager : Singleton<UIManager>
     public void Lose()
     {
         LosePanelUI.SetActive(true);
+        LosePanelAnimate.Ins.StartLosePanelAnimate();
         GameplayUI.SetActive(false);
     }
     public void Finish()
@@ -170,6 +171,7 @@ public class UIManager : Singleton<UIManager>
         GoldImage.SetActive(true);
         FinishLevelUI.SetActive(true);
         GameplayUI.SetActive(false);
+        FinishStageAnimate.Ins.StartFinishStagePanel();
     }
     private void CheckStreeingWheelisOn()
     {
@@ -706,6 +708,7 @@ public class UIManager : Singleton<UIManager>
     public void OpenSelectMapPanel()
     {
         SelectMapPanel.gameObject.SetActive(true);
+        SelectMapAnimate.Ins.StartSelectMapAnimate();
     }
     public void CloseSelectMapPanel()
     {
@@ -838,7 +841,7 @@ public class UIManager : Singleton<UIManager>
         ShopGoldHeader.DOAnchorPosX(324f, 0.7f).SetEase(Ease.InOutCubic);
             foreach (RectTransform button in Buttons)
             {
-                button.DOScale(1.07f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+                button.DOScale(1.05f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
             }
     }
 
@@ -864,7 +867,7 @@ public class UIManager : Singleton<UIManager>
         GoldTag.DOAnchorPosY(0, 0.7f).SetEase(Ease.InOutCubic);
         CarTag.DOAnchorPosY(0, 0.7f).SetEase(Ease.InOutCubic);
         OfferHeader.DOScale(1.09f, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
-        OfferBuyBtn.DOScale(1.05f, 0.3f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        OfferBuyBtn.DOScale(1.03f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
     }
     //More Gold Btn
     [SerializeField] Button MoreGoldButton;

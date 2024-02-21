@@ -12,6 +12,7 @@ public class DailyRewardAnimate : Singleton<DailyRewardAnimate>
     public List<RectTransform> ShopContents;
     public RectTransform Claim;
     public RectTransform Claimx2;
+    public RectTransform DailyRewardDay4;
     public void StartDailyReward()
     {
         StartCoroutine(StartDailyRewardAnimate());
@@ -19,6 +20,7 @@ public class DailyRewardAnimate : Singleton<DailyRewardAnimate>
     IEnumerator StartDailyRewardAnimate()
     {
         //setup
+        float x = DailyRewardDay4.anchoredPosition.x;
         BackBtn.anchoredPosition = new Vector2(-489f, BackBtn.anchoredPosition.y);
         Header.anchoredPosition = new Vector2(-226, BackBtn.anchoredPosition.y);
         Claim.localScale = Vector2.zero;
@@ -38,12 +40,12 @@ public class DailyRewardAnimate : Singleton<DailyRewardAnimate>
         foreach (RectTransform ShopContent in ShopContents)
         {
             ShopContent.DOScale(Vector3.one, 0.4f).SetEase(Ease.InOutQuad);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.15f);
         }
         Claim.DOScale(Vector3.one, 0.4f).SetEase(Ease.InOutQuad);
         Claimx2.DOScale(Vector3.one, 0.4f).SetEase(Ease.InOutQuad);
-        Claim.DOAnchorPosX(-291, 0.7f).SetEase(Ease.InOutCubic);
+        Claim.DOAnchorPosX(x, 0.7f).SetEase(Ease.InOutCubic);
         yield return new WaitForSeconds(0.1f);
-        Claimx2.DOAnchorPosX(-291, 0.7f).SetEase(Ease.InOutCubic);
+        Claimx2.DOAnchorPosX(x, 0.7f).SetEase(Ease.InOutCubic);
     }
 }

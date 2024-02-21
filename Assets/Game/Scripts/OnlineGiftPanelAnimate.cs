@@ -25,8 +25,8 @@ public class OnlineGiftPanelAnimate : Singleton<OnlineGiftPanelAnimate>
         Tag.localScale = Vector3.zero;
         BackBtn.anchoredPosition = new Vector2(-75, BackBtn.anchoredPosition.y);
         //Run
-        Claim.DOScale(1.05f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
-        Claimx2.DOScale(1.05f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        Claim.DOScale(1.03f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        Claimx2.DOScale(1.03f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         Header.DOScale(1.09f, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         MainBoard.DOScale(Vector3.one, 0.4f).SetEase(Ease.InOutQuad);
         Tag.DOScale(Vector3.one, 0.7f).SetEase(Ease.InOutQuad);
