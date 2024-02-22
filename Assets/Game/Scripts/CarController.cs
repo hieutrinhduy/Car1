@@ -101,6 +101,7 @@ public class CarController : MonoBehaviour
             ApplyBreak();
             isMovingForwardCheck = isMovingForward;
         }
+        
     }
     public void ApplyBreak()
     {
@@ -331,7 +332,13 @@ public class CarController : MonoBehaviour
                 Debug.Log("+1 nitro");            
                 NitroTimer += (NitroLast / 2);
                 if (NitroTimer > NitroLast)
+                {
                     NitroTimer = 6f;
+                }
+                else if(NitroTimer == NitroLast)
+                {
+                    GamePlayPanelAnimate.Ins.NitroAnimate();
+                }
                 Destroy(other.gameObject);
             }
             else
@@ -379,6 +386,7 @@ public class CarController : MonoBehaviour
     {
         this.NitroTimer = 0;
         this.GoldInGame = 0;
+        GamePlayPanelAnimate.Ins.StopNitroAnimate();
     }
     public void Mute(){
         carAudio.mute= true; 

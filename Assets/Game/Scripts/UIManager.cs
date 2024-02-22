@@ -72,16 +72,20 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Image LoadSceneFillAmount;
     public float LoadSceneTimer = 1f;
     private float LoadSceneLast = 0;
+
     [Header("AddGoldButton")]
     public List<Button> AddGoldButtonWhenBuy;
     public List<Button> GoldSpamFromMiddle;
+
     [Header("OfferPanel")]
     [SerializeField] private Button BuyOfferButton;
+
     [Header("GoldImage")]
     public GameObject GoldImage;
 
     [Header("PlayerPrefs")]
     public Slider SpecialDrive;
+
     void Start()
     {
         StartCoroutine(LoadScene());
@@ -131,9 +135,10 @@ public class UIManager : Singleton<UIManager>
         LoadSceneLast += Time.deltaTime;
         NitroImg.fillAmount = CarController.Ins.NitroTimer / CarController.Ins.NitroLast;
         LoadSceneFillAmount.fillAmount = LoadSceneLast / LoadSceneTimer;
+        
     }
+
     //LoadScene
-    
     public void ActiveLoadScenePanel()
     {
         LoadSceneLast = 0;
@@ -190,6 +195,7 @@ public class UIManager : Singleton<UIManager>
         //CameraFollow.Ins.ResetCamAng();
         LosePanelUI.SetActive(false);
         GameplayUI.SetActive(true);
+        GamePlayPanelAnimate.Ins.StartGamePlayPanel();
         SpawnLevel.Ins.SpawnPlayer();
         SpawnLevel.Ins.SpawnLevelMap();
         CarController.Ins.ResetItemCount();
@@ -201,6 +207,7 @@ public class UIManager : Singleton<UIManager>
     {
         if (CarController.Ins.CanActiveNitro())
         {
+            GamePlayPanelAnimate.Ins.StopNitroAnimate();
             Debug.Log("Nitro");
             CarController.Ins.isNitroActive = true;
         }
@@ -258,6 +265,7 @@ public class UIManager : Singleton<UIManager>
         StartCoroutine(LoadScene());
         SelectMapPanel.gameObject.SetActive(false);
         GameplayUI.gameObject.SetActive(true);
+        GamePlayPanelAnimate.Ins.StartGamePlayPanel();
         GoldImage.SetActive(false);
         AudioManager.Ins.SetPlayingMusic();
     }
@@ -871,9 +879,13 @@ public class UIManager : Singleton<UIManager>
     }
     //More Gold Btn
     [SerializeField] Button MoreGoldButton;
+    public Button MenuBtn;
+    public Button NextLevelBtn;
     public void InactiveMoreGoldBtn()
     {
         MoreGoldButton.interactable = false;
+        MenuBtn.interactable = false;
+        NextLevelBtn.interactable = false;
     }
     public void ActiveMoreGoldBtn(float n)
     {
@@ -883,5 +895,7 @@ public class UIManager : Singleton<UIManager>
     {
         yield return new WaitForSeconds(n);
         MoreGoldButton.interactable = true;
+        MenuBtn.interactable = true;
+        NextLevelBtn.interactable = true;
     }
 }

@@ -28,7 +28,7 @@ public class FinishStageAnimate : Singleton<FinishStageAnimate>
         DOTween.Kill(GoldEarnAmount);
         Board.anchoredPosition = new Vector2(Board.anchoredPosition.x, 1021f);
         Header.anchoredPosition = new Vector2(Board.anchoredPosition.x, 184);
-        RandomReward.anchoredPosition = new Vector2(RandomReward.anchoredPosition.x, 645);
+        //RandomReward.anchoredPosition = new Vector2(RandomReward.anchoredPosition.x, 645);
         RandomReward.localScale = Vector3.zero;
         ClaimMoreBtn.localScale = Vector3.zero;
         MainMenuBtn.localScale = Vector3.zero;
@@ -40,12 +40,12 @@ public class FinishStageAnimate : Singleton<FinishStageAnimate>
 
         //Run
         Board.DOAnchorPosY(0, 0.7f).SetEase(Ease.InOutCubic);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
 
         Header.DOAnchorPosY(-91f, 0.7f).SetEase(Ease.InOutCubic);
         yield return new WaitForSeconds(0.15f);
 
-        RandomReward.DOAnchorPosY(198f, 0.7f).SetEase(Ease.InOutCubic);
+        //RandomReward.DOAnchorPosY(198f, 0.7f).SetEase(Ease.InOutCubic);
         RandomReward.DOScale(Vector3.one, 0.4f).SetEase(Ease.InOutQuad);
         yield return new WaitForSeconds(0.15f);
 

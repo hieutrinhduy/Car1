@@ -36,7 +36,7 @@ public class SelectMapAnimate : Singleton<SelectMapAnimate>
             foreach (RectTransform BoardContent in BoardContents)
             {
                 BoardContent.DOScale(Vector3.one, 0.4f).SetEase(Ease.InOutQuad);
-                yield return new WaitForSeconds(0.15f);
+                yield return new WaitForSeconds(0.1f);
             }
     }
 }

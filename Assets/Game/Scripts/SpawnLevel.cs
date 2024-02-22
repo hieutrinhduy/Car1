@@ -32,6 +32,7 @@ public class SpawnLevel : Singleton<SpawnLevel>
     }
     public void SpawnLevelMap()
     {
+        SkyboxChange.Ins.ChangeSkyBox(n);
         if (Levels.Count > 0 )
         {
             if( n>0 && spawnedLevel!= null)

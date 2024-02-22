@@ -33,7 +33,7 @@ public class ShopCarPanelAnimate : Singleton<ShopCarPanelAnimate>
         foreach (RectTransform ShopContent in ShopContents)
         {
             ShopContent.DOScale(Vector3.one, 0.4f).SetEase(Ease.InOutQuad);
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }

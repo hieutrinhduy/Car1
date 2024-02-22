@@ -1,10 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace SimpleInputNamespace
 {
 	public class AxisInputUIArrows : MonoBehaviour, ISimpleInputDraggable
 	{
+
+		public Image LeftArrow;
+		public Image RightArrow;
+		public Image Top;
+		public Image Brake;
 		public SimpleInput.AxisInput xAxis = new SimpleInput.AxisInput( "Horizontal" );
 		public SimpleInput.AxisInput yAxis = new SimpleInput.AxisInput( "Vertical" );
 
@@ -30,7 +36,74 @@ namespace SimpleInputNamespace
 			deadzoneRadiusSqr = deadzoneRadius * deadzoneRadius;
 		}
 
-		private void OnEnable()
+        private void Update()
+        {
+            if(xAxis.value <0)
+            {
+				Color leftArrowColor = LeftArrow.color;
+				leftArrowColor.a = 0.5f;
+				LeftArrow.color = leftArrowColor;
+
+				Color rightArrowColor = RightArrow.color;
+				rightArrowColor.a = 1f;
+				RightArrow.color = rightArrowColor;
+			}
+            else if(xAxis.value > 0)
+            {
+				Color rightArrowColor = RightArrow.color;
+				rightArrowColor.a = 0.5f;
+				RightArrow.color = rightArrowColor;
+
+				Color leftArrowColor = LeftArrow.color;
+				leftArrowColor.a = 1f;
+				LeftArrow.color = leftArrowColor;
+			}
+            else
+            {
+				Color leftArrowColor = LeftArrow.color;
+				leftArrowColor.a = 1f;
+				LeftArrow.color = leftArrowColor;
+
+				Color rightArrowColor = RightArrow.color;
+				rightArrowColor.a = 1f;
+				RightArrow.color = rightArrowColor;
+			}
+
+			if (yAxis.value > 0)
+			{
+				Color TopColor = Top.color;
+				TopColor.a = 0.5f;
+				Top.color = TopColor;
+
+				Color BrakeColor = Brake.color;
+				BrakeColor.a = 1f;
+				Brake.color = BrakeColor;
+				Debug.Log("Set");
+			}
+			else if (yAxis.value < 0)
+			{
+				Color TopColor = Top.color;
+				TopColor.a = 1f;
+				Top.color = TopColor;
+
+				Color BrakeColor = Brake.color;
+				BrakeColor.a = 0.5f;
+				Brake.color = BrakeColor;
+				Debug.Log("Set");
+			}
+			//else
+			//{
+			//	Color TopColor = Top.color;
+			//	TopColor.a = 1f;
+			//	Top.color = TopColor;
+
+			//	Color BrakeColor = Brake.color;
+			//	BrakeColor.a = 1f;
+			//	Brake.color = BrakeColor;
+			//}
+		}
+
+        private void OnEnable()
 		{
 			xAxis.StartTracking();
 			yAxis.StartTracking();

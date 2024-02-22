@@ -20,13 +20,11 @@ public class DailyRewardAnimate : Singleton<DailyRewardAnimate>
     IEnumerator StartDailyRewardAnimate()
     {
         //setup
-        float x = DailyRewardDay4.anchoredPosition.x;
+        float x = DailyRewardDay4.localPosition.x;
         BackBtn.anchoredPosition = new Vector2(-489f, BackBtn.anchoredPosition.y);
         Header.anchoredPosition = new Vector2(-226, BackBtn.anchoredPosition.y);
         Claim.localScale = Vector2.zero;
         Claimx2.localScale = Vector2.zero;
-        Claim.anchoredPosition = new Vector2(281, Claim.anchoredPosition.y);
-        Claimx2.anchoredPosition = new Vector2(281, Claimx2.anchoredPosition.y);
         Board.localScale = Vector2.zero;
         foreach (RectTransform ShopContent in ShopContents)
         {
@@ -44,8 +42,13 @@ public class DailyRewardAnimate : Singleton<DailyRewardAnimate>
         }
         Claim.DOScale(Vector3.one, 0.4f).SetEase(Ease.InOutQuad);
         Claimx2.DOScale(Vector3.one, 0.4f).SetEase(Ease.InOutQuad);
-        Claim.DOAnchorPosX(x, 0.7f).SetEase(Ease.InOutCubic);
-        yield return new WaitForSeconds(0.1f);
-        Claimx2.DOAnchorPosX(x, 0.7f).SetEase(Ease.InOutCubic);
+        yield return new WaitForSeconds(0.15f);
+
+        foreach (RectTransform ShopContent in ShopContents)
+        {
+            ShopContent.DOScale(Vector3.one*1.25f, 0.3f).SetEase(Ease.InOutQuad);
+            yield return new WaitForSeconds(0.2f);
+            ShopContent.DOScale(Vector3.one, 0.3f).SetEase(Ease.InOutQuad);
+        }
     }
 }
