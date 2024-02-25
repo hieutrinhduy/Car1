@@ -369,6 +369,13 @@ public class CarController : MonoBehaviour
             GameController.Ins.Save();
             IsGameOver = true;
             UIManager.Ins.Lose();
+            GameObject[] deathBorders = GameObject.FindGameObjectsWithTag("DeathBorder");
+
+            // Loop through each deathBorder GameObject and set it inactive
+            foreach (GameObject deathBorder in deathBorders)
+            {
+                deathBorder.SetActive(false);
+            }
             Debug.Log("Lose");
         }
         else if (other.CompareTag("escalator"))

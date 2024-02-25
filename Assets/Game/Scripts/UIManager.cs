@@ -168,6 +168,7 @@ public class UIManager : Singleton<UIManager>
         LosePanelUI.SetActive(true);
         LosePanelAnimate.Ins.StartLosePanelAnimate();
         GameplayUI.SetActive(false);
+        //DeathBorder.Ins.TurnOffAllDeathBorder();
     }
     public void Finish()
     {
@@ -196,6 +197,7 @@ public class UIManager : Singleton<UIManager>
         LosePanelUI.SetActive(false);
         GameplayUI.SetActive(true);
         GamePlayPanelAnimate.Ins.StartGamePlayPanel();
+        //DeathBorder.Ins.TurnOnAllDeathBorder();
         SpawnLevel.Ins.SpawnPlayer();
         SpawnLevel.Ins.SpawnLevelMap();
         CarController.Ins.ResetItemCount();
@@ -729,6 +731,7 @@ public class UIManager : Singleton<UIManager>
         ToggleGroup.Ins.SetBorder();
         GameController.Ins.Save();
         OnLevelChange?.Invoke(this, EventArgs.Empty);
+        ToggleGroup.Ins.TurnOnPlayBtn();
     }
     public void BuyOffer()
     {

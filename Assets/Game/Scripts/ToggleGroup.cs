@@ -13,6 +13,9 @@ public class ToggleGroup : Singleton<ToggleGroup>
     [SerializeField] private GameObject WatchVideoToUnLockMapPanel;
     private int countToUnlockMap = 0;
     [SerializeField] private TextMeshProUGUI CountToUnlockMapTXT;
+    [SerializeField] private Button PlayBtn;
+    [SerializeField] private Button BuyBtn;
+    [SerializeField] private Button TryBtn;
 
     [SerializeField] private List<Sprite> ImageList;
     [SerializeField] private Image Image_Map_In_WatchToUnlockMapPanel;
@@ -63,10 +66,10 @@ public class ToggleGroup : Singleton<ToggleGroup>
     int LockButtonIndex;
     public void ActiveWatchVideoToUnLockMapPanel()
     {
-        LockButtonIndex = LockButtonList.IndexOf(EventSystem.current.currentSelectedGameObject.GetComponent<Button>());
-        Debug.Log(LockButtonIndex+7);
-        Image_Map_In_WatchToUnlockMapPanel.sprite = ImageList[LockButtonIndex+7];
-        WatchVideoToUnLockMapPanel.SetActive(true);
+        //LockButtonIndex = LockButtonList.IndexOf(EventSystem.current.currentSelectedGameObject.GetComponent<Button>());
+        //Debug.Log(LockButtonIndex+7);
+        //Image_Map_In_WatchToUnlockMapPanel.sprite = ImageList[LockButtonIndex+7];
+        //WatchVideoToUnLockMapPanel.SetActive(true);
     }
     public void DeActiveWatchVideoToUnLockMapPanel()
     {
@@ -117,6 +120,18 @@ public class ToggleGroup : Singleton<ToggleGroup>
             // Thiết lập trạng thái `SetActive` của đối tượng theo giá trị đã lưu
             btn.gameObject.SetActive(isActiveValue == 1);
         }
+    }
+    public void TurnOnPlayBtn()
+    {
+        PlayBtn.gameObject.SetActive(true);
+        TryBtn.gameObject.SetActive(false);
+        BuyBtn.gameObject.SetActive(false);
+    }
+    public void TurnOnBuyBtn()
+    {
+        PlayBtn.gameObject.SetActive(false);
+        TryBtn.gameObject.SetActive(true);
+        BuyBtn.gameObject.SetActive(true);
     }
     public void ResetLockMap()
     {
