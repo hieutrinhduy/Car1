@@ -11,6 +11,7 @@ public class ToggleGroup : Singleton<ToggleGroup>
     [SerializeField] private List<Image> BorderList;
     [SerializeField] public List<Button> LockButtonList;
     [SerializeField] private GameObject WatchVideoToUnLockMapPanel;
+    [SerializeField] private GameObject UnlockMapPanel;
     private int countToUnlockMap = 0;
     [SerializeField] private TextMeshProUGUI CountToUnlockMapTXT;
     [SerializeField] private Button PlayBtn;
@@ -19,6 +20,7 @@ public class ToggleGroup : Singleton<ToggleGroup>
 
     [SerializeField] private List<Sprite> ImageList;
     [SerializeField] private Image Image_Map_In_WatchToUnlockMapPanel;
+    [SerializeField] private Image Image_Map_In_UnlockMapPanel;
     private void Start()
     {
         countToUnlockMap = 0;
@@ -31,12 +33,12 @@ public class ToggleGroup : Singleton<ToggleGroup>
                 BorderList[i].gameObject.SetActive(false);
             }
         }
-        CountToUnlockMapTXT.SetText(countToUnlockMap+"/3");
+        CountToUnlockMapTXT.SetText(countToUnlockMap+"/7");
         LoadAndSetActiveObjects();
     }
     private void Update()
     {
-        CountToUnlockMapTXT.SetText(countToUnlockMap + "/3");
+        CountToUnlockMapTXT.SetText(countToUnlockMap + "/7");
     }
     public int GetActiveToggle()
     {
@@ -66,10 +68,18 @@ public class ToggleGroup : Singleton<ToggleGroup>
     int LockButtonIndex;
     public void ActiveWatchVideoToUnLockMapPanel()
     {
-        //LockButtonIndex = LockButtonList.IndexOf(EventSystem.current.currentSelectedGameObject.GetComponent<Button>());
-        //Debug.Log(LockButtonIndex+7);
+        LockButtonIndex = LockButtonList.IndexOf(EventSystem.current.currentSelectedGameObject.GetComponent<Button>());
+        Debug.Log(LockButtonIndex + 7);
         //Image_Map_In_WatchToUnlockMapPanel.sprite = ImageList[LockButtonIndex+7];
         //WatchVideoToUnLockMapPanel.SetActive(true);
+        BorderList[LockButtonIndex+7].gameObject.SetActive(true);
+        for (int i = 0; i < BorderList.Count; i++)
+        {
+            if (i != LockButtonIndex+7)
+            {
+                BorderList[i].gameObject.SetActive(false);
+            }
+        }
     }
     public void DeActiveWatchVideoToUnLockMapPanel()
     {
@@ -77,16 +87,22 @@ public class ToggleGroup : Singleton<ToggleGroup>
     }
     public void WatchedAVideo()
     {
-        
-        if (countToUnlockMap <= 2)
+        if (countToUnlockMap <= 6)
         {
             countToUnlockMap += 1;
-            if(countToUnlockMap == 3)
+            Debug.Log(countToUnlockMap);
+            CountToUnlockMapTXT.SetText(countToUnlockMap + "/7");
+            if (countToUnlockMap == 7)
             {
-                DeActiveWatchVideoToUnLockMapPanel();
+                //DeActiveWatchVideoToUnLockMapPanel();
                 LockButtonList[LockButtonIndex].gameObject.SetActive(false);
                 SaveObjectStates();
+                GameController.Ins.level = LockButtonIndex + 7;
+                GameController.Ins.Save();
+                UIManager.Ins.ChangeLevelNotice();
+                TurnOnPlayBtn();
                 countToUnlockMap = 0;
+                CloseUnlockMapPanel();
             }
         }
     }
@@ -139,6 +155,32 @@ public class ToggleGroup : Singleton<ToggleGroup>
         {
             string objectKey = btn.name;
             PlayerPrefs.SetInt(objectKey, 1);
+        }
+    }
+    public void OpenUnlockMapPanel()
+    {
+        Image_Map_In_UnlockMapPanel.sprite = ImageList[LockButtonIndex + 7];
+        //WatchVideoToUnLockMapPanel.SetActive(true);
+        UnlockMapPanel.SetActive(true);
+        UIManager.Ins.CloseSelectMapPanel();
+    }
+    public void CloseUnlockMapPanel()
+    {
+        UnlockMapPanel.SetActive(false);
+        UIManager.Ins.OpenSelectMapPanelWhileExitUnlockMapPanel();
+    }
+    public void BuyMap()
+    {
+        if (GameController.Ins.TotalGold >= 50000)
+        {
+            GameController.Ins.TotalGold -= 50000;
+            GameController.Ins.level = LockButtonIndex + 7;
+            GameController.Ins.Save();
+            UIManager.Ins.ChangeLevelNotice();
+            TurnOnPlayBtn();
+            LockButtonList[LockButtonIndex].gameObject.SetActive(false);
+            SaveObjectStates();
+            CloseUnlockMapPanel();
         }
     }
 }

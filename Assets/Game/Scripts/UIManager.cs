@@ -86,6 +86,8 @@ public class UIManager : Singleton<UIManager>
     [Header("PlayerPrefs")]
     public Slider SpecialDrive;
 
+    [Header("UnlockMapPanel")]
+    public GameObject UnlockMapPanel;
     void Start()
     {
         StartCoroutine(LoadScene());
@@ -129,13 +131,23 @@ public class UIManager : Singleton<UIManager>
     // Update is called once per frame
     void Update()
     {
+        if (!Menu.activeSelf)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                OnPause();
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                OnNitro();
+            }
+        }
         SetupSteeringWheelCheck();
         UpdateTimeRemainingForOnlineGift();
         CheckStreeingWheelisOn();
         LoadSceneLast += Time.deltaTime;
         NitroImg.fillAmount = CarController.Ins.NitroTimer / CarController.Ins.NitroLast;
         LoadSceneFillAmount.fillAmount = LoadSceneLast / LoadSceneTimer;
-        
     }
 
     //LoadScene
@@ -195,8 +207,8 @@ public class UIManager : Singleton<UIManager>
         StartCoroutine(LoadScene());
         //CameraFollow.Ins.ResetCamAng();
         LosePanelUI.SetActive(false);
-        GameplayUI.SetActive(true);
-        GamePlayPanelAnimate.Ins.StartGamePlayPanel();
+        //GameplayUI.SetActive(true);
+        //GamePlayPanelAnimate.Ins.StartGamePlayPanel();
         //DeathBorder.Ins.TurnOnAllDeathBorder();
         SpawnLevel.Ins.SpawnPlayer();
         SpawnLevel.Ins.SpawnLevelMap();
@@ -209,7 +221,7 @@ public class UIManager : Singleton<UIManager>
     {
         if (CarController.Ins.CanActiveNitro())
         {
-            GamePlayPanelAnimate.Ins.StopNitroAnimate();
+            //GamePlayPanelAnimate.Ins.StopNitroAnimate();
             Debug.Log("Nitro");
             CarController.Ins.isNitroActive = true;
         }
@@ -266,8 +278,8 @@ public class UIManager : Singleton<UIManager>
     {
         StartCoroutine(LoadScene());
         SelectMapPanel.gameObject.SetActive(false);
-        GameplayUI.gameObject.SetActive(true);
-        GamePlayPanelAnimate.Ins.StartGamePlayPanel();
+        //GameplayUI.gameObject.SetActive(true);
+        //GamePlayPanelAnimate.Ins.StartGamePlayPanel();
         GoldImage.SetActive(false);
         AudioManager.Ins.SetPlayingMusic();
     }
@@ -720,6 +732,10 @@ public class UIManager : Singleton<UIManager>
         SelectMapPanel.gameObject.SetActive(true);
         SelectMapAnimate.Ins.StartSelectMapAnimate();
     }
+    public void OpenSelectMapPanelWhileExitUnlockMapPanel()
+    {
+        SelectMapPanel.gameObject.SetActive(true);
+    }
     public void CloseSelectMapPanel()
     {
         SelectMapPanel.gameObject.SetActive(false);
@@ -732,6 +748,10 @@ public class UIManager : Singleton<UIManager>
         GameController.Ins.Save();
         OnLevelChange?.Invoke(this, EventArgs.Empty);
         ToggleGroup.Ins.TurnOnPlayBtn();
+    }
+    public void ChangeLevelNotice()
+    {
+        OnLevelChange?.Invoke(this, EventArgs.Empty);
     }
     public void BuyOffer()
     {
@@ -901,4 +921,12 @@ public class UIManager : Singleton<UIManager>
         MenuBtn.interactable = true;
         NextLevelBtn.interactable = true;
     }
+
+    //UnlockMap Panel
 }
+//Note for advertise version
+//line 203
+//line 204
+//line 224
+//line 274
+//line 275

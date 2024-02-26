@@ -11,6 +11,8 @@ public class SelectMapAnimate : Singleton<SelectMapAnimate>
     public RectTransform Board;
     public List<RectTransform> BoardContents;
     public RectTransform PlayButton;
+    public RectTransform UnlockButton;
+    public RectTransform TryButton;
 
     public void StartSelectMapAnimate(){
          StartCoroutine(StartSelectMapAnimateUI());
@@ -18,11 +20,15 @@ public class SelectMapAnimate : Singleton<SelectMapAnimate>
     IEnumerator StartSelectMapAnimateUI(){
         //SET UP
             DOTween.Kill(PlayButton);
+            DOTween.Kill(UnlockButton);
+            DOTween.Kill(TryButton);
             BackBtn.anchoredPosition = new Vector2(-568.7f, BackBtn.anchoredPosition.y);
             Header.anchoredPosition = new Vector2(-243f, Header.anchoredPosition.y);
             Board.localScale = Vector2.zero;
             PlayButton.localScale = Vector2.one;
-            foreach(RectTransform BoardContent in BoardContents)
+            UnlockButton.localScale = Vector2.one;
+            TryButton.localScale = Vector2.one;
+        foreach (RectTransform BoardContent in BoardContents)
             {
                 DOTween.Kill(BoardContent);
                 BoardContent.localScale = Vector2.zero;
@@ -33,6 +39,8 @@ public class SelectMapAnimate : Singleton<SelectMapAnimate>
             Header.DOAnchorPosX(482f, 0.7f).SetEase(Ease.InOutCubic);
             Board.DOScale(Vector3.one* 0.9063308f, 0.4f).SetEase(Ease.InOutQuad);
             PlayButton.DOScale(1.05f, 0.3f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+            UnlockButton.DOScale(1.05f, 0.3f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+            TryButton.DOScale(1.05f, 0.3f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
             foreach (RectTransform BoardContent in BoardContents)
             {
                 BoardContent.DOScale(Vector3.one, 0.4f).SetEase(Ease.InOutQuad);
