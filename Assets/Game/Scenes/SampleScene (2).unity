@@ -7180,6 +7180,7 @@ RectTransform:
   - {fileID: 1277485479}
   - {fileID: 1126994478}
   - {fileID: 237934239}
+  - {fileID: 612422080}
   - {fileID: 1728663666}
   m_Father: {fileID: 1256241037}
   m_RootOrder: 1
@@ -17862,12 +17863,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1728663666}
-  m_RootOrder: 2
+  m_Father: {fileID: 299779526}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -241.50014, y: 562.2001}
+  m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 646.3, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &612422081
@@ -39952,6 +39953,7 @@ GameObject:
   - component: {fileID: 1256241037}
   - component: {fileID: 1256241039}
   - component: {fileID: 1256241038}
+  - component: {fileID: 1256241040}
   m_Layer: 5
   m_Name: UnlockMapPanel
   m_TagString: Untagged
@@ -40019,6 +40021,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1256241036}
   m_CullTransparentMesh: 1
+--- !u!114 &1256241040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256241036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daacb70d83126ae4b91083a64ed40787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needDontDestroy: 0
+  Board: {fileID: 299779526}
+  Header: {fileID: 237934239}
+  GoldBtn: {fileID: 1277485479}
+  WatchAdBtn: {fileID: 1728663666}
+  LevelImage: {fileID: 1126994478}
 --- !u!1 &1257715719
 GameObject:
   m_ObjectHideFlags: 0
@@ -51202,9 +51222,8 @@ RectTransform:
   m_Children:
   - {fileID: 404404909}
   - {fileID: 1438639975}
-  - {fileID: 612422080}
   m_Father: {fileID: 299779526}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}

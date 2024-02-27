@@ -162,6 +162,7 @@ public class ToggleGroup : Singleton<ToggleGroup>
         Image_Map_In_UnlockMapPanel.sprite = ImageList[LockButtonIndex + 7];
         //WatchVideoToUnLockMapPanel.SetActive(true);
         UnlockMapPanel.SetActive(true);
+        UnlockMapAnimate.Ins.StartUnlockMapAnimatePanel();
         UIManager.Ins.CloseSelectMapPanel();
     }
     public void CloseUnlockMapPanel()
