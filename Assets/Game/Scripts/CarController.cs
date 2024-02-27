@@ -337,7 +337,7 @@ public class CarController : MonoBehaviour
                 }
                 else if(NitroTimer == NitroLast)
                 {
-                    //GamePlayPanelAnimate.Ins.NitroAnimate();
+                    GamePlayPanelAnimate.Ins.NitroAnimate();
                 }
                 Destroy(other.gameObject);
             }
@@ -393,7 +393,7 @@ public class CarController : MonoBehaviour
     {
         this.NitroTimer = 0;
         this.GoldInGame = 0;
-        //GamePlayPanelAnimate.Ins.StopNitroAnimate();
+        GamePlayPanelAnimate.Ins.StopNitroAnimate();
     }
     public void Mute(){
         carAudio.mute= true; 

@@ -19,6 +19,8 @@ public class UnlockMapAnimate : Singleton<UnlockMapAnimate>
     IEnumerator StartUnlockMapAnimate()
     {
         //set up
+        DOTween.Kill(GoldBtn);
+        DOTween.Kill(WatchAdBtn);
         Board.anchoredPosition = new Vector3 (0.0f, 943f, 0.0f);
         Header.localScale = Vector3.one;
         LevelImage.localScale = Vector3.zero;
@@ -30,7 +32,7 @@ public class UnlockMapAnimate : Singleton<UnlockMapAnimate>
         Header.DOScale(1.1f, 0.3f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         LevelImage.DOScale(Vector2.one, 0.3f);
         yield return new WaitForSeconds(0.3f);
-        GoldBtn.DOScale(1.1f, 0.3f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
-        WatchAdBtn.DOScale(1.1f, 0.3f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        GoldBtn.DOScale(1.1f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        WatchAdBtn.DOScale(1.1f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
     }
 }

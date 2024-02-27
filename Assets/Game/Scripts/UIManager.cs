@@ -175,12 +175,29 @@ public class UIManager : Singleton<UIManager>
         //GoldText.text = "Gold : " + CarController.Ins.GoldInGame;
         //EarningAmount.text = "Earning amount this game :" + CarController.Ins.GoldInGame;
     }
+    [Header("In Lose Panel")]
+    public GameObject PlayAgainBtn;
+    public GameObject PlayAgainBtnWhenTryLockedLevel;
     public void Lose()
     {
-        LosePanelUI.SetActive(true);
-        LosePanelAnimate.Ins.StartLosePanelAnimate();
-        GameplayUI.SetActive(false);
-        //DeathBorder.Ins.TurnOffAllDeathBorder();
+        if (GameController.Ins.IsTryingMap)
+        {
+            PlayAgainBtn.SetActive(false);
+            PlayAgainBtnWhenTryLockedLevel.SetActive(true);
+            LosePanelUI.SetActive(true);
+            LosePanelAnimate.Ins.StartLosePanelAnimate();
+            GameplayUI.SetActive(false);
+            //DeathBorder.Ins.TurnOffAllDeathBorder();
+            GameController.Ins.IsTryingMap = false;
+        }
+        else{
+            PlayAgainBtn.SetActive(true);
+            PlayAgainBtnWhenTryLockedLevel.SetActive(false);
+            LosePanelUI.SetActive(true);
+            LosePanelAnimate.Ins.StartLosePanelAnimate();
+            GameplayUI.SetActive(false);
+            //DeathBorder.Ins.TurnOffAllDeathBorder();
+        }
     }
     public void Finish()
     {
@@ -190,6 +207,7 @@ public class UIManager : Singleton<UIManager>
         FinishLevelUI.SetActive(true);
         GameplayUI.SetActive(false);
         FinishStageAnimate.Ins.StartFinishStagePanel();
+        GameController.Ins.IsTryingMap = false;
     }
     private void CheckStreeingWheelisOn()
     {
@@ -204,15 +222,35 @@ public class UIManager : Singleton<UIManager>
     }
     public void ReplayStage()
     {
+        if (GameController.Ins.IsTryingMap)
+        {
+            ReplayStageWhenTryingLockedMap();
+        }
+        else
+        {
+            StartCoroutine(LoadScene());
+            //CameraFollow.Ins.ResetCamAng();
+            LosePanelUI.SetActive(false);
+            GameplayUI.SetActive(true);
+            GamePlayPanelAnimate.Ins.StartGamePlayPanel();
+            //DeathBorder.Ins.TurnOnAllDeathBorder();
+            SpawnLevel.Ins.SpawnPlayer();
+            SpawnLevel.Ins.SpawnLevelMap();
+            CarController.Ins.ResetItemCount();
+            UpdateGoldText();
+            AudioManager.Ins.SetPlayingMusic();
+        }
+    }
+    public void ReplayStageWhenTryingLockedMap()
+    {
         StartCoroutine(LoadScene());
         //CameraFollow.Ins.ResetCamAng();
         LosePanelUI.SetActive(false);
-        //GameplayUI.SetActive(true);
-        //GamePlayPanelAnimate.Ins.StartGamePlayPanel();
+        GameplayUI.SetActive(true);
+        GamePlayPanelAnimate.Ins.StartGamePlayPanel();
         //DeathBorder.Ins.TurnOnAllDeathBorder();
-        SpawnLevel.Ins.SpawnPlayer();
-        SpawnLevel.Ins.SpawnLevelMap();
         CarController.Ins.ResetItemCount();
+        ToggleGroup.Ins.TryLockedLevel();
         UpdateGoldText();
         AudioManager.Ins.SetPlayingMusic();
     }
@@ -221,7 +259,7 @@ public class UIManager : Singleton<UIManager>
     {
         if (CarController.Ins.CanActiveNitro())
         {
-            //GamePlayPanelAnimate.Ins.StopNitroAnimate();
+            GamePlayPanelAnimate.Ins.StopNitroAnimate();
             Debug.Log("Nitro");
             CarController.Ins.isNitroActive = true;
         }
@@ -244,6 +282,7 @@ public class UIManager : Singleton<UIManager>
         FinishLevelUI.SetActive(false);
         //GameplayUI.SetActive(true);
         AudioManager.Ins.PlayMainMenuBGM();
+        GameController.Ins.IsTryingMap = false;
     }
     //InGameUI
 
@@ -266,6 +305,7 @@ public class UIManager : Singleton<UIManager>
         GameplayUI.gameObject.SetActive(false);
         StartCoroutine(StartMenu());
         AudioManager.Ins.PlayMainMenuBGM();
+        GameController.Ins.IsTryingMap = false;
     }
     public void PlayGame()
     {
@@ -278,12 +318,11 @@ public class UIManager : Singleton<UIManager>
     {
         StartCoroutine(LoadScene());
         SelectMapPanel.gameObject.SetActive(false);
-        //GameplayUI.gameObject.SetActive(true);
-        //GamePlayPanelAnimate.Ins.StartGamePlayPanel();
+        GameplayUI.gameObject.SetActive(true);
+        GamePlayPanelAnimate.Ins.StartGamePlayPanel();
         GoldImage.SetActive(false);
         AudioManager.Ins.SetPlayingMusic();
     }
-
     public void EquipCar()
     {
         GameController.Ins.carSelectionIndex = EquipBTNList.IndexOf(EventSystem.current.currentSelectedGameObject.GetComponent<Button>());
@@ -353,13 +392,31 @@ public class UIManager : Singleton<UIManager>
         }
         GameController.Ins.Save();
     }
+    [Header("In Pause Panel")]
+    public GameObject RestartBTN;
+    public GameObject RestartBTNWhenTryingLockedLevel;
     public void OnPause()
     {
-        PausePanel.gameObject.SetActive(true);
-        Time.timeScale = 0;
-        CarController.Ins.Mute();
-        CarController.Ins.CarAudioPause();
+        if (GameController.Ins.IsTryingMap)
+        {
+            RestartBTN.SetActive(false);
+            RestartBTNWhenTryingLockedLevel.SetActive(true);
+            PausePanel.gameObject.SetActive(true);
+            Time.timeScale = 0;
+            CarController.Ins.Mute();
+            CarController.Ins.CarAudioPause();
+        }
+        else
+        {
+            RestartBTN.SetActive(true);
+            RestartBTNWhenTryingLockedLevel.SetActive(false);
+            PausePanel.gameObject.SetActive(true);
+            Time.timeScale = 0;
+            CarController.Ins.Mute();
+            CarController.Ins.CarAudioPause();
+        }
     }
+
     public void ClosePausePanel()
     {
         PausePanel.gameObject.SetActive(false);

@@ -58,6 +58,34 @@ public class SpawnLevel : Singleton<SpawnLevel>
             Debug.LogWarning("LevelMap list is empty. Cannot spawn objects.");
         }
     }
+    public void SpawnLevelMapWithIndex(int n)
+    {
+        SkyboxChange.Ins.ChangeSkyBox(n);
+        if (Levels.Count > 0)
+        {
+            if (n > 0 && spawnedLevel != null)
+            {
+                Destroy(spawnedLevel);
+                spawnedLevel = Instantiate(Levels[n], spawnLevelPoint.position, Quaternion.identity);
+                spawnedLevel.transform.parent = spawnLevelPoint;
+            }
+            else if (spawnedLevel != null)
+            {
+                Destroy(spawnedLevel);
+                spawnedLevel = Instantiate(Levels[n], spawnLevelPoint.position, Quaternion.identity);
+                spawnedLevel.transform.parent = spawnLevelPoint;
+            }
+            else
+            {
+                spawnedLevel = Instantiate(Levels[n], spawnLevelPoint.position, Quaternion.identity);
+                spawnedLevel.transform.parent = spawnLevelPoint;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("LevelMap list is empty. Cannot spawn objects.");
+        }
+    }
     public void SpawnPlayer()
     {
         Debug.Log("SpawnPlayer");

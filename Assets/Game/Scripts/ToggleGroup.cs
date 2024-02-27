@@ -69,13 +69,13 @@ public class ToggleGroup : Singleton<ToggleGroup>
     public void ActiveWatchVideoToUnLockMapPanel()
     {
         LockButtonIndex = LockButtonList.IndexOf(EventSystem.current.currentSelectedGameObject.GetComponent<Button>());
-        Debug.Log(LockButtonIndex + 7);
+        Debug.Log(LockButtonIndex + 5);
         //Image_Map_In_WatchToUnlockMapPanel.sprite = ImageList[LockButtonIndex+7];
         //WatchVideoToUnLockMapPanel.SetActive(true);
-        BorderList[LockButtonIndex+7].gameObject.SetActive(true);
+        BorderList[LockButtonIndex+5].gameObject.SetActive(true);
         for (int i = 0; i < BorderList.Count; i++)
         {
-            if (i != LockButtonIndex+7)
+            if (i != LockButtonIndex+5)
             {
                 BorderList[i].gameObject.SetActive(false);
             }
@@ -97,7 +97,7 @@ public class ToggleGroup : Singleton<ToggleGroup>
                 //DeActiveWatchVideoToUnLockMapPanel();
                 LockButtonList[LockButtonIndex].gameObject.SetActive(false);
                 SaveObjectStates();
-                GameController.Ins.level = LockButtonIndex + 7;
+                GameController.Ins.level = LockButtonIndex + 5;
                 GameController.Ins.Save();
                 UIManager.Ins.ChangeLevelNotice();
                 TurnOnPlayBtn();
@@ -159,7 +159,7 @@ public class ToggleGroup : Singleton<ToggleGroup>
     }
     public void OpenUnlockMapPanel()
     {
-        Image_Map_In_UnlockMapPanel.sprite = ImageList[LockButtonIndex + 7];
+        Image_Map_In_UnlockMapPanel.sprite = ImageList[LockButtonIndex + 5];
         //WatchVideoToUnLockMapPanel.SetActive(true);
         UnlockMapPanel.SetActive(true);
         UnlockMapAnimate.Ins.StartUnlockMapAnimatePanel();
@@ -175,7 +175,7 @@ public class ToggleGroup : Singleton<ToggleGroup>
         if (GameController.Ins.TotalGold >= 50000)
         {
             GameController.Ins.TotalGold -= 50000;
-            GameController.Ins.level = LockButtonIndex + 7;
+            GameController.Ins.level = LockButtonIndex + 5;
             GameController.Ins.Save();
             UIManager.Ins.ChangeLevelNotice();
             TurnOnPlayBtn();
@@ -183,5 +183,12 @@ public class ToggleGroup : Singleton<ToggleGroup>
             SaveObjectStates();
             CloseUnlockMapPanel();
         }
+    }
+    public void TryLockedLevel()
+    {
+        //GameController.Ins.level = LockButtonIndex + 7;
+        SpawnLevel.Ins.SpawnLevelMapWithIndex(LockButtonIndex + 5);
+        SpawnLevel.Ins.SpawnPlayer();
+        GameController.Ins.IsTryingMap = true;
     }
 }

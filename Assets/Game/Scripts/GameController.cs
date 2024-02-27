@@ -8,6 +8,7 @@ using System;
 public class GameController : Singleton<GameController>
 {
     [SerializeField] private List<Text> TotalGoldText;
+    public bool IsTryingMap;
 
     public int carSelectionIndex = 0;
 
@@ -22,6 +23,7 @@ public class GameController : Singleton<GameController>
     }
     private void Start()
     {
+        IsTryingMap = false;
         carSelectionIndex = PlayerPrefs.GetInt("CurrentCar");
         Time.timeScale = 1;
         Load();
