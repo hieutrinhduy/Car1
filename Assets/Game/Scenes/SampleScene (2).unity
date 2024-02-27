@@ -40035,13 +40035,13 @@ MonoBehaviour:
   - {fileID: 259393300}
   - {fileID: 495757970}
   - {fileID: 1559674502}
-  - {fileID: 547044894}
-  - {fileID: 2116699655}
   - {fileID: 1682029071}
   - {fileID: 1589039787}
   - {fileID: 1891998700}
   - {fileID: 228689206}
   - {fileID: 1212199888}
+  - {fileID: 547044894}
+  - {fileID: 2116699655}
   PriceBTNList:
   - {fileID: 1535908758}
   - {fileID: 1980733564}
@@ -40050,13 +40050,13 @@ MonoBehaviour:
   - {fileID: 412893819}
   - {fileID: 1671087465}
   - {fileID: 784474813}
-  - {fileID: 1407230687}
-  - {fileID: 870610698}
   - {fileID: 296692379}
   - {fileID: 37760442}
   - {fileID: 1325238304}
   - {fileID: 71011305}
   - {fileID: 821577406}
+  - {fileID: 1407230687}
+  - {fileID: 870610698}
   PriceTextList:
   - {fileID: 1155712141}
   - {fileID: 1207131910}
@@ -40081,11 +40081,11 @@ MonoBehaviour:
   - {fileID: 1729490659}
   - {fileID: 1485966289}
   - {fileID: 2021977868}
-  - {fileID: 2045025432}
-  - {fileID: 1585903435}
-  - {fileID: 1341406451}
-  - {fileID: 1235783649}
-  - {fileID: 413437142}
+  - {fileID: 1018535209}
+  - {fileID: 1571949279}
+  - {fileID: 528459678}
+  - {fileID: 44212476}
+  - {fileID: 1680173174}
   - {fileID: 903707047}
   - {fileID: 500036939}
   EquipStatus: {fileID: 21300000, guid: 00c7f91debb2ad240b3bd8e0ae5333d1, type: 3}
@@ -49851,7 +49851,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2007.2368, y: 24}
+  m_AnchoredPosition: {x: -911, y: 24}
   m_SizeDelta: {x: 4014.4712, y: -296.96008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1537016660
@@ -49974,13 +49974,13 @@ MonoBehaviour:
   - {fileID: 8084908980393651097, guid: c7fb4f757611c634cac196ea9027adf2, type: 3}
   - {fileID: 8084908980393651097, guid: 1cef4487633acbc48a07b77d2242f9fa, type: 3}
   - {fileID: 8084908980393651097, guid: 351f96a572ed3284da1b4a90cbae61fa, type: 3}
-  - {fileID: 8084908980393651097, guid: b8a234bba68fe944a99fd2ecc6a48ca0, type: 3}
-  - {fileID: 8084908980393651097, guid: a55e2aa91ab045845bc25bfbeb80df10, type: 3}
   - {fileID: 8084908980393651097, guid: fe766687e155f9846907860ea2397eb4, type: 3}
   - {fileID: 8084908980393651097, guid: f04d8c524f7c51d4dbc0b8b3adb35d8a, type: 3}
   - {fileID: 8084908980393651097, guid: 678a9ff5cd42d244c9640612050ac2c9, type: 3}
   - {fileID: 8084908980393651097, guid: db3aed32e2037924192dea257de61ed4, type: 3}
   - {fileID: 8084908980393651097, guid: 044727fa4e9a5de4a88e081bf3fd0723, type: 3}
+  - {fileID: 8084908980393651097, guid: b8a234bba68fe944a99fd2ecc6a48ca0, type: 3}
+  - {fileID: 8084908980393651097, guid: a55e2aa91ab045845bc25bfbeb80df10, type: 3}
   spawnLevelPoint: {fileID: 669582305}
   spawnPlayerPoint: {fileID: 1849577378}
   n: 0

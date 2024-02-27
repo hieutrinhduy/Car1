@@ -813,7 +813,7 @@ public class UIManager : Singleton<UIManager>
     public void BuyOffer()
     {
         StartCoroutine(SaveGold());
-        PriceBTNList[10].gameObject.SetActive(false);
+        PriceBTNList[13].gameObject.SetActive(false);
         SaveObjectStates();
         BuyOfferButton.interactable = false;
         PlayerPrefs.SetInt("BoughtOffer", 1);
