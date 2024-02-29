@@ -21,7 +21,6 @@ public class conveyors : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("in");
             collision.gameObject.transform.SetParent(transform);
         }
     }
@@ -30,7 +29,6 @@ public class conveyors : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.transform.SetParent(null);
-            Debug.Log("out");
         }
     }
 }

@@ -23,7 +23,6 @@ public class RewardManager : Singleton<RewardManager>
             InitialPos[i] = PileOfCpoinParent.GetChild(i).GetComponent<RectTransform>().position;
             InitialRotation[i] = PileOfCpoinParent.GetChild(i).GetComponent<RectTransform>().rotation;
         }
-        Debug.Log(imagePosition);
     }
     private void ResetPos()
     {

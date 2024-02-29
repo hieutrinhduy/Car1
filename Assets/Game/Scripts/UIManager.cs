@@ -118,14 +118,15 @@ public class UIManager : Singleton<UIManager>
         StartCoroutine(StartMenu());
     }
     //Catch RectTransform of button
+    RectTransform buttonRectTransform;
     void OnButtonClick1(int buttonIndex)
     {
-        RectTransform buttonRectTransform = AddGoldButtonWhenBuy[buttonIndex].GetComponent<RectTransform>();
+        buttonRectTransform = AddGoldButtonWhenBuy[buttonIndex].GetComponent<RectTransform>();
         RewardManager.Ins.RewardPileOfCoinWhenBuy(buttonRectTransform, 6);
     }
     void OnButtonClick2(int buttonIndex)
     {
-        RectTransform buttonRectTransform = GoldSpamFromMiddle[buttonIndex].GetComponent<RectTransform>();
+        buttonRectTransform = GoldSpamFromMiddle[buttonIndex].GetComponent<RectTransform>();
         RewardManager.Ins.RewardPileOfCoin(buttonRectTransform, 6);
     }
     // Update is called once per frame
@@ -260,12 +261,11 @@ public class UIManager : Singleton<UIManager>
         if (CarController.Ins.CanActiveNitro())
         {
             GamePlayPanelAnimate.Ins.StopNitroAnimate();
-            Debug.Log("Nitro");
             CarController.Ins.isNitroActive = true;
         }
         else
         {
-            Debug.Log("Run out of Nitro");
+            //Debug.Log("Run out of Nitro");
         }
     }
     public void NextStage()
@@ -326,7 +326,7 @@ public class UIManager : Singleton<UIManager>
     public void EquipCar()
     {
         GameController.Ins.carSelectionIndex = EquipBTNList.IndexOf(EventSystem.current.currentSelectedGameObject.GetComponent<Button>());
-        Debug.Log(GameController.Ins.carSelectionIndex);
+        //Debug.Log(GameController.Ins.carSelectionIndex);
         SpawnLevel.Ins.SpawnPlayer();
         int n = EquipBTNList.IndexOf(EventSystem.current.currentSelectedGameObject.GetComponent<Button>());
         StatusList[n].text = "Selected";
@@ -388,7 +388,7 @@ public class UIManager : Singleton<UIManager>
         }
         else
         {
-            Debug.Log("ko đủ tiền, ko mua được");
+            //Debug.Log("ko đủ tiền, ko mua được");
         }
         GameController.Ins.Save();
     }
@@ -562,7 +562,6 @@ public class UIManager : Singleton<UIManager>
     public void ClaimOnlineGift()
     {
         PurchaseGold500();
-        //GameController.Ins.TotalGold += GoldEarnAmount;
         ClaimBTN.interactable = false;
         ClaimX2BTN.interactable = false;
         GameController.Ins.Save();
@@ -571,6 +570,7 @@ public class UIManager : Singleton<UIManager>
     }
     public void ClaimX2OnlineGift()
     {
+
         PurchaseGold1000();
         ClaimBTN.interactable = false;
         ClaimX2BTN.interactable = false;
@@ -799,12 +799,13 @@ public class UIManager : Singleton<UIManager>
     }
     public void SelectToggle()
     {
-        Debug.Log(ToggleGroup.Ins.GetActiveToggle());
+        //Debug.Log(ToggleGroup.Ins.GetActiveToggle());
         GameController.Ins.level = ToggleGroup.Ins.GetActiveToggle();
         ToggleGroup.Ins.SetBorder();
         GameController.Ins.Save();
         OnLevelChange?.Invoke(this, EventArgs.Empty);
         ToggleGroup.Ins.TurnOnPlayBtn();
+        //SkygoBridge.instance.LogEvent("level1");
     }
     public void ChangeLevelNotice()
     {

@@ -51,7 +51,6 @@ public class RandomReward : Singleton<RandomReward>
         {
             multiple = 2;
             UIManager.Ins.PurchaseGold2000();
-            Debug.Log(GameController.Ins.TotalGold);
             goldEarned.text = "You got " + 1000*2 + "$";
             GameController.Ins.Save();
         }
@@ -59,7 +58,6 @@ public class RandomReward : Singleton<RandomReward>
         {
             multiple = 3;
             UIManager.Ins.PurchaseGold3000();
-            Debug.Log(GameController.Ins.TotalGold);
             goldEarned.text = "You got " + 1000 * 3 + "$";
             GameController.Ins.Save();
         }
@@ -67,7 +65,6 @@ public class RandomReward : Singleton<RandomReward>
         {
             multiple = 4;
             UIManager.Ins.PurchaseGold4000();
-            Debug.Log(GameController.Ins.TotalGold);
             goldEarned.text = "You got " + 1000 * 4 + "$";
             GameController.Ins.Save();
         }
@@ -75,7 +72,6 @@ public class RandomReward : Singleton<RandomReward>
         {
             multiple = 5;
             UIManager.Ins.PurchaseGold5000();
-            Debug.Log(GameController.Ins.TotalGold);
             goldEarned.text = "You got " + 1000 * 5 + "$";
             GameController.Ins.Save();
         }

@@ -24,32 +24,32 @@ public class Daily : Singleton<Daily>
     {
         //Lay Ngay choi hien tai
         CurrentDate = DateTime.Now;
-        Debug.Log(CurrentDate);
+        //Debug.Log(CurrentDate);
         //Lay Ngay claim dau tien
         if (DateTime.TryParse(PlayerPrefs.GetString("FirstClaimDate"), out DateTime FirstClaimDate))
         {
-            Debug.Log($"First claim date is set to: {FirstClaimDate}");
+            //Debug.Log($"First claim date is set to: {FirstClaimDate}");
         }
         else
         {
-            Debug.LogWarning("Failed to parse the stored date string.");
+            //Debug.LogWarning("Failed to parse the stored date string.");
         }
-        Debug.Log(FirstClaimDate);
+        //Debug.Log(FirstClaimDate);
         //Lay ngay claim cuoi cung
         if (DateTime.TryParse(PlayerPrefs.GetString("LastClaimDate"), out DateTime LastClaimDate))
         {
-            Debug.Log($"First claim date is set to: {LastClaimDate}");
+            //Debug.Log($"First claim date is set to: {LastClaimDate}");
         }
         else
         {
-            Debug.LogWarning("Failed to parse the stored date string.");
+            //Debug.LogWarning("Failed to parse the stored date string.");
         }
         if (CurrentDate.Date == LastClaimDate.Date)
         {
             ClaimBTN.interactable = false;
             Claim2xBTN.interactable = false;
             tmp = PlayerPrefs.GetInt("SoNgayChoi");
-            Debug.Log(tmp);
+            //Debug.Log(tmp);
             for (int i = 0; i < tmp; i++)
             {
                 nonActiveList[i].SetActive(false);
@@ -59,7 +59,6 @@ public class Daily : Singleton<Daily>
         else if(CurrentDate > LastClaimDate)
         {
             tmp = PlayerPrefs.GetInt("SoNgayChoi");
-            Debug.Log(tmp);
             nonActiveList[tmp].SetActive(false);
             for (int i = 0; i < tmp; i++)
             {
@@ -86,11 +85,11 @@ public class Daily : Singleton<Daily>
             {
                 if (DateTime.TryParse(PlayerPrefs.GetString("FirstClaimDate"), out DateTime FirstClaimDate))
                 {
-                    Debug.Log($"First claim date is set to: {FirstClaimDate}");
+                    //Debug.Log($"First claim date is set to: {FirstClaimDate}");
                 }
                 else
                 {
-                    Debug.LogWarning("Failed to parse the stored date string.");
+                    //Debug.LogWarning("Failed to parse the stored date string.");
                 }
             }
             checkMarkList[tmp].SetActive(true);
@@ -129,7 +128,7 @@ public class Daily : Singleton<Daily>
 
     public void CollectedX2DailyReward()
     {
-        if (tmp == 0)
+        if (tmp == 0) //Neu la ngay dau tien
         {
             if (string.IsNullOrEmpty(PlayerPrefs.GetString("FirstClaimDate")))
             {
@@ -139,11 +138,11 @@ public class Daily : Singleton<Daily>
             {
                 if (DateTime.TryParse(PlayerPrefs.GetString("FirstClaimDate"), out DateTime FirstClaimDate))
                 {
-                    Debug.Log($"First claim date is set to: {FirstClaimDate}");
+                    //Debug.Log($"First claim date is set to: {FirstClaimDate}");
                 }
                 else
                 {
-                    Debug.LogWarning("Failed to parse the stored date string.");
+                    //Debug.LogWarning("Failed to parse the stored date string.");
                 }
             }
             checkMarkList[tmp].SetActive(true);
@@ -156,7 +155,7 @@ public class Daily : Singleton<Daily>
             PlayerPrefs.SetString("LastClaimDate", DateTime.Now.ToString());
             GameController.Ins.Save();
         }
-        else if (tmp == 4)
+        else if (tmp == 4) //Neu la ngay thu 5
         {
             checkMarkList[tmp].SetActive(true);
             UIManager.Ins.PurchaseGold20000();
@@ -170,7 +169,7 @@ public class Daily : Singleton<Daily>
             PlayerPrefs.SetString("LastClaimDate", DateTime.Now.ToString());
             GameController.Ins.Save();
         }
-        else
+        else //Neu la cac ngay con lai
         {
             checkMarkList[tmp].SetActive(true);
             UIManager.Ins.PurchaseGold10000();

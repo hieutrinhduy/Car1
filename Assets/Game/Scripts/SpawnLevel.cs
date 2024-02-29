@@ -13,7 +13,6 @@ public class SpawnLevel : Singleton<SpawnLevel>
     public int n;
     private void Start()
     {
-        Debug.Log(GameController.Ins.level);
         n = GameController.Ins.level;
         UIManager.Ins.OnLevelChange += Ins_OnLevelChange;
         SpawnLevelMap();
@@ -88,7 +87,6 @@ public class SpawnLevel : Singleton<SpawnLevel>
     }
     public void SpawnPlayer()
     {
-        Debug.Log("SpawnPlayer");
 
         if (players.Count > 0)
         {

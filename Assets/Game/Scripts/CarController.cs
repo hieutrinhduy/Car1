@@ -328,8 +328,7 @@ public class CarController : MonoBehaviour
     {
         if (other.CompareTag("Nitro"))
         {
-            if (NitroTimer < NitroLast) {
-                Debug.Log("+1 nitro");            
+            if (NitroTimer < NitroLast) {           
                 NitroTimer += (NitroLast / 2);
                 if (NitroTimer > NitroLast)
                 {
@@ -353,7 +352,6 @@ public class CarController : MonoBehaviour
         }
         else if (other.CompareTag("Goal"))
         {
-            Debug.Log("Stage Finish");
             UIManager.Ins.Finish();
             //CameraFollow.Ins.ActiveFireWorkParticle();
             TestCamera.Ins.ActiveFireWorkParticle();
@@ -376,7 +374,6 @@ public class CarController : MonoBehaviour
             {
                 deathBorder.SetActive(false);
             }
-            Debug.Log("Lose");
         }
         else if (other.CompareTag("escalator"))
         {

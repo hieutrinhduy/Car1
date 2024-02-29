@@ -78,7 +78,6 @@ namespace SimpleInputNamespace
 				Color BrakeColor = Brake.color;
 				BrakeColor.a = 1f;
 				Brake.color = BrakeColor;
-				Debug.Log("Set");
 			}
 			else if (yAxis.value < 0)
 			{
@@ -89,7 +88,6 @@ namespace SimpleInputNamespace
 				Color BrakeColor = Brake.color;
 				BrakeColor.a = 0.5f;
 				Brake.color = BrakeColor;
-				Debug.Log("Set");
 			}
 			//else
 			//{
