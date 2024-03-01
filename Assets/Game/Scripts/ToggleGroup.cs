@@ -5,11 +5,13 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class ToggleGroup : Singleton<ToggleGroup>
 {
     [SerializeField] private List<Image> BorderList;
     [SerializeField] public List<Button> LockButtonList;
+    [SerializeField] public List<TextMeshProUGUI> NameLists;
     [SerializeField] private GameObject WatchVideoToUnLockMapPanel;
     [SerializeField] private GameObject UnlockMapPanel;
     private int countToUnlockMap = 0;
@@ -69,7 +71,7 @@ public class ToggleGroup : Singleton<ToggleGroup>
     public void ActiveWatchVideoToUnLockMapPanel()
     {
         LockButtonIndex = LockButtonList.IndexOf(EventSystem.current.currentSelectedGameObject.GetComponent<Button>());
-        Debug.Log(LockButtonIndex + 5);
+        //Debug.Log(LockButtonIndex + 5);
         //Image_Map_In_WatchToUnlockMapPanel.sprite = ImageList[LockButtonIndex+7];
         //WatchVideoToUnLockMapPanel.SetActive(true);
         BorderList[LockButtonIndex+5].gameObject.SetActive(true);
@@ -87,24 +89,31 @@ public class ToggleGroup : Singleton<ToggleGroup>
     }
     public void WatchedAVideo()
     {
-        if (countToUnlockMap <= 6)
+        UnityEvent e = new UnityEvent();
+        e.AddListener(() =>
         {
-            countToUnlockMap += 1;
-            Debug.Log(countToUnlockMap);
-            CountToUnlockMapTXT.SetText(countToUnlockMap + "/7");
-            if (countToUnlockMap == 7)
+            if (countToUnlockMap <= 6)
             {
-                //DeActiveWatchVideoToUnLockMapPanel();
-                LockButtonList[LockButtonIndex].gameObject.SetActive(false);
-                SaveObjectStates();
-                GameController.Ins.level = LockButtonIndex + 5;
-                GameController.Ins.Save();
-                UIManager.Ins.ChangeLevelNotice();
-                TurnOnPlayBtn();
-                countToUnlockMap = 0;
-                CloseUnlockMapPanel();
+                countToUnlockMap += 1;
+                //Debug.Log(countToUnlockMap);
+                CountToUnlockMapTXT.SetText(countToUnlockMap + "/7");
+                if (countToUnlockMap == 7)
+                {
+                    //DeActiveWatchVideoToUnLockMapPanel();
+                    LockButtonList[LockButtonIndex].gameObject.SetActive(false);
+                    SaveObjectStates();
+                    GameController.Ins.level = LockButtonIndex + 5;
+                    GameController.Ins.Save();
+                    UIManager.Ins.ChangeLevelNotice();
+                    TurnOnPlayBtn();
+                    countToUnlockMap = 0;
+                    CloseUnlockMapPanel();
+                }
             }
-        }
+        });
+        SkygoBridge.instance.ShowRewarded(e, null);
+        //logevent
+        SkygoBridge.instance.LogEvent("watch_a_video_to_unlock_map");
     }
 
     void SaveObjectStates()
@@ -186,9 +195,20 @@ public class ToggleGroup : Singleton<ToggleGroup>
     }
     public void TryLockedLevel()
     {
+        //reward
+        UnityEvent e = new UnityEvent();
+        e.AddListener(() =>
+        {
+            SpawnLevel.Ins.SpawnLevelMapWithIndex(LockButtonIndex + 5);
+            SpawnLevel.Ins.SpawnPlayer();
+            GameController.Ins.IsTryingMap = true;
+            UIManager.Ins.TryingLockedMap();
+            string tmp = NameLists[LockButtonIndex + 5].text;
+            SkygoBridge.instance.LogEvent("try_level_name_"+tmp);
+        });
+        SkygoBridge.instance.ShowRewarded(e, null);
+        //logevent
+        //SkygoBridge.instance.LogEvent("try_locked_level");
         //GameController.Ins.level = LockButtonIndex + 7;
-        SpawnLevel.Ins.SpawnLevelMapWithIndex(LockButtonIndex + 5);
-        SpawnLevel.Ins.SpawnPlayer();
-        GameController.Ins.IsTryingMap = true;
     }
 }

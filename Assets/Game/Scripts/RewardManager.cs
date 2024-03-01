@@ -30,7 +30,7 @@ public class RewardManager : Singleton<RewardManager>
         {
             PileOfCpoinParent.GetChild(i).GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
             PileOfCpoinParent.GetChild(i).GetComponent<RectTransform>().rotation = InitialRotation[i];
-            Debug.Log("Reset vi tri");
+            //Debug.Log("Reset vi tri");
         }
     }
     public void RewardPileOfCoinWhenBuy(RectTransform SpawnPoint, int No_coin)

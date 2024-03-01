@@ -14,6 +14,7 @@ public class TestCamera : Singleton<TestCamera>
     public float shakeStrength = 0.2f;
 
     [SerializeField] private GameObject FireWorkParticle;
+    [SerializeField] private GameObject WindParticle;
 
     private void Start()
     {
@@ -40,6 +41,14 @@ public class TestCamera : Singleton<TestCamera>
     public void InActiveFireWorkParticle()
     {
         FireWorkParticle.SetActive(false);
+    }
+    public void ActiveWindParticle()
+    {
+        WindParticle.SetActive(true);
+    }
+    public void InActiveWindParticle()
+    {
+        WindParticle.SetActive(false);
     }
     public void Shake()
     {

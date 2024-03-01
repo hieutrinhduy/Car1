@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Events;
 
 public class CarController : MonoBehaviour
 {
@@ -101,15 +101,18 @@ public class CarController : MonoBehaviour
             ApplyBreak();
             isMovingForwardCheck = isMovingForward;
         }
-        
     }
     public void ApplyBreak()
     {
-        _colliderBL.brakeTorque = _brake;
-        _colliderBR.brakeTorque = _brake;
-        _colliderFR.brakeTorque = _brake;
-        _colliderFR.brakeTorque = _brake;
-        carRB.velocity = Vector3.Lerp(carRB.velocity, Vector3.zero, 80f * Time.deltaTime);
+        _colliderBL.brakeTorque = 100000;
+        _colliderBR.brakeTorque = 100000;
+        _colliderFR.brakeTorque = 100000;
+        _colliderFR.brakeTorque = 100000;
+        _colliderBL.motorTorque = 0f;
+        _colliderBR.motorTorque = 0f;
+        _colliderFL.motorTorque = 0f;
+        _colliderFR.motorTorque = 0f;
+        carRB.velocity = Vector3.Lerp(carRB.velocity, Vector3.zero, 50f * Time.deltaTime);
     }
     private void CarBoostSpeed()
     {
@@ -219,8 +222,8 @@ public class CarController : MonoBehaviour
         {
             isMovingForward = false;
             IsMoving = false;
-            _colliderFL.motorTorque = (_force * _accelerationMultiplier * 4F) * SimpleInput.GetAxis("Vertical");
-            _colliderFR.motorTorque = (_force * _accelerationMultiplier * 4F) * SimpleInput.GetAxis("Vertical");
+            _colliderFL.motorTorque = (_force * _accelerationMultiplier * 8F) * SimpleInput.GetAxis("Vertical");
+            _colliderFR.motorTorque = (_force * _accelerationMultiplier * 8F) * SimpleInput.GetAxis("Vertical");
             _colliderBL.motorTorque = (_force * _accelerationMultiplier * 2F) * SimpleInput.GetAxis("Vertical");
             _colliderBR.motorTorque = (_force * _accelerationMultiplier * 2F) * SimpleInput.GetAxis("Vertical");
         }
@@ -308,6 +311,7 @@ public class CarController : MonoBehaviour
         }
         else
         {
+            TestCamera.Ins.InActiveWindParticle();
             isNitroActive = false;
             NitroParticle.SetActive(false);
             _accelerationMultiplier = 1f;
@@ -352,15 +356,35 @@ public class CarController : MonoBehaviour
         }
         else if (other.CompareTag("Goal"))
         {
-            UIManager.Ins.Finish();
-            //CameraFollow.Ins.ActiveFireWorkParticle();
-            TestCamera.Ins.ActiveFireWorkParticle();
-            //GameController.Ins.FinishMap();
-            RandomReward.Ins.SetArrowXPosition(-280f);
-            RandomReward.Ins.ActiveClaimBTN();
-            UIManager.Ins.PurchaseGold1000();
-            RewardManager.Ins.RewardPileOfCoin(null,6);
-            GameController.Ins.Save();
+            UnityEvent e = new UnityEvent();
+            e.AddListener(() =>
+            {
+                UIManager.Ins.Finish();
+                //CameraFollow.Ins.ActiveFireWorkParticle();
+                //TestCamera.Ins.ActiveFireWorkParticle();
+                //GameController.Ins.FinishMap();
+                RandomReward.Ins.SetArrowXPosition(-280f);
+                RandomReward.Ins.ActiveClaimBTN();
+                UIManager.Ins.PurchaseGold1000();
+                RewardManager.Ins.RewardPileOfCoin(null, 6);
+                GameController.Ins.Save();
+            });
+            //SkygoBridge.instance.ShowInterstitial(e);
+            bool ad = SkygoBridge.instance.ShowInterstitial(e);
+            if (!ad)
+            {
+                UIManager.Ins.Finish();
+                //CameraFollow.Ins.ActiveFireWorkParticle();
+                //TestCamera.Ins.ActiveFireWorkParticle();
+                //GameController.Ins.FinishMap();
+                RandomReward.Ins.SetArrowXPosition(-280f);
+                RandomReward.Ins.ActiveClaimBTN();
+                UIManager.Ins.PurchaseGold1000();
+                RewardManager.Ins.RewardPileOfCoin(null, 6);
+                GameController.Ins.Save();
+            }
+            //logevent
+            SkygoBridge.instance.LogEvent("finish_level");
         }
         else if (other.CompareTag("DeathBorder"))
         {

@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class RandomReward : Singleton<RandomReward>
 {
@@ -83,12 +84,20 @@ public class RandomReward : Singleton<RandomReward>
     float tmp;
     public void ClaimX2()
     {
-        UIManager.Ins.InactiveMoreGoldBtn();
-        Randomnize();
-        ClaimX2BTN.interactable = false;
-        StartCoroutine(ClaimX2AndGoldAnimated());
-        UIManager.Ins.ActiveMoreGoldBtn(tmp);
-        GameController.Ins.Save();
+        //reward
+        UnityEvent e = new UnityEvent();
+        e.AddListener(() =>
+        {
+            UIManager.Ins.InactiveMoreGoldBtn();
+            Randomnize();
+            ClaimX2BTN.interactable = false;
+            StartCoroutine(ClaimX2AndGoldAnimated());
+            UIManager.Ins.ActiveMoreGoldBtn(tmp);
+            GameController.Ins.Save();
+        });
+        SkygoBridge.instance.ShowRewarded(e, null);
+        //logevent
+        SkygoBridge.instance.LogEvent("claim_more_gold_after_finish");
     }
     IEnumerator ClaimX2AndGoldAnimated(){
         tmp = randomTime + 0.3f;

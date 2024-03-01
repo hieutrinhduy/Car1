@@ -7,6 +7,7 @@ using System;
 using UnityEngine.EventSystems;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -90,6 +91,7 @@ public class UIManager : Singleton<UIManager>
     public GameObject UnlockMapPanel;
     void Start()
     {
+
         StartCoroutine(LoadScene());
         remainingTime = TimeRemaining;
         Home();
@@ -107,7 +109,22 @@ public class UIManager : Singleton<UIManager>
         for (int i = 0; i < AddGoldButtonWhenBuy.Count; i++)
         {
             int buttonIndex = i; // Capture the current index in a local variable for the lambda expression
-            AddGoldButtonWhenBuy[i].onClick.AddListener(() => OnButtonClick1(buttonIndex));
+            if (i == 0)
+            {
+                AddGoldButtonWhenBuy[i].onClick.AddListener(() => PurchaseGold3000InShop(buttonIndex));
+            }
+            else if(i == 1)
+            {
+                AddGoldButtonWhenBuy[i].onClick.AddListener(() => PurchaseGold5000InShop(buttonIndex));
+            }
+            else if (i == 2)
+            {
+                AddGoldButtonWhenBuy[i].onClick.AddListener(() => PurchaseGold10000InShop(buttonIndex));
+            }
+            else
+            {
+                AddGoldButtonWhenBuy[i].onClick.AddListener(() => PurchaseGold15000InShop(buttonIndex));
+            }
         }
         for (int i = 0; i < GoldSpamFromMiddle.Count; i++)
         {
@@ -240,9 +257,10 @@ public class UIManager : Singleton<UIManager>
             CarController.Ins.ResetItemCount();
             UpdateGoldText();
             AudioManager.Ins.SetPlayingMusic();
+            SkygoBridge.instance.LogEvent("level_" + (GameController.Ins.level + 1).ToString());
         }
     }
-    public void ReplayStageWhenTryingLockedMap()
+    public void ResetMap()
     {
         StartCoroutine(LoadScene());
         //CameraFollow.Ins.ResetCamAng();
@@ -250,10 +268,32 @@ public class UIManager : Singleton<UIManager>
         GameplayUI.SetActive(true);
         GamePlayPanelAnimate.Ins.StartGamePlayPanel();
         //DeathBorder.Ins.TurnOnAllDeathBorder();
+        SpawnLevel.Ins.SpawnPlayer();
+        SpawnLevel.Ins.SpawnLevelMap();
         CarController.Ins.ResetItemCount();
-        ToggleGroup.Ins.TryLockedLevel();
         UpdateGoldText();
         AudioManager.Ins.SetPlayingMusic();
+    }
+    public void ReplayStageWhenTryingLockedMap()
+    {
+        //reward
+        UnityEvent e = new UnityEvent();
+        e.AddListener(() =>
+        {
+            StartCoroutine(LoadScene());
+            //CameraFollow.Ins.ResetCamAng();
+            LosePanelUI.SetActive(false);
+            GameplayUI.SetActive(true);
+            GamePlayPanelAnimate.Ins.StartGamePlayPanel();
+            //DeathBorder.Ins.TurnOnAllDeathBorder();
+            CarController.Ins.ResetItemCount();
+            ToggleGroup.Ins.TryLockedLevel();
+            UpdateGoldText();
+            AudioManager.Ins.SetPlayingMusic();
+        });
+        SkygoBridge.instance.ShowRewarded(e, null);
+        //logevent
+        SkygoBridge.instance.LogEvent("watch_ad_to_replay_locked_level");
     }
 
     public void OnNitro()
@@ -262,10 +302,12 @@ public class UIManager : Singleton<UIManager>
         {
             GamePlayPanelAnimate.Ins.StopNitroAnimate();
             CarController.Ins.isNitroActive = true;
+            TestCamera.Ins.ActiveWindParticle();
         }
         else
         {
             //Debug.Log("Run out of Nitro");
+            TestCamera.Ins.InActiveWindParticle();
         }
     }
     public void NextStage()
@@ -303,9 +345,9 @@ public class UIManager : Singleton<UIManager>
         Game.SetActive(false);
         GoldImage.SetActive(true);
         GameplayUI.gameObject.SetActive(false);
+        GameController.Ins.IsTryingMap = false;
         StartCoroutine(StartMenu());
         AudioManager.Ins.PlayMainMenuBGM();
-        GameController.Ins.IsTryingMap = false;
     }
     public void PlayGame()
     {
@@ -315,6 +357,16 @@ public class UIManager : Singleton<UIManager>
     }
 
     public void PlayGameAfterSelectMap()
+    {
+            StartCoroutine(LoadScene());
+            SelectMapPanel.gameObject.SetActive(false);
+            GameplayUI.gameObject.SetActive(true);
+            GamePlayPanelAnimate.Ins.StartGamePlayPanel();
+            GoldImage.SetActive(false);
+            AudioManager.Ins.SetPlayingMusic();
+            SkygoBridge.instance.LogEvent("level_"+ (GameController.Ins.level+1).ToString());
+    }
+    public void TryingLockedMap()
     {
         StartCoroutine(LoadScene());
         SelectMapPanel.gameObject.SetActive(false);
@@ -385,6 +437,7 @@ public class UIManager : Singleton<UIManager>
             GameController.Ins.TotalGold -= carPrice;
             PriceBTNList[EquipBTNIndex].gameObject.SetActive(false);
             SaveObjectStates();
+            SkygoBridge.instance.LogEvent("buy_car_" + (EquipBTNIndex + 4).ToString());
         }
         else
         {
@@ -522,12 +575,6 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-
-    public void CollectDailyReward()
-    {
-        Daily.Ins.CollectedDailyReward();
-        Daily.Ins.DisableClaimBtn();
-    }
     public void Break()
     {
         CarController.Ins.OnBrake();
@@ -558,24 +605,6 @@ public class UIManager : Singleton<UIManager>
             ClaimBTN.interactable = true;
             ClaimX2BTN.interactable = true;
         }
-    }
-    public void ClaimOnlineGift()
-    {
-        PurchaseGold500();
-        ClaimBTN.interactable = false;
-        ClaimX2BTN.interactable = false;
-        GameController.Ins.Save();
-        TimeRemaining *= 2;
-        remainingTime = TimeRemaining;
-    }
-    public void ClaimX2OnlineGift()
-    {
-
-        PurchaseGold1000();
-        ClaimBTN.interactable = false;
-        ClaimX2BTN.interactable = false;
-        GameController.Ins.Save();
-        remainingTime = TimeRemaining;
     }
     //Lưu nút giá đã bị tắt hay chưa
     public void SaveObjectStates()
@@ -811,15 +840,6 @@ public class UIManager : Singleton<UIManager>
     {
         OnLevelChange?.Invoke(this, EventArgs.Empty);
     }
-    public void BuyOffer()
-    {
-        StartCoroutine(SaveGold());
-        PriceBTNList[13].gameObject.SetActive(false);
-        SaveObjectStates();
-        BuyOfferButton.interactable = false;
-        PlayerPrefs.SetInt("BoughtOffer", 1);
-        GameController.Ins.Save();
-    }
 
     //SoundEffect
     public void PlayClickSoundEffect()
@@ -980,11 +1000,183 @@ public class UIManager : Singleton<UIManager>
         NextLevelBtn.interactable = true;
     }
 
-    //UnlockMap Panel
+
+
+    //BuyOffer
+    public void BuyOffer()
+    {
+        UnityEvent e = new UnityEvent();
+        string key = "";
+        float price = 2.99f;
+        key = "master_car_race_cash" + price.ToString(); 
+        e.AddListener(() =>
+        {
+            RewardManager.Ins.RewardPileOfCoin(buttonRectTransform, 6);
+            StartCoroutine(SaveGold());
+            PriceBTNList[13].gameObject.SetActive(false);
+            SaveObjectStates();
+            BuyOfferButton.interactable = false;
+            PlayerPrefs.SetInt("BoughtOffer", 1);
+            GameController.Ins.Save();
+        });
+        SkygoBridge.instance.PurchaseIAP(key, e);
+        //logevent
+        SkygoBridge.instance.LogEvent("purchase_offer");
+    }
+    public void ClaimOnlineGift()
+    {
+        RewardManager.Ins.RewardPileOfCoin(buttonRectTransform, 6);
+        PurchaseGold500();
+        ClaimBTN.interactable = false;
+        ClaimX2BTN.interactable = false;
+        GameController.Ins.Save();
+        TimeRemaining *= 2;
+        remainingTime = TimeRemaining;
+    }
+    public void ClaimX2OnlineGift()
+    {
+        UnityEvent e = new UnityEvent();
+        e.AddListener(() =>
+        {
+            RewardManager.Ins.RewardPileOfCoin(buttonRectTransform, 6);
+            PurchaseGold1000();
+            ClaimBTN.interactable = false;
+            ClaimX2BTN.interactable = false;
+            GameController.Ins.Save();
+            remainingTime = TimeRemaining;
+        });
+        SkygoBridge.instance.ShowRewarded(e, null);
+        //logevent
+        SkygoBridge.instance.LogEvent("claim_x2_online_gift");
+    }
+    public void CollectDailyReward()
+    {
+        RewardManager.Ins.RewardPileOfCoin(buttonRectTransform, 6);
+        Daily.Ins.CollectedDailyReward();
+        Daily.Ins.DisableClaimBtn();
+    }
+
+    public void CollectX2DailyReward()
+    {
+        UnityEvent e = new UnityEvent();
+        e.AddListener(() =>
+        {
+            RewardManager.Ins.RewardPileOfCoin(buttonRectTransform, 6);
+            Daily.Ins.CollectedX2DailyReward();
+            Daily.Ins.DisableClaimBtn();
+        });
+        SkygoBridge.instance.ShowRewarded(e, null);
+        //logevent
+        SkygoBridge.instance.LogEvent("claim_x2_daily_reward");
+    }
+    public void PurchaseGold3000InShop(int buttonIndex)
+    { //purchase
+        UnityEvent e = new UnityEvent();
+        string key = "";
+        float price = 0.99f;
+        key = "master_car_race_cash_" + price.ToString();
+        e.AddListener(() =>
+        {
+            buttonRectTransform = AddGoldButtonWhenBuy[buttonIndex].GetComponent<RectTransform>();
+            RewardManager.Ins.RewardPileOfCoinWhenBuy(buttonRectTransform, 6);
+            StartCoroutine(SaveGold3000InShop());
+        });
+        SkygoBridge.instance.PurchaseIAP(key, e);
+        //logevent
+        SkygoBridge.instance.LogEvent("purchase_3000_coin");
+    }
+    IEnumerator SaveGold3000InShop()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        for (int i = 0; i < 10; i++)
+        {
+            GameController.Ins.TotalGold += 300;
+            GameController.Ins.Save();
+            GameController.Ins.Load();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+    }
+    public void PurchaseGold5000InShop(int buttonIndex)
+    {
+        UnityEvent e = new UnityEvent();
+        string key = "";
+        float price = 1.99f;
+        key = "master_car_race_cash_" + price.ToString();
+        e.AddListener(() =>
+        {
+            buttonRectTransform = AddGoldButtonWhenBuy[buttonIndex].GetComponent<RectTransform>();
+            RewardManager.Ins.RewardPileOfCoinWhenBuy(buttonRectTransform, 6);
+            StartCoroutine(SaveGold5000InShop());
+        });
+        SkygoBridge.instance.PurchaseIAP(key, e);
+        //logevent
+        SkygoBridge.instance.LogEvent("purchase_5000_coin");
+    }
+    IEnumerator SaveGold5000InShop()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        for (int i = 0; i < 10; i++)
+        {
+            GameController.Ins.TotalGold += 500;
+            GameController.Ins.Save();
+            GameController.Ins.Load();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+    }
+    public void PurchaseGold10000InShop(int buttonIndex)
+    {
+        UnityEvent e = new UnityEvent();
+        string key = "";
+        float price = 2.99f;
+        key = "master_car_race_cash_" + price.ToString();
+        e.AddListener(() =>
+        {
+            buttonRectTransform = AddGoldButtonWhenBuy[buttonIndex].GetComponent<RectTransform>();
+            RewardManager.Ins.RewardPileOfCoinWhenBuy(buttonRectTransform, 6);
+            StartCoroutine(SaveGold10000InShop());
+        });
+        SkygoBridge.instance.PurchaseIAP(key, e);
+        //logevent
+        SkygoBridge.instance.LogEvent("purchase_10000_coin");
+    }
+    IEnumerator SaveGold10000InShop()
+    {
+        RewardManager.Ins.RewardPileOfCoinWhenBuy(buttonRectTransform, 6);
+        yield return new WaitForSecondsRealtime(1f);
+        for (int i = 0; i < 10; i++)
+        {
+            GameController.Ins.TotalGold += 1000;
+            GameController.Ins.Save();
+            GameController.Ins.Load();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+    }
+    public void PurchaseGold15000InShop(int buttonIndex)
+    {
+        UnityEvent e = new UnityEvent();
+        string key = "";
+        float price = 3.99f;
+        key = "master_car_race_cash_" + price.ToString();
+        e.AddListener(() =>
+        {
+            buttonRectTransform = AddGoldButtonWhenBuy[buttonIndex].GetComponent<RectTransform>();
+            RewardManager.Ins.RewardPileOfCoinWhenBuy(buttonRectTransform, 6);
+            StartCoroutine(SaveGold15000InShop());
+        });
+        SkygoBridge.instance.PurchaseIAP(key, e);
+        //logevent
+        SkygoBridge.instance.LogEvent("purchase_15000_coin");
+    }
+    IEnumerator SaveGold15000InShop()
+    {
+        RewardManager.Ins.RewardPileOfCoinWhenBuy(buttonRectTransform, 6);
+        yield return new WaitForSecondsRealtime(1f);
+        for (int i = 0; i < 10; i++)
+        {
+            GameController.Ins.TotalGold += 1500;
+            GameController.Ins.Save();
+            GameController.Ins.Load();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+    }
 }
-//Note for advertise version
-//line 203
-//line 204
-//line 224
-//line 274
-//line 275
