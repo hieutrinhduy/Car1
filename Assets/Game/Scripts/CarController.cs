@@ -29,7 +29,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private bool isMovingForwardCheck;
     public bool IsMoving;
 
-    private bool isBreak;
+    public bool isBreak;
     private Rigidbody carRB;
     public bool IsGameOver;
 
@@ -98,21 +98,17 @@ public class CarController : MonoBehaviour
 
         if (isMovingForward != isMovingForwardCheck && isGround && !CheckEscaltor())
         {
-            ApplyBreak();
+            StartCoroutine(ApplyBreak());
             isMovingForwardCheck = isMovingForward;
         }
+
     }
-    public void ApplyBreak()
+    IEnumerator ApplyBreak()
     {
-        _colliderBL.brakeTorque = 100000000;
-        _colliderBR.brakeTorque = 100000000;
-        _colliderFR.brakeTorque = 100000000;
-        _colliderFR.brakeTorque = 100000000;
-        _colliderBL.motorTorque = 0f;
-        _colliderBR.motorTorque = 0f;
-        _colliderFL.motorTorque = 0f;
-        _colliderFR.motorTorque = 0f;
-        carRB.velocity = Vector3.Lerp(carRB.velocity, Vector3.zero, 50f * Time.deltaTime);
+        //carRB.velocity = Vector3.Lerp(carRB.velocity, Vector3.zero, 50f * Time.deltaTime);
+        OnBrake();
+        yield return new WaitForSeconds(0.5f);
+        OnUnBrake();
     }
     private void CarBoostSpeed()
     {
@@ -147,8 +143,9 @@ public class CarController : MonoBehaviour
     }
     private void Brake()
     {
-        if (Input.GetKey(KeyCode.Space) || isBreak)
+        if (Input.GetKey(KeyCode.F) /*|| isBreak*/)
         {
+            //carRB.velocity = Vector3.Lerp(carRB.velocity, Vector3.zero, 50f * Time.deltaTime);
             _colliderBL.brakeTorque = _brake;
             _colliderBR.brakeTorque = _brake;
             _colliderFL.brakeTorque = _brake;
