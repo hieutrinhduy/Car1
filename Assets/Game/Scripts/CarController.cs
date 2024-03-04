@@ -104,10 +104,10 @@ public class CarController : MonoBehaviour
     }
     public void ApplyBreak()
     {
-        _colliderBL.brakeTorque = 100000;
-        _colliderBR.brakeTorque = 100000;
-        _colliderFR.brakeTorque = 100000;
-        _colliderFR.brakeTorque = 100000;
+        _colliderBL.brakeTorque = 100000000;
+        _colliderBR.brakeTorque = 100000000;
+        _colliderFR.brakeTorque = 100000000;
+        _colliderFR.brakeTorque = 100000000;
         _colliderBL.motorTorque = 0f;
         _colliderBR.motorTorque = 0f;
         _colliderFL.motorTorque = 0f;
@@ -151,14 +151,14 @@ public class CarController : MonoBehaviour
         {
             _colliderBL.brakeTorque = _brake;
             _colliderBR.brakeTorque = _brake;
-            _colliderFR.brakeTorque = _brake;
+            _colliderFL.brakeTorque = _brake;
             _colliderFR.brakeTorque = _brake;
         }
         else
         {
             _colliderBL.brakeTorque = 0;
             _colliderBR.brakeTorque = 0;
-            _colliderFR.brakeTorque = 0;
+            _colliderFL.brakeTorque = 0;
             _colliderFR.brakeTorque = 0;
         }
     }
@@ -168,14 +168,14 @@ public class CarController : MonoBehaviour
         {
             _colliderBL.brakeTorque = _brake;
             _colliderBR.brakeTorque = _brake;
-            _colliderFR.brakeTorque = _brake;
+            _colliderFL.brakeTorque = _brake;
             _colliderFR.brakeTorque = _brake;
         }
         else
         {
             _colliderBL.brakeTorque = 0;
             _colliderBR.brakeTorque = 0;
-            _colliderFR.brakeTorque = 0;
+            _colliderFL.brakeTorque = 0;
             _colliderFR.brakeTorque = 0;
         }
     }
@@ -207,6 +207,10 @@ public class CarController : MonoBehaviour
     {
         if (SimpleInput.GetAxis("Vertical") > 0)
         {
+            _colliderBL.brakeTorque = 0;
+            _colliderBR.brakeTorque = 0;
+            _colliderFR.brakeTorque = 0;
+            _colliderFR.brakeTorque = 0;
             isMovingForward = true;
             _maxAngle = 45;
             IsMoving = true;
@@ -220,10 +224,14 @@ public class CarController : MonoBehaviour
         }
         else if(SimpleInput.GetAxis("Vertical") < 0)
         {
+            _colliderBL.brakeTorque = 100000;
+            _colliderBR.brakeTorque = 100000;
+            _colliderFR.brakeTorque = 100000;
+            _colliderFR.brakeTorque = 100000;
             isMovingForward = false;
             IsMoving = false;
-            _colliderFL.motorTorque = (_force * _accelerationMultiplier * 8F) * SimpleInput.GetAxis("Vertical");
-            _colliderFR.motorTorque = (_force * _accelerationMultiplier * 8F) * SimpleInput.GetAxis("Vertical");
+            _colliderFL.motorTorque = (_force * _accelerationMultiplier * 4F) * SimpleInput.GetAxis("Vertical");
+            _colliderFR.motorTorque = (_force * _accelerationMultiplier * 4F) * SimpleInput.GetAxis("Vertical");
             _colliderBL.motorTorque = (_force * _accelerationMultiplier * 2F) * SimpleInput.GetAxis("Vertical");
             _colliderBR.motorTorque = (_force * _accelerationMultiplier * 2F) * SimpleInput.GetAxis("Vertical");
         }
