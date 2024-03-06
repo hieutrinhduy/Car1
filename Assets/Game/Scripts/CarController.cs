@@ -103,11 +103,12 @@ public class CarController : MonoBehaviour
         }
 
     }
+    public float TimeToUnbreak;
     IEnumerator ApplyBreak()
     {
         //carRB.velocity = Vector3.Lerp(carRB.velocity, Vector3.zero, 50f * Time.deltaTime);
         OnBrake();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(TimeToUnbreak);
         OnUnBrake();
     }
     private void CarBoostSpeed()

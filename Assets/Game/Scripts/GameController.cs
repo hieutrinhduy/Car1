@@ -18,7 +18,7 @@ public class GameController : Singleton<GameController>
     public override void Awake()
     {
         base.Awake();
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
     private void Start()

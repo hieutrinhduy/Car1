@@ -51,4 +51,12 @@ public class DailyRewardAnimate : Singleton<DailyRewardAnimate>
             ShopContent.DOScale(Vector3.one, 0.3f).SetEase(Ease.InOutQuad);
         }
     }
+    public void CloseDailyRewardAnimate()
+    {
+        foreach (RectTransform ShopContent in ShopContents)
+        {
+            DOTween.Kill(ShopContent);
+            ShopContent.localScale = Vector2.zero;
+        }
+    }
 }

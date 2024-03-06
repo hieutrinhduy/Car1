@@ -9888,7 +9888,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1.2
+    m_Stiffness: 1
   m_Enabled: 1
 --- !u!114 &5213632946299821972
 MonoBehaviour:
@@ -14895,7 +14895,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1.2
+    m_Stiffness: 1
   m_Enabled: 1
 --- !u!114 &6337170888711371617
 MonoBehaviour:
@@ -20356,6 +20356,7 @@ MonoBehaviour:
   isMovingForward: 0
   isMovingForwardCheck: 0
   IsMoving: 0
+  isBreak: 0
   IsGameOver: 0
   GroundLayer:
     serializedVersion: 2
@@ -20373,7 +20374,7 @@ MonoBehaviour:
   _maxAngle: 45
   _accelerationMultiplier: 1
   _maxBackSpeed: 200
-  _brake: 20000
+  _brake: 2147483647
   forceForward: 0
   isGround: 0
   IsSpeedUpGround: 0
@@ -20386,6 +20387,7 @@ MonoBehaviour:
   CarAudioTimer: 0
   isCarAudioOn: 0
   CenterOfMass: {fileID: 6757503268753951318}
+  TimeToUnbreak: 0.1
 --- !u!114 &8084908980393651102
 MonoBehaviour:
   m_ObjectHideFlags: 0

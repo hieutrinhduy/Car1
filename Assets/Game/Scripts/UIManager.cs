@@ -248,6 +248,7 @@ public class UIManager : Singleton<UIManager>
         {
             StartCoroutine(LoadScene());
             //CameraFollow.Ins.ResetCamAng();
+            //LosePanelAnimate.Ins.StopLosePanel();
             LosePanelUI.SetActive(false);
             GameplayUI.SetActive(true);
             GamePlayPanelAnimate.Ins.StartGamePlayPanel();
@@ -264,6 +265,10 @@ public class UIManager : Singleton<UIManager>
     {
         StartCoroutine(LoadScene());
         //CameraFollow.Ins.ResetCamAng();
+        if (LosePanelUI.activeSelf)
+        {
+            LosePanelAnimate.Ins.StopLosePanel();
+        }
         LosePanelUI.SetActive(false);
         GameplayUI.SetActive(true);
         GamePlayPanelAnimate.Ins.StartGamePlayPanel();
@@ -282,6 +287,10 @@ public class UIManager : Singleton<UIManager>
         {
             StartCoroutine(LoadScene());
             //CameraFollow.Ins.ResetCamAng();
+            if (LosePanelUI.activeSelf)
+            {
+                LosePanelAnimate.Ins.StopLosePanel();
+            }
             LosePanelUI.SetActive(false);
             GameplayUI.SetActive(true);
             GamePlayPanelAnimate.Ins.StartGamePlayPanel();
@@ -321,6 +330,7 @@ public class UIManager : Singleton<UIManager>
         SpawnLevel.Ins.SpawnPlayer();
         SpawnLevel.Ins.SpawnLevelMap();
         CarController.Ins.ResetItemCount();
+        FinishStageAnimate.Ins.StopFinishPanel();
         FinishLevelUI.SetActive(false);
         //GameplayUI.SetActive(true);
         AudioManager.Ins.PlayMainMenuBGM();
@@ -351,6 +361,7 @@ public class UIManager : Singleton<UIManager>
     }
     public void PlayGame()
     {
+        StopAnimateMenu();
         Menu.SetActive(false);
         Game.SetActive(true);
         StartCoroutine(LoadScene());
@@ -516,6 +527,7 @@ public class UIManager : Singleton<UIManager>
     }
     public void CloseDailyRewardPanel()
     {
+        DailyRewardAnimate.Ins.CloseDailyRewardAnimate();
         DailyRewardPanel.gameObject.SetActive(false);
     }
     public void OpenMenuPanel()
@@ -524,6 +536,7 @@ public class UIManager : Singleton<UIManager>
     }
     public void CloseMenuPanel()
     {
+        //StopAnimateMenu();
         MenuPanelUI.gameObject.SetActive(false);
     }
 
@@ -534,8 +547,8 @@ public class UIManager : Singleton<UIManager>
     }
     public void CloseOfferPanel()
     {
+        StopOffer();
         OfferPanel.gameObject.SetActive(false);
-
     }
     public void OpenOnlineGiftPanel()
     {
@@ -544,6 +557,7 @@ public class UIManager : Singleton<UIManager>
     }
     public void CloseOnlineGiftPanel()
     {
+        OnlineGiftPanelAnimate.Ins.StopOnlineGift();
         OnlineGiftPanel.gameObject.SetActive(false);
     }
     int tmp;
@@ -564,6 +578,7 @@ public class UIManager : Singleton<UIManager>
     }
     public void CloseShopGoldPanel()
     {
+        StopShopGold();
         ShopGoldPanel.gameObject.SetActive(false);
         if(tmp == 0)
         {
@@ -824,6 +839,7 @@ public class UIManager : Singleton<UIManager>
     }
     public void CloseSelectMapPanel()
     {
+        SelectMapAnimate.Ins.StopSelectMap();
         SelectMapPanel.gameObject.SetActive(false);
     }
     public void SelectToggle()
@@ -894,6 +910,10 @@ public class UIManager : Singleton<UIManager>
     IEnumerator StartMenu()
     {
         yield return new WaitForSeconds(LoadSceneTimer);
+        //set up
+        OfferBtn.localScale = Vector3.one;
+        GiftBtn.localScale = Vector3.one;
+        //run
         DOTween.Kill(OfferBtn);
         DOTween.Kill(GiftBtn);
         OfferBtn.anchoredPosition = new Vector2(97f, OfferBtn.anchoredPosition.y);
@@ -922,7 +942,11 @@ public class UIManager : Singleton<UIManager>
 
         SettingBtn.DOAnchorPosX(275f, 0.7f).SetEase(Ease.InOutCubic);
     }
-
+    public void StopAnimateMenu()
+    {
+        DOTween.Kill(OfferBtn);
+        DOTween.Kill(GiftBtn);
+    }
     [Header("Animate UI for Shop Gold")]
     public RectTransform SettingPanelRect;
     public void StartSettingPanel()
@@ -953,6 +977,13 @@ public class UIManager : Singleton<UIManager>
                 button.DOScale(1.05f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
             }
     }
+    public void StopShopGold()
+    {
+        foreach (RectTransform button in Buttons)
+        {
+            DOTween.Kill(button);
+        }
+    }
 
     [Header("Animate UI for Offer")]
     public RectTransform BackFromOfferBtn;
@@ -977,6 +1008,11 @@ public class UIManager : Singleton<UIManager>
         CarTag.DOAnchorPosY(0, 0.7f).SetEase(Ease.InOutCubic);
         OfferHeader.DOScale(1.09f, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         OfferBuyBtn.DOScale(1.03f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+    }
+    public void StopOffer()
+    {
+        DOTween.Kill(OfferHeader);
+        DOTween.Kill(OfferBuyBtn);
     }
     //More Gold Btn
     [SerializeField] Button MoreGoldButton;

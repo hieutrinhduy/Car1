@@ -29,4 +29,10 @@ public class LosePanelAnimate : Singleton<LosePanelAnimate>
         ReplayBtn.DOScale(1.05f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         ReplayBtnWhenTryLockedMap.DOScale(1.05f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
     }
+    public void StopLosePanel()
+    {
+        DOTween.Kill(MenuBtn);
+        DOTween.Kill(ReplayBtn);
+        DOTween.Kill(ReplayBtnWhenTryLockedMap);
+    }
 }

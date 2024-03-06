@@ -63,4 +63,12 @@ public class FinishStageAnimate : Singleton<FinishStageAnimate>
         ClaimMoreBtn.localScale = Vector3.one;
         ClaimMoreBtn.DOScale(1.05f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
     }
+    public void StopFinishPanel()
+    {
+        DOTween.Kill(ClaimMoreBtn);
+        DOTween.Kill(MainMenuBtn);
+        DOTween.Kill(NextLevelBtn);
+        DOTween.Kill(Header);
+        DOTween.Kill(GoldEarnAmount);
+    }
 }

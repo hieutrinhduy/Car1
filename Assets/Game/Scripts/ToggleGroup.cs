@@ -85,6 +85,7 @@ public class ToggleGroup : Singleton<ToggleGroup>
     }
     public void DeActiveWatchVideoToUnLockMapPanel()
     {
+        UnlockMapAnimate.Ins.StopUnlockMapAnimate();
         WatchVideoToUnLockMapPanel.SetActive(false);
     }
     public void WatchedAVideo()
@@ -176,6 +177,7 @@ public class ToggleGroup : Singleton<ToggleGroup>
     }
     public void CloseUnlockMapPanel()
     {
+        UnlockMapAnimate.Ins.StopUnlockMapAnimate();
         UnlockMapPanel.SetActive(false);
         UIManager.Ins.OpenSelectMapPanelWhileExitUnlockMapPanel();
     }

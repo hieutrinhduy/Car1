@@ -32,4 +32,10 @@ public class OnlineGiftPanelAnimate : Singleton<OnlineGiftPanelAnimate>
         Tag.DOScale(Vector3.one, 0.7f).SetEase(Ease.InOutQuad);
         BackBtn.DOAnchorPosX(136.9f, 0.7f).SetEase(Ease.InOutCubic);
     }
+    public void StopOnlineGift()
+    {
+        DOTween.Kill(Header);
+        DOTween.Kill(Claim);
+        DOTween.Kill(Claimx2);
+    }
 }

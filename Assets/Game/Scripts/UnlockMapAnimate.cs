@@ -29,11 +29,17 @@ public class UnlockMapAnimate : Singleton<UnlockMapAnimate>
         WatchAdBtn.localScale = Vector3.one;
         //run
         Board.DOAnchorPosY(-6.200012f, 0.3f);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.15f);
         Header.DOScale(1.1f, 0.7f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         LevelImage.DOScale(Vector2.one, 0.3f);
         yield return new WaitForSeconds(0.3f);
         GoldBtn.DOScale(1.1f, 0.7f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         WatchAdBtn.DOScale(1.1f, 0.7f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+    }
+    public void StopUnlockMapAnimate()
+    {
+        DOTween.Kill(GoldBtn);
+        DOTween.Kill(WatchAdBtn);
+        DOTween.Kill(Header);
     }
 }

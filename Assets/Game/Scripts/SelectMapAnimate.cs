@@ -47,4 +47,10 @@ public class SelectMapAnimate : Singleton<SelectMapAnimate>
                 yield return new WaitForSeconds(0.1f);
             }
     }
+    public void StopSelectMap()
+    {
+        DOTween.Kill(PlayButton);
+        DOTween.Kill(UnlockButton);
+        DOTween.Kill(TryButton);
+    }
 }
