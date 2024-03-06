@@ -14,7 +14,7 @@ public class ToggleGroup : Singleton<ToggleGroup>
     [SerializeField] public List<TextMeshProUGUI> NameLists;
     [SerializeField] private GameObject WatchVideoToUnLockMapPanel;
     [SerializeField] private GameObject UnlockMapPanel;
-    private int countToUnlockMap = 0;
+    private int countToUnlockMap;
     [SerializeField] private TextMeshProUGUI CountToUnlockMapTXT;
     [SerializeField] private Button PlayBtn;
     [SerializeField] private Button BuyBtn;
@@ -23,9 +23,10 @@ public class ToggleGroup : Singleton<ToggleGroup>
     [SerializeField] private List<Sprite> ImageList;
     [SerializeField] private Image Image_Map_In_WatchToUnlockMapPanel;
     [SerializeField] private Image Image_Map_In_UnlockMapPanel;
+    [SerializeField] private TextMeshProUGUI MapPrice;
     private void Start()
     {
-        countToUnlockMap = 0;
+        //countToUnlockMap = 0;
         int n = GameController.Ins.level;
         BorderList[n].gameObject.SetActive(true);
         for (int i = 0; i < BorderList.Count; i++)
@@ -35,12 +36,16 @@ public class ToggleGroup : Singleton<ToggleGroup>
                 BorderList[i].gameObject.SetActive(false);
             }
         }
-        CountToUnlockMapTXT.SetText(countToUnlockMap+"/7");
+        //for(int i = 0; i < 15; i++)
+        //{
+        //    string tmp = "CountToLockMap" + i;
+        //     PlayerPrefs.GetInt(tmp);
+        //}
         LoadAndSetActiveObjects();
     }
     private void Update()
     {
-        CountToUnlockMapTXT.SetText(countToUnlockMap + "/7");
+        //CountToUnlockMapTXT.SetText(countToUnlockMap + "/7");
     }
     public int GetActiveToggle()
     {
@@ -93,24 +98,24 @@ public class ToggleGroup : Singleton<ToggleGroup>
         UnityEvent e = new UnityEvent();
         e.AddListener(() =>
         {
-            if (countToUnlockMap <= 6)
-            {
                 countToUnlockMap += 1;
                 //Debug.Log(countToUnlockMap);
-                CountToUnlockMapTXT.SetText(countToUnlockMap + "/7");
-                if (countToUnlockMap == 7)
+                CountToUnlockMapTXT.SetText(countToUnlockMap + "/" + (3 + LockButtonIndex));
+                String tmp = "CountToLockMap" + LockButtonIndex;
+                PlayerPrefs.SetInt(tmp, countToUnlockMap);
+                if (countToUnlockMap == (3 + LockButtonIndex))
                 {
                     //DeActiveWatchVideoToUnLockMapPanel();
                     LockButtonList[LockButtonIndex].gameObject.SetActive(false);
                     SaveObjectStates();
                     GameController.Ins.level = LockButtonIndex + 5;
+                    PlayerPrefs.SetInt("CountToUnlockMap", 0);
                     GameController.Ins.Save();
                     UIManager.Ins.ChangeLevelNotice();
                     TurnOnPlayBtn();
-                    countToUnlockMap = 0;
+                    //countToUnlockMap = 0;
                     CloseUnlockMapPanel();
                 }
-            }
         });
         SkygoBridge.instance.ShowRewarded(e, null);
         //logevent
@@ -174,6 +179,13 @@ public class ToggleGroup : Singleton<ToggleGroup>
         UnlockMapPanel.SetActive(true);
         UnlockMapAnimate.Ins.StartUnlockMapAnimatePanel();
         UIManager.Ins.CloseSelectMapPanel();
+        int n = 5000 * (3 + LockButtonIndex);
+        string tmp = "CountToLockMap" + LockButtonIndex;
+        Debug.Log(LockButtonIndex);
+        countToUnlockMap = PlayerPrefs.GetInt(tmp);
+        //Debug.Log(countToUnlockMap);
+        CountToUnlockMapTXT.SetText(countToUnlockMap + "/" + (3 + LockButtonIndex));
+        MapPrice.text = n.ToString() + "$";
     }
     public void CloseUnlockMapPanel()
     {
@@ -183,9 +195,9 @@ public class ToggleGroup : Singleton<ToggleGroup>
     }
     public void BuyMap()
     {
-        if (GameController.Ins.TotalGold >= 50000)
+        if (GameController.Ins.TotalGold >= 5000 * (3 + LockButtonIndex))
         {
-            GameController.Ins.TotalGold -= 50000;
+            GameController.Ins.TotalGold -= 5000 * (3 + LockButtonIndex);
             GameController.Ins.level = LockButtonIndex + 5;
             GameController.Ins.Save();
             UIManager.Ins.ChangeLevelNotice();

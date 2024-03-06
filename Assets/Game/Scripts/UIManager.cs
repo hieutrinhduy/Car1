@@ -808,6 +808,22 @@ public class UIManager : Singleton<UIManager>
             yield return new WaitForSecondsRealtime(0.1f);
         }
     }
+
+    public void PurchaseGoldWithAmount(int n)
+    {
+        StartCoroutine(SaveGoldWithAmount(n));
+    }
+    IEnumerator SaveGoldWithAmount(int n)
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        for (int i = 0; i < 10; i++)
+        {
+            GameController.Ins.TotalGold += n/10;
+            GameController.Ins.Save();
+            GameController.Ins.Load();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+    }
     //AddGold
     ////AddGoldByAmount
     //public void AddGold(int goldAmout)

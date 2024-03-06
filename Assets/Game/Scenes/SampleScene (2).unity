@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13088368, g: 0.029374467, b: 0.06367388, a: 1}
+  m_IndirectSpecularColor: {r: 0.12982954, g: 0.02982238, b: 0.06283989, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -62507,8 +62507,8 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 4012.6572, y: -38}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 3139.057, y: -38}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1553825195
@@ -62668,6 +62668,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c49fcdea83db4934da983f6997fdce51, type: 3}
   Image_Map_In_WatchToUnlockMapPanel: {fileID: 1660012814}
   Image_Map_In_UnlockMapPanel: {fileID: 1126994479}
+  MapPrice: {fileID: 1854654691}
 --- !u!1 &1559102037
 GameObject:
   m_ObjectHideFlags: 0

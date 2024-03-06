@@ -16,11 +16,18 @@ public class RandomReward : Singleton<RandomReward>
     public Text goldEarned;
     Tween arrowTween;
     public Button ClaimX2BTN;
+    private int GoldAmount;
     void Start()
     {
         
     }
-
+    public void SetGoldAmount()
+    {
+        GoldAmount = UnityEngine.Random.Range(1000, 3000);
+        GoldAmount -= GoldAmount % 500;
+        Debug.Log(GoldAmount);
+        UIManager.Ins.PurchaseGoldWithAmount(GoldAmount);
+    }
     public void Randomnize()
     {
         randomTime = Random.Range(2.5f, 4f);
@@ -33,7 +40,7 @@ public class RandomReward : Singleton<RandomReward>
         Vector2 newPosition = arrow.anchoredPosition;
         newPosition.x = xPosition;
         arrow.anchoredPosition = newPosition;
-        goldEarned.text = "You got " + 1000 + "$";
+        goldEarned.text = "You got " + GoldAmount + "$";
     }
 
     public void StopTween()
@@ -51,29 +58,33 @@ public class RandomReward : Singleton<RandomReward>
         if ((-280 <= arrow.anchoredPosition.x && arrow.anchoredPosition.x <= -235) || (230 < arrow.anchoredPosition.x && arrow.anchoredPosition.x <= 280f))
         {
             multiple = 2;
-            UIManager.Ins.PurchaseGold2000();
-            goldEarned.text = "You got " + 1000*2 + "$";
+            //UIManager.Ins.PurchaseGold2000();
+            UIManager.Ins.PurchaseGoldWithAmount(GoldAmount * 2);
+            goldEarned.text = "You got " + GoldAmount * 2 + "$";
             GameController.Ins.Save();
         }
         else if ((-235 < arrow.anchoredPosition.x && arrow.anchoredPosition.x <= -140f) || (140 < arrow.anchoredPosition.x && arrow.anchoredPosition.x <= 230f))
         {
             multiple = 3;
-            UIManager.Ins.PurchaseGold3000();
-            goldEarned.text = "You got " + 1000 * 3 + "$";
+            //UIManager.Ins.PurchaseGold3000();
+            UIManager.Ins.PurchaseGoldWithAmount(GoldAmount * 3);
+            goldEarned.text = "You got " + GoldAmount * 3 + "$";
             GameController.Ins.Save();
         }
         else if ((-140 < arrow.anchoredPosition.x && arrow.anchoredPosition.x <= -46) || (46 < arrow.anchoredPosition.x && arrow.anchoredPosition.x <= 140))
         {
             multiple = 4;
-            UIManager.Ins.PurchaseGold4000();
-            goldEarned.text = "You got " + 1000 * 4 + "$";
+            //UIManager.Ins.PurchaseGold4000();
+            UIManager.Ins.PurchaseGoldWithAmount(GoldAmount * 4);
+            goldEarned.text = "You got " + GoldAmount * 4 + "$";
             GameController.Ins.Save();
         }
         else if (-46 < arrow.anchoredPosition.x && arrow.anchoredPosition.x <= 46)
         {
             multiple = 5;
-            UIManager.Ins.PurchaseGold5000();
-            goldEarned.text = "You got " + 1000 * 5 + "$";
+            //UIManager.Ins.PurchaseGold5000();
+            UIManager.Ins.PurchaseGoldWithAmount(GoldAmount * 5);
+            goldEarned.text = "You got " + GoldAmount * 5 + "$";
             GameController.Ins.Save();
         }
     }

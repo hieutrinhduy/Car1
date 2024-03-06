@@ -369,9 +369,10 @@ public class CarController : MonoBehaviour
                 //CameraFollow.Ins.ActiveFireWorkParticle();
                 //TestCamera.Ins.ActiveFireWorkParticle();
                 //GameController.Ins.FinishMap();
+                RandomReward.Ins.SetGoldAmount();
                 RandomReward.Ins.SetArrowXPosition(-280f);
                 RandomReward.Ins.ActiveClaimBTN();
-                UIManager.Ins.PurchaseGold1000();
+                //UIManager.Ins.PurchaseGold1000();
                 RewardManager.Ins.RewardPileOfCoin(null, 6);
                 GameController.Ins.Save();
             });

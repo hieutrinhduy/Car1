@@ -31,6 +31,12 @@ public class FirstTimePlayGame : MonoBehaviour
             UIManager.Ins.LoadAndSetActiveObjects();
             Daily.Ins.ResetDailyReward();
             hasActivated = true;
+            //PlayerPrefs.SetInt("CountToUnlockMap",0);
+            for (int i = 0; i < 15; i++)
+            {
+                string tmp = "CountToLockMap" + i;
+                PlayerPrefs.SetInt(tmp,0);
+            }
             Destroy(gameObject);
             PlayerPrefs.SetInt("SpecialDrive",0);
             PlayerPrefs.SetInt("Sound",1);
