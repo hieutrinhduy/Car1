@@ -24,7 +24,7 @@ public class RandomReward : Singleton<RandomReward>
     public void SetGoldAmount()
     {
         GoldAmount = UnityEngine.Random.Range(1000, 3000);
-        GoldAmount -= GoldAmount % 500;
+        GoldAmount -= GoldAmount % 100;
         Debug.Log(GoldAmount);
         UIManager.Ins.PurchaseGoldWithAmount(GoldAmount);
     }

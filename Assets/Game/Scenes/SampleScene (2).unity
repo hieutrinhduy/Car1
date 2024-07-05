@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12982954, g: 0.02982238, b: 0.06283989, a: 1}
+  m_IndirectSpecularColor: {r: 0.13088368, g: 0.029374467, b: 0.06367388, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -47026,7 +47026,7 @@ MonoBehaviour:
   EarningAmount: {fileID: 0}
   DoYouWantToBuyPanel: {fileID: 1459584602}
   DoYouWantToBuyText: {fileID: 784785303}
-  GoldEarnAmount: 500
+  GoldEarnAmount: 5000
   OpenOnlineGiftBTN: {fileID: 478408164}
   TimeCountDownText: {fileID: 208263828}
   TimeRemaining: 180
@@ -62508,7 +62508,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 3139.057, y: -38}
+  m_AnchoredPosition: {x: 3138.858, y: -38}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1553825195
@@ -68090,7 +68090,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 500$
+  m_text: 5000$
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ebd558dc5329eaf4d805261fc13f1980, type: 2}
   m_sharedMaterial: {fileID: 3261222392055703287, guid: ebd558dc5329eaf4d805261fc13f1980, type: 2}

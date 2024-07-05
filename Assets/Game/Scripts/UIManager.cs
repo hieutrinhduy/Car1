@@ -1078,7 +1078,7 @@ public class UIManager : Singleton<UIManager>
     public void ClaimOnlineGift()
     {
         RewardManager.Ins.RewardPileOfCoin(buttonRectTransform, 6);
-        PurchaseGold500();
+        PurchaseGold5000();
         ClaimBTN.interactable = false;
         ClaimX2BTN.interactable = false;
         GameController.Ins.Save();
@@ -1091,7 +1091,7 @@ public class UIManager : Singleton<UIManager>
         e.AddListener(() =>
         {
             RewardManager.Ins.RewardPileOfCoin(buttonRectTransform, 6);
-            PurchaseGold1000();
+            PurchaseGold10000();
             ClaimBTN.interactable = false;
             ClaimX2BTN.interactable = false;
             GameController.Ins.Save();
